@@ -16,7 +16,10 @@ export default {
   },
   computed: {
     getImageUrl() {
-      return `https://graph.facebook.com/${this.message.user.uid}/picture`
+      if (this.message.user.providerId === 'facebook.com') {
+        return `https://graph.facebook.com/${this.message.user.uid}/picture`
+      }
+      return this.message.user.photoURL
     }
   }
 }
