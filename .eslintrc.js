@@ -45,6 +45,14 @@ module.exports = {
       optionalDependencies: ['test/unit/index.js']
     }],
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': process.env.NODE_ENV === 'production' ?  'error' : 'off',
+    // No semicolons – It's fine. Really! https://www.youtube.com/watch?v=gsfbh17Ax9I
+    'semi': 'off',
+    'comma-dangle': 'off',
+    'eol-last': 'off',
+    'no-new': 'off',
+    'max-len': 'off',
+    'linebreak-style': 'off'
   }
 }
