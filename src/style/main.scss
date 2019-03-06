@@ -208,6 +208,12 @@
 .input-group--text-field label {
   top: auto;
 }
+.v-text-field--box input, .v-text-field--full-width input, .v-text-field--outline input {
+  margin: 0;
+}
+.v-input input {
+  max-height: initial;
+}
 
 // social media colors
 

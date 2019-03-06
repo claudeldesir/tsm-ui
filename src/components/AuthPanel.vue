@@ -1,5 +1,5 @@
 <template lang="pug">
-  .w70.m10.p10
+  .m10.p10
     .flex-row.justify-center
       div(v-if="!isLoggedIn")
         v-btn.fb(@click="emitLogin('fb')")
@@ -9,7 +9,7 @@
         v-btn.tw(@click="emitLogin('tw')")
           v-icon(small color="white") fab fa-twitter
       div(v-else)
-        span.p5(style="background-color:#ececec;" @click="emitLogout") Log out
+        v-btn.tw(@click="emitLogout") Log out
     hr(style="border-top:0.8px solid white")
 </template>
 
