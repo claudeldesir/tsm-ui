@@ -10,7 +10,7 @@ export function dateFilter(val, fmt) {
 }
 
 export function subscriberTypeFilter(val) {
-  switch(val) {
+  switch (val) {
     case 0:
       return 'Business'
     case 1:

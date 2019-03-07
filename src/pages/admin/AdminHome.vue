@@ -6,7 +6,7 @@
         h1 That's Montreal Admin Panel
         br
         a Manage media
-        a Manage subscriptions
+        router-link(:to="{name: 'subscriptions'}") Manage subscriptions
         a Send newsletter
       .flex-1
 </template>
