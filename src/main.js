@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 import VueFire from 'vuefire'
 import firebase from 'firebase/app'
@@ -17,7 +18,9 @@ import router from './router'
 import store from './store'
 import './style/main.scss'
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  iconfont: 'fa'
+})
 Vue.config.productionTip = false
 
 Vue.use(VueFire)
