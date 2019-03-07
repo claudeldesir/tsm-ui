@@ -12,6 +12,7 @@ import VueTimeago from 'vue-timeago'
 
 import authMixin from '@/mixins/auth'
 import config from '@/config/appConfig.json'
+import { dateFilter, subscriberTypeFilter } from '@/filters'
 import Page from '@/components/Page'
 
 import App from './App'
@@ -27,6 +28,8 @@ Vue.config.productionTip = false
 Vue.use(VueFire)
 Vue.mixin(authMixin)
 Vue.component('Page', Page)
+Vue.filter('date', dateFilter)
+Vue.filter('subType', subscriberTypeFilter)
 
 firebase.initializeApp(config.firebaseConfig)
 
