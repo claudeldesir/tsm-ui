@@ -32,4 +32,9 @@ export default {
   getCurrentUser() {
     return firebase.auth().currentUser
   },
+  getUserToken() {
+    const user = firebase.auth().currentUser
+    if (!user) return Promise.reject()
+    return user.getIdToken()
+  }
 }

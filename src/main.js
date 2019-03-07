@@ -4,6 +4,8 @@ import 'vuetify/dist/vuetify.min.css'
 
 import VueFire from 'vuefire'
 import firebase from 'firebase/app'
+import 'firebase/auth'
+
 import VueSocketIO from 'vue-socket.io'
 import VueTimeago from 'vue-timeago'
 
@@ -20,8 +22,6 @@ Vue.config.productionTip = false
 
 Vue.use(VueFire)
 Vue.mixin(authMixin)
-
-require('firebase/auth') // needed?
 
 firebase.initializeApp(config.firebaseConfig)
 

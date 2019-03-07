@@ -36,8 +36,7 @@ export default {
       const content = this.newMessage.trim()
       if (!content || !this.isLoggedIn) return
       const msgObj = {
-        content,
-        userId: 1 // temp
+        content
       }
       Api.postChatMessage(msgObj)
         .then(() => {
