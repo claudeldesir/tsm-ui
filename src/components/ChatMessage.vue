@@ -8,26 +8,25 @@
           timeago(:datetime="message.createdAt" :autoUpdate="true")
       .flex-col(:class="{'align-end':!isMine,'align-start':isMine}")
         .p5-side.p5-bot {{ !isMine ? message.user.displayName : 'Me' }}
-        img.br50(:src="getImageUrl")
+        ProfileImage(:user="message.user")
 </template>
 
 <script>
+import ProfileImage from '@/components/ProfileImage'
+
 export default {
   props: {
     message: Object,
     required: true
   },
   computed: {
-    getImageUrl() {
-      if (this.message.user.providerId === 'facebook.com') {
-        return `https://graph.facebook.com/${this.message.user.uid}/picture`
-      }
-      return this.message.user.photoURL
-    },
     isMine() {
       if (!this.getCurrentUser) return false
       return this.getCurrentUser.uid === this.message.user.id
     }
+  },
+  components: {
+    ProfileImage
   }
 }
 </script>

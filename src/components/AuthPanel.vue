@@ -8,13 +8,16 @@
       v-btn.tw(@click="login('tw')" flat)
         v-icon(small color="white") fab fa-twitter
     .flex-row.justify-end.align-center(v-else)
-      span {{ getCurrentUser.displayName }}
+      .flex-row.align-center.p5
+        .p10-right {{ getCurrentUser.displayName }}
+        ProfileImage(:user="getCurrentUser")
       v-btn.logout(@click="logout" color="primary" flat)
         v-icon(small color="white") fas fa-sign-out-alt
     hr(style="border-top:0.8px solid white")
 </template>
 
 <script>
+import ProfileImage from '@/components/ProfileImage'
 import auth from '@/services/auth'
 
 export default {
@@ -30,6 +33,9 @@ export default {
     logout() {
       return auth.logout()
     }
+  },
+  components: {
+    ProfileImage
   }
 }
 </script>
