@@ -12,6 +12,7 @@ import VueTimeago from 'vue-timeago'
 
 import authMixin from '@/mixins/auth'
 import config from '@/config/appConfig.json'
+import Page from '@/components/Page'
 
 import App from './App'
 import router from './router'
@@ -25,6 +26,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueFire)
 Vue.mixin(authMixin)
+Vue.component('Page', Page)
 
 firebase.initializeApp(config.firebaseConfig)
 
