@@ -4,6 +4,7 @@ import 'vuetify/dist/vuetify.min.css'
 
 import VueFire from 'vuefire'
 import firebase from 'firebase/app'
+import VueSocketIO from 'vue-socket.io'
 
 import authMixin from '@/mixins/auth'
 import config from '@/config/appConfig.json'
@@ -22,6 +23,18 @@ Vue.mixin(authMixin)
 require('firebase/auth') // needed?
 
 firebase.initializeApp(config.firebaseConfig)
+
+const socketIoConfig = config.socketIoConfig
+
+Vue.use(new VueSocketIO({
+  debug: true,
+  connection: socketIoConfig.connectionUrl,
+  vuex: {
+    store,
+    actionPrefix: 'SOCKET_',
+    mutationPrefix: 'SOCKET_'
+  }
+}))
 
 let app = null
 firebase.auth().onAuthStateChanged((userObj) => {

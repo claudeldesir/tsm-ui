@@ -13,6 +13,11 @@ import ChatMessage from '@/components/ChatMessage'
 import Api from '@/services/api'
 
 export default {
+  sockets: {
+    msgReceived(message) {
+      this.onNewMessage(message)
+    }
+  },
   created() {
     Api.listChatMessages()
       .then((res) => {
@@ -35,11 +40,12 @@ export default {
         userId: 1 // temp
       }
       Api.postChatMessage(msgObj)
-        .then((res) => {
-          const message = res.data
-          this.messages.unshift(message)
+        .then(() => {
           this.newMessage = ''
         })
+    },
+    onNewMessage(message) {
+      this.messages.unshift(message)
     }
   },
   components: {

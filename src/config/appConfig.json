@@ -9,5 +9,8 @@
   },
   "appConfig": {
     "firebaseApiUrl": "https://us-central1-thatsmontrealcomments.cloudfunctions.net/"
+  },
+  "socketIoConfig": {
+    "connectionUrl": "https://thatsmontreal.ca:8000"
   }
 }
