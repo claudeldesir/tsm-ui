@@ -29,7 +29,7 @@ export default {
   methods: {
     postMessage() {
       const content = this.newMessage.trim()
-      if (!content) return
+      if (!content || !this.isLoggedIn) return
       const msgObj = {
         content,
         userId: 1 // temp

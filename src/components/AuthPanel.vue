@@ -1,43 +1,34 @@
 <template lang="pug">
   .m10.p10
-    .flex-row.justify-center
-      div(v-if="!isLoggedIn")
-        v-btn.fb(@click="emitLogin('fb')")
-          v-icon(small color="white") fab fa-facebook-f
-        v-btn.gg(@click="emitLogin('gg')")
-          v-icon(small color="white") fab fa-google
-        v-btn.tw(@click="emitLogin('tw')")
-          v-icon(small color="white") fab fa-twitter
-      div(v-else)
-        v-btn.tw(@click="emitLogout") Log out
+    .flex-row.justify-center(v-if="!isLoggedIn")
+      v-btn.fb(@click="login('fb')" flat)
+        v-icon(small color="white") fab fa-facebook-f
+      v-btn.gg(@click="login('gg')" flat)
+        v-icon(small color="white") fab fa-google
+      v-btn.tw(@click="login('tw')" flat)
+        v-icon(small color="white") fab fa-twitter
+    .flex-row.justify-end.align-center(v-else)
+      span {{ getCurrentUser.displayName }}
+      v-btn.logout(@click="logout" color="primary" flat)
+        v-icon(small color="white") fas fa-sign-out-alt
     hr(style="border-top:0.8px solid white")
 </template>
 
-
 <script>
+import auth from '@/services/auth'
+
 export default {
-  props: {
-    user: {
-      type: Object,
-      default: null
-    }
-  },
   data() {
     return {
       hovered: false
     }
   },
   methods: {
-    emitLogin(provider) {
-      this.$emit('login', provider)
+    login(provider) {
+      return auth.loginWithProvider(provider)
     },
-    emitLogout() {
-      this.$emit('logout')
-    }
-  },
-  computed: {
-    isLoggedIn() {
-      return !!this.user
+    logout() {
+      return auth.logout()
     }
   }
 }

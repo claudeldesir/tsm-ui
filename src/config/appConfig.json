@@ -1,0 +1,13 @@
+{
+  "firebaseConfig": {
+    "apiKey": "AIzaSyDvU_mNoHILQJ_as397H86k5E5O6mNgA8s",
+    "authDomain": "thatsmontrealcomments.firebaseapp.com",
+    "databaseURL": "https://thatsmontrealcomments.firebaseio.com",
+    "projectId": "thatsmontrealcomments",
+    "storageBucket": "thatsmontrealcomments.appspot.com",
+    "messagingSenderId": "874619178274"
+  },
+  "appConfig": {
+    "firebaseApiUrl": "https://us-central1-thatsmontrealcomments.cloudfunctions.net/"
+  }
+}
