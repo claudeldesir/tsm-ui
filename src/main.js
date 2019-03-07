@@ -5,6 +5,7 @@ import 'vuetify/dist/vuetify.min.css'
 import VueFire from 'vuefire'
 import firebase from 'firebase/app'
 import VueSocketIO from 'vue-socket.io'
+import VueTimeago from 'vue-timeago'
 
 import authMixin from '@/mixins/auth'
 import config from '@/config/appConfig.json'
@@ -27,7 +28,7 @@ firebase.initializeApp(config.firebaseConfig)
 const socketIoConfig = config.socketIoConfig
 
 Vue.use(new VueSocketIO({
-  debug: true,
+  debug: false,
   connection: socketIoConfig.connectionUrl,
   vuex: {
     store,
@@ -35,6 +36,11 @@ Vue.use(new VueSocketIO({
     mutationPrefix: 'SOCKET_'
   }
 }))
+
+Vue.use(VueTimeago, {
+  name: 'Timeago',
+  locale: 'en'
+})
 
 let app = null
 firebase.auth().onAuthStateChanged((userObj) => {

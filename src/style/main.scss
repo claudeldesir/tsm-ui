@@ -47,6 +47,12 @@
 .justify-end {
   justify-content: flex-end;
 }
+.align-between {
+  justify-content: space-between;
+}
+.align-around {
+  justify-content: space-around;
+}
 .align-start {
   align-items: flex-start;
 }
