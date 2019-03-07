@@ -7,7 +7,7 @@
         div
           timeago(:datetime="message.createdAt" :autoUpdate="true")
       .flex-col(:class="{'align-end':!isMine,'align-start':isMine}")
-        span {{ message.user.displayName }}
+        .p5-side.p5-bot {{ !isMine ? message.user.displayName : 'Me' }}
         img.br50(:src="getImageUrl")
 </template>
 
