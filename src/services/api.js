@@ -19,5 +19,8 @@ export default {
   postChatMessage(message) {
     return getAuthHeaders()
       .then(options => http.post('/chat', message, options))
+  },
+  getSubscribers() {
+    return http.get('/subscribers')
   }
 }
