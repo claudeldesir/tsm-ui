@@ -35,4 +35,22 @@ export default {
   postSubscription(subscription) {
     return http.post('/subscriptions', subscription)
   },
+  getLines() {
+    return http.get('/lines')
+  },
+  getStations() {
+    return http.get('/locations')
+  },
+  postStation(station) {
+    return http.post('/locations', station)
+  },
+  getActiveBusinesses() {
+    return http.get('/businesses/active')
+  },
+  getMedia() {
+    return http.get('/media')
+  },
+  postMedia(media) {
+    return http.post('/media', media)
+  },
 }

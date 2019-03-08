@@ -95,6 +95,7 @@ export default {
       Api.postSubscriber(subscriber)
         .then((res) => {
           this.subscribers.push(res.data)
+          this.$refs.subscriberForm.reset()
         })
     },
     getPackages() {
@@ -116,6 +117,7 @@ export default {
       Api.postSubscription(subscription)
         .then((res) => {
           this.subscriptions.push(res.data)
+          this.$refs.subscriptionForm.reset()
         })
     },
   }
