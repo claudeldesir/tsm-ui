@@ -27,11 +27,22 @@
         .p30-top
         hr(style="border-top:0.8px solid white")
         .p15-top
+        h2 Subscriptions
+        br
+        v-data-table.elevation-1(:items="subscriptions" :headers="subscriptionHeaders")
+          template(slot="items" slot-scope="props")
+            td {{ props.item.subscriber.email }}
+            td {{ props.item.package.desc }}
+            td {{ props.item.daysLeft }}
+            td {{ props.item.status | subStatus }}
+        .p30-top
+        hr(style="border-top:0.8px solid white")
+        .p15-top
           h2 Add new subscription
           br
           v-form(ref="subscriptionForm")
-            v-select(v-model="subscription.entityId" :items="subscriberTypes" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber" solo)
-            v-select(v-model="subscriber.pkgId" :items="subscriberTypes" :rules="[(v) => v != null || 'Package is required']" required placeholder="Package" solo)
+            v-select(v-model="subscription.entityId" :items="subscribers" item-text="email" item-value="id" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber" solo)
+            v-select(v-model="subscription.pkgId" :items="packages" item-text="desc" item-value="id" :rules="[(v) => v != null || 'Package is required']" required placeholder="Package" solo)
           v-btn(@click="submitSubscription" color="primary") Submit
       .flex-1
 </template>
@@ -42,6 +53,8 @@ import Api from '@/services/api'
 export default {
   created() {
     this.getSubscribers()
+    this.getSubscriptions()
+    this.getPackages()
   },
   data() {
     return {
@@ -57,7 +70,15 @@ export default {
         { text: 'Business', value: 0 },
         { text: 'Consumer', value: 1 }
       ],
-      subscription: {}
+      packages: [],
+      subscriptions: [],
+      subscription: {},
+      subscriptionHeaders: [
+        { text: 'Subscriber', value: 'subscriber.email' },
+        { text: 'Package', value: 'package.desc' },
+        { text: 'Days left', value: 'daysLeft' },
+        { text: 'Status', value: 'status' }
+      ]
     }
   },
   methods: {
@@ -70,13 +91,33 @@ export default {
     submitSubscriber() {
       const subscriberValid = this.$refs.subscriberForm.validate()
       if (!subscriberValid) return
-      console.log(this.subscriber)
+      const subscriber = this.subscriber
+      Api.postSubscriber(subscriber)
+        .then((res) => {
+          this.subscribers.push(res.data)
+        })
+    },
+    getPackages() {
+      return Api.getPackages()
+        .then((res) => {
+          this.packages = res.data
+        })
+    },
+    getSubscriptions() {
+      return Api.getSubscriptions()
+        .then((res) => {
+          this.subscriptions = res.data
+        })
     },
     submitSubscription() {
       const subscriptionValid = this.$refs.subscriptionForm.validate()
       if (!subscriptionValid) return
-      console.log(this.subscription)
-    }
+      const subscription = this.subscription
+      Api.postSubscription(subscription)
+        .then((res) => {
+          this.subscriptions.push(res.data)
+        })
+    },
   }
 }
 </script>

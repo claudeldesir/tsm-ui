@@ -22,5 +22,17 @@ export default {
   },
   getSubscribers() {
     return http.get('/subscribers')
-  }
+  },
+  postSubscriber(subscriber) {
+    return http.post('/subscribers', subscriber)
+  },
+  getPackages() {
+    return http.get('/packages')
+  },
+  getSubscriptions() {
+    return http.get('/subscriptions')
+  },
+  postSubscription(subscription) {
+    return http.post('/subscriptions', subscription)
+  },
 }
