@@ -19,3 +19,14 @@ export function subscriberTypeFilter(val) {
       return '/'
   }
 }
+
+export function subscriptionStatusFilter(val) {
+  switch (val) {
+    case 0:
+      return 'Expired'
+    case 1:
+      return 'Active'
+    default:
+      return '/'
+  }
+}
