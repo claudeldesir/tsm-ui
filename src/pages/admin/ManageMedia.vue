@@ -4,6 +4,17 @@
       .flex-1
       .flex-col.flex-2
         h1 Manage media
+        .p15-bot
+        h2 Stations
+        br
+        v-data-table.elevation-1(:items="stations" :headers="stationHeaders")
+          template(slot="items" slot-scope="props")
+            td {{ props.item.title }}
+            td {{ props.item.line | line }}
+            td {{ props.item.latestCount }}
+            td {{ props.item.totalCount }}
+        .p30-top
+        hr(style="border-top:0.8px solid white")
         .p15-top
           h2 Add new station
           br
@@ -15,10 +26,22 @@
         .p30-top
         hr(style="border-top:0.8px solid white")
         .p15-top
+        h2 Media
+        br
+        v-data-table.elevation-1(:items="media" :headers="mediaHeaders")
+          template(slot="items" slot-scope="props")
+            td
+              a(:href="props.item.url" target="_blank") {{ props.item.title }}
+            td {{ props.item.type | mediaType }}
+            td {{ props.item.subscriber.id }}
+        .p30-top
+        hr(style="border-top:0.8px solid white")
+        .p15-top
           h2 Add new media
           br
           v-form(ref="mediaForm")
             v-select(v-model="mediaObj.locId" :items="stations" item-text="title" item-value="id" :rules="[(v) => v != null || 'Station is required']" required placeholder="Station" solo)
+            v-text-field(v-model="mediaObj.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
             v-text-field(v-model="mediaObj.url" :rules="[(v) => !!v || 'Media URL is required']" required placeholder="Media URL" solo)
             v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
             v-select(v-model="mediaObj.entityId" :items="businesses" item-text="email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business" solo)
@@ -28,6 +51,7 @@
 
 <script>
 import Api from '@/services/api'
+import { lineTitleFilter } from '@/filters'
 
 export default {
   created() {
@@ -41,16 +65,30 @@ export default {
       lines: [],
       stations: [],
       station: {},
-      businesses: [],
+      stationHeaders: [
+        { text: 'Title', value: 'title' },
+        { text: 'Line', value: 'line' },
+        { text: 'Recent media #', value: 'latestCount' },
+        { text: 'Total media #', value: 'totalCount' },
+      ],
+      media: [],
       mediaObj: {},
-      media: []
+      mediaHeaders: [
+        { text: 'Title', value: 'title' },
+        { text: 'Type', value: 'type' },
+        { text: 'Subscriber ID', value: null },
+      ],
+      businesses: [],
     }
   },
   methods: {
     getLines() {
       return Api.getLines()
         .then((res) => {
-          this.lines = res.data
+          this.lines = res.data.map(line => ({
+            id: line.id,
+            title: lineTitleFilter(line.id)
+          }))
         })
     },
     getActiveBusinesses() {
