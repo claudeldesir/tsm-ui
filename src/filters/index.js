@@ -56,3 +56,8 @@ export function mediaTypeFilter(val) {
       return '/'
   }
 }
+
+export function yesnoFilter(val) {
+  if (val) return 'Yes'
+  return 'No'
+}

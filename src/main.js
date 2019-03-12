@@ -12,7 +12,7 @@ import VueTimeago from 'vue-timeago'
 
 import authMixin from '@/mixins/auth'
 import config from '@/config/appConfig.json'
-import { dateFilter, subscriberTypeFilter, subscriptionStatusFilter, lineTitleFilter, mediaTypeFilter } from '@/filters'
+import { dateFilter, subscriberTypeFilter, subscriptionStatusFilter, lineTitleFilter, mediaTypeFilter, yesnoFilter } from '@/filters'
 import Page from '@/components/Page'
 
 import App from './App'
@@ -33,6 +33,7 @@ Vue.filter('subType', subscriberTypeFilter)
 Vue.filter('subStatus', subscriptionStatusFilter)
 Vue.filter('line', lineTitleFilter)
 Vue.filter('mediaType', mediaTypeFilter)
+Vue.filter('yesno', yesnoFilter)
 
 firebase.initializeApp(config.firebaseConfig)
 

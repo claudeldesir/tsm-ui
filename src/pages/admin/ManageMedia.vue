@@ -33,6 +33,7 @@
             td
               a(:href="props.item.url" target="_blank") {{ props.item.title }}
             td {{ props.item.type | mediaType }}
+            td {{ props.item.hasActiveSub | yesno }}
             td {{ props.item.subscriber.id }}
         .p30-top
         hr(style="border-top:0.8px solid white")
@@ -76,6 +77,7 @@ export default {
       mediaHeaders: [
         { text: 'Title', value: 'title' },
         { text: 'Type', value: 'type' },
+        { text: 'Active subscription', value: 'hasActiveSub' },
         { text: 'Subscriber ID', value: null },
       ],
       businesses: [],
