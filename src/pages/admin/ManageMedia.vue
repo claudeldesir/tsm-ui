@@ -9,10 +9,10 @@
         br
         v-data-table.elevation-1(:items="stations" :headers="stationHeaders")
           template(slot="items" slot-scope="props")
-            td {{ props.item.title }}
+            td(:title="props.item.desc") {{ props.item.title }}
             td {{ props.item.line | line }}
-            td {{ props.item.latestCount }}
-            td {{ props.item.totalCount }}
+            td {{ props.item.latestCount || 0 }}
+            td {{ props.item.totalCount || 0}}
         .p30-top
         hr(style="border-top:0.8px solid white")
         .p15-top
@@ -45,7 +45,7 @@
             v-text-field(v-model="mediaObj.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
             v-text-field(v-model="mediaObj.url" :rules="[(v) => !!v || 'Media URL is required']" required placeholder="Media URL" solo)
             v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
-            v-select(v-model="mediaObj.entityId" :items="businesses" item-text="email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business" solo)
+            v-select(v-model="mediaObj.entityId" :items="businesses" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business" solo)
           v-btn(@click="submitMedia" color="primary") Submit
       .flex-1
 </template>

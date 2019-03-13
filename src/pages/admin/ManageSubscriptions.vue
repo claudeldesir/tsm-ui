@@ -1,5 +1,5 @@
 <template lang="pug">
-  Page
+  Page(:loading="!loaded")
     .flex-row
       .flex-1
       .flex-col.flex-2
@@ -9,9 +9,8 @@
         br
         v-data-table.elevation-1(:items="subscribers" :headers="subscriberHeaders")
           template(slot="items" slot-scope="props")
-            td {{ props.item.name }}
-            td {{ props.item.surname }}
-            td {{ props.item.email }}
+            td {{ props.item.user.displayName }}
+            td {{ props.item.user.email }}
             td {{ props.item.type | subType }}
         .p30-top
         hr(style="border-top:0.8px solid white")
@@ -19,9 +18,7 @@
           h2 Add new subscriber
           br
           v-form(ref="subscriberForm")
-            v-text-field(v-model="subscriber.name" :rules="[(v) => !!v || 'Name is required']" required placeholder="Name" solo)
-            v-text-field(v-model="subscriber.surname" :rules="[(v) => !!v || 'Surname is required']" required placeholder="Surname" solo)
-            v-text-field(v-model="subscriber.email" :rules="[(v) => !!v || 'Email is required']" required type="email" placeholder="Email" solo)
+            v-select(v-model="subscriber.userId" :items="users" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'User is required']" required placeholder="User" solo)
             v-select(v-model="subscriber.type" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type" solo)
           v-btn(@click="submitSubscriber" color="primary") Submit
         .p30-top
@@ -31,7 +28,7 @@
         br
         v-data-table.elevation-1(:items="subscriptions" :headers="subscriptionHeaders")
           template(slot="items" slot-scope="props")
-            td {{ props.item.subscriber.email }}
+            td {{ getSubscriberFromList(props.item.subscriber.id).user.email }}
             td {{ props.item.package.desc }}
             td {{ props.item.daysLeft }}
             td {{ props.item.status | subStatus }}
@@ -41,7 +38,7 @@
           h2 Add new subscription
           br
           v-form(ref="subscriptionForm")
-            v-select(v-model="subscription.entityId" :items="subscribers" item-text="email" item-value="id" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber" solo)
+            v-select(v-model="subscription.entityId" :items="subscribers" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber" solo)
             v-select(v-model="subscription.pkgId" :items="packages" item-text="desc" item-value="id" :rules="[(v) => v != null || 'Package is required']" required placeholder="Package" solo)
           v-btn(@click="submitSubscription" color="primary") Submit
       .flex-1
@@ -52,17 +49,15 @@ import Api from '@/services/api'
 
 export default {
   created() {
-    this.getSubscribers()
-    this.getSubscriptions()
-    this.getPackages()
+    this.initData()
   },
   data() {
     return {
+      users: [],
       subscribers: [],
       subscriber: {},
       subscriberHeaders: [
         { text: 'Name', value: 'name' },
-        { text: 'Surname', value: 'surname' },
         { text: 'Email', value: 'email' },
         { text: 'Type', value: 'type' }
       ],
@@ -78,15 +73,37 @@ export default {
         { text: 'Package', value: 'package.desc' },
         { text: 'Days left', value: 'daysLeft' },
         { text: 'Status', value: 'status' }
-      ]
+      ],
+      loaded: false
     }
   },
   methods: {
+    initData() {
+      this.loaded = false
+      return Promise.all([
+        this.getUsers(),
+        this.getSubscribers(),
+        this.getSubscriptions(),
+        this.getPackages()
+      ])
+        .then(() => {
+          this.loaded = true
+        })
+    },
+    getUsers() {
+      return Api.getUsers()
+        .then((res) => {
+          this.users = res.data
+        })
+    },
     getSubscribers() {
       return Api.getSubscribers()
         .then((res) => {
           this.subscribers = res.data
         })
+    },
+    getSubscriberFromList(subId) {
+      return this.subscribers.find(sub => sub.id === subId)
     },
     submitSubscriber() {
       const subscriberValid = this.$refs.subscriberForm.validate()
