@@ -53,6 +53,9 @@ export default {
   getMedia() {
     return http.get('/media')
   },
+  getOneMedia(mediaId) {
+    return http.get(`/media/${mediaId}`)
+  },
   postMedia(media) {
     return http.post('/media', media)
   },

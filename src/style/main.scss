@@ -215,8 +215,9 @@
 .input-group--text-field {
   padding-top: 0;
 }
-.v-input--selection-controls .v-input__slot {
+.v-input--selection-controls {
   margin: 0;
+  padding-top: 0;
 }
 .input-group--text-field label {
   top: auto;
@@ -247,4 +248,7 @@
   min-width: 50px;
   max-width: 50px;
   border-radius: 50%;
+}
+.nom {
+  margin:0 !important;
 }
