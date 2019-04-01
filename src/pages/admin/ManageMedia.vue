@@ -1,5 +1,5 @@
 <template lang="pug">
-  Page
+  Page(:loading="!loaded")
     .flex-row
       .flex-1
       .flex-col.flex-2
@@ -35,6 +35,9 @@
             td {{ props.item.type | mediaType }}
             td {{ props.item.hasActiveSub | yesno }}
             td {{ props.item.subscriber.id }}
+            td
+              div
+                v-btn.no-margin(@click="goToDetails(props.item.id)" small outline) Details
         .p30-top
         hr(style="border-top:0.8px solid white")
         .p15-top
@@ -56,10 +59,7 @@ import { lineTitleFilter } from '@/filters'
 
 export default {
   created() {
-    this.getLines()
-    this.getStations()
-    this.getActiveBusinesses()
-    this.getMedia()
+    this.initData()
   },
   data() {
     return {
@@ -79,11 +79,23 @@ export default {
         { text: 'Type', value: 'type' },
         { text: 'Active subscription', value: 'hasActiveSub' },
         { text: 'Subscriber ID', value: null },
+        { text: 'Actions', value: null }
       ],
       businesses: [],
+      loaded: false
     }
   },
   methods: {
+    initData() {
+      this.loaded = false
+      Promise.all([this.getLines(),
+        this.getStations(),
+        this.getActiveBusinesses(),
+        this.getMedia()])
+        .then(() => {
+          this.loaded = true
+        })
+    },
     getLines() {
       return Api.getLines()
         .then((res) => {
@@ -130,6 +142,9 @@ export default {
           this.media.push(res.data)
           this.$refs.mediaForm.reset()
         })
+    },
+    goToDetails(mediaId) {
+      this.$router.push({ name: 'media-details', params: { mediaId } })
     }
   }
 }

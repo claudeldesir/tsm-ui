@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Chat from '@/pages/Chat'
-import Admin from '@/pages/admin/AdminHome'
+import AdminHome from '@/pages/admin/AdminHome'
 import ManageSubscriptions from '@/pages/admin/ManageSubscriptions'
 import ManageMedia from '@/pages/admin/ManageMedia'
 import MediaDetails from '@/pages/admin/MediaDetails'
@@ -11,6 +11,10 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      redirect: '/admin'
+    },
+    {
       path: '/chat',
       name: 'chat',
       component: Chat
@@ -18,7 +22,7 @@ export default new Router({
     {
       path: '/admin',
       name: 'admin',
-      component: Admin
+      component: AdminHome
     },
     {
       path: '/admin/subscriptions',
