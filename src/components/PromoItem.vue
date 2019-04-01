@@ -8,6 +8,7 @@
       .flex-row.p5
         .p15(v-for="promoImage in promo.promoImages" :key="promoImage.id")
           PromoImage(:promoImage="promoImage")
+      v-btn(@click="deletePromo" color="error") Delete
 </template>
 
 <script>
@@ -18,6 +19,11 @@ export default {
     promo: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    deletePromo() {
+      this.$emit('deletePromo', this.promo.id)
     }
   },
   components: {

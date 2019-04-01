@@ -82,5 +82,8 @@ export default {
       method: 'POST',
       body: formData
     })
+  },
+  deletePromo(promoId) {
+    return http.delete(`/promos/${promoId}`)
   }
 }

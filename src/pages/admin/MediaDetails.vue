@@ -18,7 +18,7 @@
     br
     v-layout(row wrap)
       v-flex.p10(v-for="promo in media.promos" :key="promo.id")
-        PromoItem(:promo="promo")
+        PromoItem(:promo="promo" @deletePromo="deletePromo")
 </template>
 
 <script>
@@ -62,8 +62,15 @@ export default {
           return Api.postPromoImages(promoImages, promoId)
             .then(() => {
               this.newPromo = false
-              this.getMedia()
+              this.getMedia() // smarter
             })
+        })
+    },
+    deletePromo(promoId) {
+      // TODO: Add dialog
+      Api.deletePromo(promoId)
+        .then(() => {
+          this.getMedia() // smarter
         })
     }
   },

@@ -1,7 +1,9 @@
 <template lang="pug">
   .flex-row.space-between.w100
-    .flex-5
-      v-form.p10(ref="promoForm")
+    .flex-5.p10
+      h2 Create new promo
+      br
+      v-form(ref="promoForm")
         v-text-field(v-model="promo.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
         v-text-field(v-model="promo.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
         v-checkbox(v-model="promo.active" label="Active")
