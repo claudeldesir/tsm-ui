@@ -170,6 +170,10 @@
 .tiny-border {
   border: 1px solid gray;
 }
+.frame {
+  border: 2px solid #bbbbbb;
+  border-radius: 5px;
+}
 .highlighted {
   background: rgba(0,0,0,0.22);
 }
@@ -249,6 +253,6 @@
   max-width: 50px;
   border-radius: 50%;
 }
-.nom {
-  margin:0 !important;
+.hidden {
+  display: none;
 }

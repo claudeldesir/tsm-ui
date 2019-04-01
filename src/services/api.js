@@ -59,4 +59,28 @@ export default {
   postMedia(media) {
     return http.post('/media', media)
   },
+  postPromo(promo, mediaId) {
+    return http.post(`/media/${mediaId}/promos`, promo)
+  },
+  postPromoImages(promoImages, promoId) {
+    const promoImagesMeta = []
+    const formData = new FormData()
+
+    promoImages.forEach((fileObj, index) => {
+      const fileMetadata = fileObj.metadata
+      if (index === 0) { // maybe handle this differently in the future
+        fileMetadata.featured = true
+      }
+      const file = fileObj.file
+
+      promoImagesMeta.push(fileMetadata)
+      formData.append(fileMetadata.id, file)
+    })
+    formData.append('promoImagesMeta', JSON.stringify(promoImagesMeta))
+
+    return fetch(`/api/promos/${promoId}/images`, {
+      method: 'POST',
+      body: formData
+    })
+  }
 }

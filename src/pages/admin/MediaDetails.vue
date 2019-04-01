@@ -1,17 +1,20 @@
 <template lang="pug">
   Page(:loading="!loaded")
     h1 {{ media.title }}
-    h3 {{ media.desc }}
     br
     v-card
-      .p10
-        span Type: {{ media.type | mediaType }}
-        .p10
-        v-checkbox(v-model="media.hasActiveSub" hide-details disabled label="Active subscription")
+      .p10.flex-row
+        .p10.flex-1
+          h3 {{ media.desc }}
+          .p10
+          v-checkbox(v-model="media.hasActiveSub" hide-details disabled label="Active subscription")
+        .p10.flex-1
+          div(v-if="media.type === 0")
+            YoutubeContainer(:videoUrl="media.url")
     br
-    .frame.p10
-      v-btn(@click="newPromo = !newPromo" color="primary") Create new promo
-      NewPromo(v-if="newPromo" @promoSubmitted="promoSubmitted")
+    v-btn(@click="newPromo = !newPromo" color="primary" v-if="!newPromo") Create new promo
+    .frame.p10(v-if="newPromo")
+      NewPromo(@promoSubmitted="promoSubmitted" @cancel="newPromo=false")
     br
     v-layout(row wrap)
       v-flex.p10(v-for="promo in media.promos" :key="promo.id")
@@ -22,6 +25,7 @@
 import Api from '@/services/api'
 import PromoItem from '@/components/PromoItem'
 import NewPromo from '@/components/NewPromo'
+import YoutubeContainer from '@/components/YoutubeContainer'
 
 export default {
   props: {
@@ -49,22 +53,24 @@ export default {
           this.loaded = true
         })
     },
-    promoSubmitted(promo) {
-      const promoObj = { ...promo }
-      promoObj.mediaId = this.mediaId
-      console.log(promoObj)
+    promoSubmitted(data) {
+      const promo = { ...data.promo }
+      const promoImages = data.promoImages
+      return Api.postPromo(promo, this.mediaId)
+        .then((res) => {
+          const promoId = res.data.id
+          return Api.postPromoImages(promoImages, promoId)
+            .then(() => {
+              this.newPromo = false
+              this.getMedia()
+            })
+        })
     }
   },
   components: {
     PromoItem,
-    NewPromo
+    NewPromo,
+    YoutubeContainer
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .frame {
-    border: 2px solid #bbbbbb;
-    border-radius: 5px;
-  }
-</style>
