@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import SpotIt from '@/pages/SpotIt'
 import Chat from '@/pages/Chat'
 import AdminHome from '@/pages/admin/AdminHome'
 import ManageSubscriptions from '@/pages/admin/ManageSubscriptions'
@@ -18,6 +19,11 @@ export default new Router({
       path: '/chat',
       name: 'chat',
       component: Chat
+    },
+    {
+      path: '/spotit',
+      name: 'spotit',
+      component: SpotIt
     },
     {
       path: '/admin',

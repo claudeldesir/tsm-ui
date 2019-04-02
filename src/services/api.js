@@ -85,5 +85,8 @@ export default {
   },
   deletePromo(promoId) {
     return http.delete(`/promos/${promoId}`)
+  },
+  getAds() {
+    return http.get('/ads')
   }
 }
