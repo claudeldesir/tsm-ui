@@ -1,10 +1,13 @@
 <template lang="pug">
-  .w100.flex-row.justify-center
-    .w70.flex-col-align-center
+  Page(:loading="!loaded")
+    .p20-side
       AuthPanel
       v-text-field.w100(v-model="newMessage" @keyup.enter="postMessage" solo placeholder="Write anything!" hide-details)
       br
-      ChatMessage(v-for="message in messages" :key="message.id" :message="message")
+      div(v-if="!messages.length")
+        h2 You'll be the first one though...
+      div(v-else)
+        ChatMessage(v-for="message in messages" :key="message.id" :message="message")
 </template>
 
 <script>
@@ -19,19 +22,25 @@ export default {
     }
   },
   created() {
-    Api.listChatMessages()
-      .then((res) => {
-        const messages = res.data
-        this.messages = messages
-      })
+    this.listChatMessages()
   },
   data() {
     return {
       newMessage: '',
-      messages: []
+      messages: [],
+      loaded: false
     }
   },
   methods: {
+    listChatMessages() {
+      this.loaded = false
+      Api.listChatMessages()
+        .then((res) => {
+          const messages = res.data
+          this.messages = messages
+          this.loaded = true
+        })
+    },
     postMessage() {
       const content = this.newMessage.trim()
       if (!content || !this.isLoggedIn) return

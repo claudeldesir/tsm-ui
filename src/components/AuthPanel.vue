@@ -1,5 +1,5 @@
 <template lang="pug">
-  .m10.p10
+  .p10-side.p20-bot
     .flex-row.justify-center(v-if="!isLoggedIn")
       v-btn.fb(@click="login('fb')" flat)
         v-icon(small color="white") fab fa-facebook-f
