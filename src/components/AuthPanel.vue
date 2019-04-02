@@ -1,15 +1,18 @@
 <template lang="pug">
   .p10-side.p20-bot
-    .flex-row.justify-center(v-if="!isLoggedIn")
-      v-btn.fb(@click="login('fb')" flat)
-        v-icon(small color="white") fab fa-facebook-f
-      v-btn.gg(@click="login('gg')" flat)
-        v-icon(small color="white") fab fa-google
-      v-btn.tw(@click="login('tw')" flat)
-        v-icon(small color="white") fab fa-twitter
+    div(v-if="!isLoggedIn")
+      .p10-side.fs18.text-right Log in with social networks
+      .flex-row.justify-end.align-center
+        .p5-side
+        v-btn.fb(@click="login('fb')" flat)
+          v-icon(small color="white") fab fa-facebook-f
+        v-btn.gg(@click="login('gg')" flat)
+          v-icon(small color="white") fab fa-google
+        v-btn.tw(@click="login('tw')" flat)
+          v-icon(small color="white") fab fa-twitter
     .flex-row.justify-end.align-center(v-else)
       .flex-row.align-center.p5
-        .p10-right {{ getCurrentUser.displayName }}
+        .p10-right.fs18 {{ getCurrentUser.displayName }}
         ProfileImage(:user="getCurrentUser")
       v-btn.logout(@click="logout" color="primary" flat)
         v-icon(small color="white") fas fa-sign-out-alt
