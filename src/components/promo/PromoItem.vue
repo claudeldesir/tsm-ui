@@ -7,12 +7,12 @@
       v-checkbox(v-model="promo.active" hide-details disabled label="Active")
       .flex-row.p5
         .p15(v-for="promoImage in promo.promoImages" :key="promoImage.id")
-          PromoImage(:promoImage="promoImage")
+          ImageItem(:image="promoImage")
       v-btn(@click="deletePromo" color="error") Delete
 </template>
 
 <script>
-import PromoImage from '@/components/PromoImage'
+import ImageItem from '@/components/ImageItem'
 
 export default {
   props: {
@@ -27,7 +27,7 @@ export default {
     }
   },
   components: {
-    PromoImage
+    ImageItem
   }
 }
 </script>

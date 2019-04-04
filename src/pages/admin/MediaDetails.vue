@@ -23,8 +23,8 @@
 
 <script>
 import Api from '@/services/api'
-import PromoItem from '@/components/PromoItem'
-import NewPromo from '@/components/NewPromo'
+import PromoItem from '@/components/promo/PromoItem'
+import NewPromo from '@/components/promo/NewPromo'
 import YoutubeContainer from '@/components/YoutubeContainer'
 
 export default {

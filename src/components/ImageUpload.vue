@@ -11,7 +11,7 @@
             .file-listing(v-for="fileObj in files" :key="fileObj.metadata.id")
               .wrapper.p10(@click.prevent="")
                 .flex-row.align-center.space-around
-                  PromoImage(slotted :promoImage="fileObj.metadata")
+                  ImageItem(slotted :image="fileObj.metadata")
                     img(:ref="`preview-${fileObj.metadata.id}`")
                   v-btn(@click.stop.prevent="removeFile(fileObj.metadata.id)" color="error") Remove
                 .flex-row.p5.align-center
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import PromoImage from '@/components/PromoImage'
+import ImageItem from '@/components/ImageItem'
 
 export default {
   props: {
@@ -105,7 +105,7 @@ export default {
     }
   },
   components: {
-    PromoImage
+    ImageItem
   }
 }
 </script>

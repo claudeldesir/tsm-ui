@@ -1,19 +1,19 @@
 <template lang="pug">
   v-badge(overlap)
-    div(slot="badge" v-if="promoImage.featured")
+    div(slot="badge" v-if="image.featured")
       v-icon(small color="white") fas fa-star
     .flex-col.align-center
       v-avatar(tile size="100")
-        img(v-if="!slotted" :src="promoImage.imageUrl")
+        img(v-if="!slotted" :src="image.imageUrl")
         slot(v-else)
-      span {{ promoImage.desc }}
+      span {{ image.desc }}
 </template>
 
 <script>
 
 export default {
   props: {
-    promoImage: {
+    image: {
       type: Object,
       required: true
     },
