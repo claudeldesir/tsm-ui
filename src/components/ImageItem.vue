@@ -1,9 +1,10 @@
 <template lang="pug">
-  v-badge.w100(overlap)
+  v-badge(overlap :class="{ w100: full }")
     div(slot="badge" v-if="image.featured")
       v-icon(small color="white") fas fa-star
-    .flex-col.align-center
-      v-avatar(v-if="!slotted" tile size="100")
+    .flex-col.align-center(@click="$emit('selected')")
+      img(v-if="original" :src="getImageUrl")
+      v-avatar(v-else-if="!slotted" tile size="100")
         img(:src="getImageUrl")
       slot(v-else)
       span(v-if="image.desc") {{ image.desc }}
@@ -18,7 +19,15 @@ export default {
       type: Object,
       required: true
     },
-    slotted: Boolean
+    slotted: Boolean,
+    full: {
+      type: Boolean,
+      default: true
+    },
+    original: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     getImageUrl() {
