@@ -1,7 +1,8 @@
 <template lang="pug">
-  .w25
+  .w20.p10
     v-card
-      v-img(v-if="getFeaturedImage" :src="getFeaturedImage.imageUrl")
+      ImageItem(v-if="ad.featuredImage" :image="ad.featuredImage" slotted)
+        img.w100(:src="getImageUrl")
       v-card-title
         .flex-col.align-center.w100
           h3 {{ ad.title }}
@@ -17,6 +18,8 @@
 </template>
 
 <script>
+import ImageItem from '@/components/ImageItem'
+import helpers from '@/helpers'
 
 export default {
   props: {
@@ -26,11 +29,12 @@ export default {
     }
   },
   computed: {
-    getFeaturedImage() {
-      const adImages = this.ad.adImages
-      if (adImages.length) return adImages[0]
-      return null
+    getImageUrl() {
+      return helpers.getImageUrl(this.ad.featuredImage.imageUrl) // sure?
     }
+  },
+  components: {
+    ImageItem
   }
 }
 </script>
