@@ -1,5 +1,5 @@
 <template lang="pug">
-  .w20.p10
+  .p10
     v-card
       ImageItem(v-if="ad.featuredImage" :image="ad.featuredImage" slotted)
         img.w100(:src="getImageUrl")
@@ -9,7 +9,7 @@
           v-chip.w100.justify-center
             span ${{ ad.price }}
       v-card-text
-        span {{ ad.content }}
+        span {{ getContent }}
       v-card-text
         span {{ ad.createdAt | date }}
       v-card-actions
@@ -31,6 +31,9 @@ export default {
   computed: {
     getImageUrl() {
       return helpers.getImageUrl(this.ad.featuredImage.imageUrl) // sure?
+    },
+    getContent() {
+      return helpers.reduceStringSize(this.ad.content, 50)
     }
   },
   methods: {
