@@ -7,10 +7,11 @@
         .flex-row
           .flex-1
             v-text-field(v-model="ad.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
-            v-text-field(v-model="ad.content" :rules="[(v) => !!v || 'Content is required']" required placeholder="Content" solo)
+            v-textarea(v-model="ad.content" :rules="[(v) => !!v || 'Content is required']" required placeholder="Content" solo)
             v-slider(v-model="ad.price" :label="'$'+ad.price" min="10" max="990" step="10" inverse-label)
           .p10-side
           .flex-1
+            v-text-field(v-model="ad.contactName" :rules="[(v) => !!v || 'Contact name is required']" required placeholder="Contact name" solo)
             v-text-field(v-model="ad.address" :rules="[(v) => !!v || 'Address is required']" required placeholder="Address" solo)
             v-text-field(v-model="ad.city" :rules="[(v) => !!v || 'City is required']" required placeholder="City" solo)
             v-text-field(v-model="ad.postal" :rules="[(v) => !!v || 'Postal is required']" required placeholder="Postal" solo)
@@ -23,7 +24,7 @@
           v-btn.no-margin(@click="$emit('cancel')" color="error") Cancel
     .flex-2
     .flex-3
-      ImageUpload(@filesChanged="adImagesChanged")
+      ImageUpload(@filesChanged="adImagesChanged" :descRequired="false")
     .flex-2
 </template>
 
@@ -34,7 +35,9 @@ export default {
   data() {
     return {
       ad: {
-        price: 50
+        price: 50,
+        contactByEmail: false,
+        contactByPhone: false
       },
       adImages: []
     }
@@ -44,13 +47,6 @@ export default {
       const adValid = this.$refs.adForm.validate()
       const hasImages = this.adImages.length
       if (!adValid || !hasImages) return
-
-      let validImages = true
-      this.adImages.forEach((adImage) => {
-        const desc = adImage.metadata.desc
-        if (!desc) validImages = false
-      })
-      if (!validImages) return
 
       const ad = this.ad
       const adImages = this.adImages
