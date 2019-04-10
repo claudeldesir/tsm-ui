@@ -1,15 +1,16 @@
 <template lang="pug">
-  v-badge(overlap)
+  v-badge.w100(overlap)
     div(slot="badge" v-if="image.featured")
       v-icon(small color="white") fas fa-star
     .flex-col.align-center
-      v-avatar(tile size="100")
-        img(v-if="!slotted" :src="image.imageUrl")
-        slot(v-else)
-      span {{ image.desc }}
+      v-avatar(v-if="!slotted" tile size="100")
+        img(:src="getImageUrl")
+      slot(v-else)
+      span(v-if="image.desc") {{ image.desc }}
 </template>
 
 <script>
+import helpers from '@/helpers'
 
 export default {
   props: {
@@ -18,6 +19,12 @@ export default {
       required: true
     },
     slotted: Boolean
+  },
+  computed: {
+    getImageUrl() {
+      const imageUrl = this.image.imageUrl
+      return helpers.getImageUrl(imageUrl)
+    }
   }
 }
 </script>

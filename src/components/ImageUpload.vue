@@ -12,9 +12,10 @@
               .wrapper.p10(@click.prevent="")
                 .flex-row.align-center.space-around
                   ImageItem(slotted :image="fileObj.metadata")
-                    img(:ref="`preview-${fileObj.metadata.id}`")
+                    v-avatar(tile size="100")
+                      img(:ref="`preview-${fileObj.metadata.id}`")
                   v-btn(@click.stop.prevent="removeFile(fileObj.metadata.id)" color="error") Remove
-                .flex-row.p5.align-center
+                .flex-row.p5.align-center(v-if="descRequired")
                   v-text-field(v-model="fileObj.metadata.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
 </template>
 
@@ -23,7 +24,11 @@ import ImageItem from '@/components/ImageItem'
 
 export default {
   props: {
-    filesProp: Array
+    filesProp: Array,
+    descRequired: {
+      type: Boolean,
+      default: true
+    }
   },
   data() {
     return {
@@ -68,12 +73,14 @@ export default {
       }
     },
     pushFile(file) {
+      const metadata = {
+        id: `img-${file.lastModified}`,
+        featured: false
+      }
+      if (this.descRequired) metadata.desc = ''
+
       this.files.push({
-        metadata: {
-          id: `img-${file.lastModified}`,
-          desc: '',
-          featured: false
-        },
+        metadata,
         file
       })
       this.getImagePreviews()
