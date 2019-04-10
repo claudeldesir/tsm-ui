@@ -1,9 +1,11 @@
 <template lang="pug">
   Page(:loading="!loaded")
+    AuthPanel
     AdDetails(:ad="ad")
 </template>
 
 <script>
+import AuthPanel from '@/components/AuthPanel'
 import AdDetails from '@/components/spotit/AdDetails'
 import Api from '@/services/api'
 
@@ -30,6 +32,7 @@ export default {
     }
   },
   components: {
+    AuthPanel,
     AdDetails
   }
 }

@@ -135,7 +135,7 @@ export default {
     padding: 10px;
   }
   div.file-listing img {
-    height: auto;
+    height: 100%;
   }
   div.file-listing span {
     line-height: 1.5 !important;
