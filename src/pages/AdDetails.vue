@@ -1,0 +1,36 @@
+<template lang="pug">
+  Page(:loading="!loaded")
+    AdDetails(:ad="ad")
+</template>
+
+<script>
+import AdDetails from '@/components/spotit/AdDetails'
+import Api from '@/services/api'
+
+export default {
+  props: {
+    adId: {
+      type: Number,
+      required: true
+    }
+  },
+  created() {
+    this.loaded = false
+    Api.getAd(this.adId)
+      .then((res) => {
+        const ad = res.data
+        this.ad = ad
+        this.loaded = true
+      })
+  },
+  data() {
+    return {
+      loaded: false,
+      ad: null
+    }
+  },
+  components: {
+    AdDetails
+  }
+}
+</script>

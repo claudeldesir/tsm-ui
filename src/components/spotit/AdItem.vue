@@ -14,7 +14,7 @@
         span {{ ad.createdAt | date }}
       v-card-actions
         .flex-col.align-center.w100
-          v-btn(outline) Details
+          v-btn(@click="goToDetails" outline) Details
 </template>
 
 <script>
@@ -31,6 +31,11 @@ export default {
   computed: {
     getImageUrl() {
       return helpers.getImageUrl(this.ad.featuredImage.imageUrl) // sure?
+    }
+  },
+  methods: {
+    goToDetails() {
+      this.$emit('goToDetails', this.ad.id)
     }
   },
   components: {

@@ -13,7 +13,7 @@
         NewAd(@adSubmitted="adSubmitted" @cancel="newAd=false")
       br
       .flex-row
-        AdItem(v-for="ad in ads" :key="ad.id" :ad="ad")
+        AdItem(v-for="ad in ads" :key="ad.id" :ad="ad" @goToDetails="goToDetails($event)")
 </template>
 
 <script>
@@ -49,6 +49,9 @@ export default {
           this.newAd = false
           this.getAds()
         })
+    },
+    goToDetails(adId) {
+      this.$router.push({ name: 'ad-details', params: { adId } })
     }
   },
   components: {

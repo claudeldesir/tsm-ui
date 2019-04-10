@@ -1,13 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import SpotIt from '@/pages/SpotIt'
 import Chat from '@/pages/Chat'
 import AdminHome from '@/pages/admin/AdminHome'
 import ManageSubscriptions from '@/pages/admin/ManageSubscriptions'
 import ManageMedia from '@/pages/admin/ManageMedia'
 import MediaDetails from '@/pages/admin/MediaDetails'
+import SpotIt from '@/pages/SpotIt'
+import AdDetails from '@/pages/AdDetails'
 
 Vue.use(Router)
+
+const getNumberId = (key, value) => {
+  const id = Number.parseInt(value, 10)
+  if (Number.isNaN(id)) {
+    return 0
+  }
+  const retObj = {}
+  retObj[key] = id
+  return retObj
+}
 
 export default new Router({
   routes: [
@@ -19,11 +30,6 @@ export default new Router({
       path: '/chat',
       name: 'chat',
       component: Chat
-    },
-    {
-      path: '/spotit',
-      name: 'spotit',
-      component: SpotIt
     },
     {
       path: '/admin',
@@ -45,12 +51,23 @@ export default new Router({
       name: 'media-details',
       component: MediaDetails,
       props: (route) => {
-        const mediaId = Number.parseInt(route.params.mediaId, 10)
-        if (Number.isNaN(mediaId)) {
-          return 0
-        }
-        return { mediaId }
+        const mediaId = route.params.mediaId
+        return getNumberId('mediaId', mediaId)
       }
+    },
+    {
+      path: '/spotit/:adId',
+      name: 'ad-details',
+      component: AdDetails,
+      props: (route) => {
+        const adId = route.params.adId
+        return getNumberId('adId', adId)
+      }
+    },
+    {
+      path: '/spotit',
+      name: 'spotit',
+      component: SpotIt
     },
   ],
   mode: 'history'

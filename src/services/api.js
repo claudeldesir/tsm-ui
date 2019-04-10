@@ -89,6 +89,9 @@ export default {
   getAds() {
     return http.get('/ads')
   },
+  getAd(adId) {
+    return http.get(`/ads/${adId}`)
+  },
   postAd(adObj) {
     const formData = new FormData()
 
