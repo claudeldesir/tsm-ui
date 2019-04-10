@@ -5,8 +5,8 @@
       .flex-col.flex-2
         h1 That's Montreal Admin Panel
         br
-        router-link(:to="{name: 'media'}") Manage media
-        router-link(:to="{name: 'subscriptions'}") Manage subscriptions
-        a Send newsletter
+        router-link.fs16(:to="{name: 'media'}") Manage media
+        router-link.fs16(:to="{name: 'subscriptions'}") Manage subscriptions
+        a.fs16 Send newsletter
       .flex-1
 </template>

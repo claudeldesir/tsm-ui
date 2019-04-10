@@ -5,9 +5,6 @@
         h2 {{ ad.title }}
         .fs14 Posted&nbsp;
           timeago(:datetime="ad.createdAt" :autoUpdate="true")
-      .flex-1
-      v-btn(:to={ name: 'spotit' } flat)
-        v-icon(small color="white") fas fa-arrow-left
     br
     .flex-row
       .w66.p10.tiny-border.flex-row.align-center
