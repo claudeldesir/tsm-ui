@@ -44,7 +44,11 @@ export default {
         })
     },
     adSubmitted(ad) {
-      console.log(ad)
+      Api.postAd(ad)
+        .then(() => {
+          this.newAd = false
+          this.getAds()
+        })
     }
   },
   components: {

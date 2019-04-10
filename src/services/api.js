@@ -88,5 +88,21 @@ export default {
   },
   getAds() {
     return http.get('/ads')
+  },
+  postAd(adObj) {
+    const formData = new FormData()
+
+    adObj.adImages.forEach((fileObj, index) => {
+      const file = fileObj.file
+      formData.append(`img-${index}`, file)
+    })
+    formData.append('ad', JSON.stringify(adObj.ad))
+
+    return getAuthHeaders()
+      .then(options => fetch('/api/ads', {
+        method: 'POST',
+        body: formData,
+        headers: options.headers
+      }))
   }
 }
