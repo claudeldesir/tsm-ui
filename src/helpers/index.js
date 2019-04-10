@@ -11,5 +11,14 @@ export default {
   getImageUrl(imageUrl) {
     if (this.isValidUrl(imageUrl)) return imageUrl
     return `${SERVER_URL}${imageUrl}`
+  },
+  getNumberId(key, value) {
+    const id = Number.parseInt(value, 10)
+    if (Number.isNaN(id)) {
+      return 0
+    }
+    const retObj = {}
+    retObj[key] = id
+    return retObj
   }
 }

@@ -8,17 +8,9 @@ import MediaDetails from '@/pages/admin/MediaDetails'
 import SpotIt from '@/pages/SpotIt'
 import AdDetails from '@/pages/AdDetails'
 
-Vue.use(Router)
+import helpers from '@/helpers'
 
-const getNumberId = (key, value) => {
-  const id = Number.parseInt(value, 10)
-  if (Number.isNaN(id)) {
-    return 0
-  }
-  const retObj = {}
-  retObj[key] = id
-  return retObj
-}
+Vue.use(Router)
 
 export default new Router({
   routes: [
@@ -52,7 +44,7 @@ export default new Router({
       component: MediaDetails,
       props: (route) => {
         const mediaId = route.params.mediaId
-        return getNumberId('mediaId', mediaId)
+        return helpers.getNumberId('mediaId', mediaId)
       }
     },
     {
@@ -61,7 +53,7 @@ export default new Router({
       component: AdDetails,
       props: (route) => {
         const adId = route.params.adId
-        return getNumberId('adId', adId)
+        return helpers.getNumberId('adId', adId)
       }
     },
     {
