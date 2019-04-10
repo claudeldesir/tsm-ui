@@ -56,15 +56,6 @@ export default {
     }
   },
   methods: {
-    reduceStringSize(name) {
-      const LIMIT = 20
-      if (name.length > LIMIT) {
-        const string = name.substring(0, LIMIT - 3)
-        const format = name.split('.').pop()
-        return `${string}...${format}`
-      }
-      return name
-    },
     fileBrowsed(e) {
       const file = e.target.files[0]
       if (file) {

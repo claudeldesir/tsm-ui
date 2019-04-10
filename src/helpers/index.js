@@ -20,5 +20,13 @@ export default {
     const retObj = {}
     retObj[key] = id
     return retObj
-  }
+  },
+  reduceStringSize(str, limit) {
+    const LIMIT = limit > 3 ? limit : 20
+    if (str.length > LIMIT) {
+      const string = str.substring(0, LIMIT - 3)
+      return `${string}...`
+    }
+    return str
+  },
 }
