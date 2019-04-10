@@ -12,8 +12,9 @@
       .frame.p10(v-if="newAd")
         NewAd(@adSubmitted="adSubmitted" @cancel="newAd=false")
       br
-      .flex-row
-        AdItem(v-for="ad in ads" :key="ad.id" :ad="ad" @goToDetails="goToDetails($event)")
+      v-layout(row wrap)
+        .w20(v-for="ad in ads" :key="ad.id")
+          AdItem(:ad="ad" @goToDetails="goToDetails($event)")
 </template>
 
 <script>
@@ -45,9 +46,10 @@ export default {
     },
     adSubmitted(ad) {
       Api.postAd(ad)
-        .then(() => {
-          this.newAd = false
-          this.getAds()
+        .then(res => res.json())
+        .then((res) => {
+          const adId = res.id
+          this.goToDetails(adId)
         })
     },
     goToDetails(adId) {

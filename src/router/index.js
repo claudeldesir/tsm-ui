@@ -5,8 +5,8 @@ import AdminHome from '@/pages/admin/AdminHome'
 import ManageSubscriptions from '@/pages/admin/ManageSubscriptions'
 import ManageMedia from '@/pages/admin/ManageMedia'
 import MediaDetails from '@/pages/admin/MediaDetails'
-import SpotIt from '@/pages/SpotIt'
-import AdDetails from '@/pages/AdDetails'
+import SpotIt from '@/pages/spotit/SpotIt'
+import AdDetails from '@/pages/spotit/AdDetails'
 
 import helpers from '@/helpers'
 
