@@ -7,14 +7,16 @@
         .flex-col.align-center.w100
           h3 {{ ad.title }}
           v-chip.w100.justify-center
-            span ${{ ad.price }}
+            .fs14 ${{ ad.price }}
       v-card-text
-        span {{ getContent }}
+        span(:title="ad.content" style="white-space:pre-wrap;") {{ getContent }}
+      hr
       v-card-text
-        span {{ ad.createdAt | date }}
-      v-card-actions
-        .flex-col.align-center.w100
-          v-btn(@click="goToDetails" outline) Details
+        .flex-row.space-around.align-center
+          div Posted&nbsp;
+            timeago(:datetime="ad.createdAt" :autoUpdate="true")
+          .flex-col.align-center
+            v-btn(@click="goToDetails" outline) Details
 </template>
 
 <script>

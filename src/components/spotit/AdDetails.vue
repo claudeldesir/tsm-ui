@@ -1,11 +1,16 @@
 <template lang="pug">
   div
-    h2 {{ ad.title }}
-    .fs14 Posted&nbsp;
-      timeago(:datetime="ad.createdAt" :autoUpdate="true")
+    .flex-row
+      .flex-col
+        h2 {{ ad.title }}
+        .fs14 Posted&nbsp;
+          timeago(:datetime="ad.createdAt" :autoUpdate="true")
+      .flex-1
+      v-btn(:to={ name: 'spotit' } flat)
+        v-icon(small color="white") fas fa-arrow-left
     br
     .flex-row
-      .w66.p10.tiny-border
+      .w66.p10.tiny-border.flex-row.align-center
         ImageItem(:image="currentImage" original)
       .w33.p10
         .flex-row.w100.justify-center
@@ -15,21 +20,33 @@
         ImageItem(:image="image" :full="false" @selected="changeCurrentImage(image)")
     br
     .flex-row
-      .fs20.tiny-border.p20(style="white-space:pre-wrap;") {{ ad.content }}
+      .tiny-border.p10
+        .p10.fs20(style="white-space:pre-wrap;") {{ ad.content }}
+        v-chip.w100.justify-center
+          .fs15 ${{ ad.price }}
     br
     .flex-row
-      .tiny-border.p20.fs15
-        .flex-row.p5
-          h4 Contact name:&nbsp;
-          span {{ ad.contactName }}
-        .flex-row.p5
-          h4 Phone number:&nbsp;
-          span(v-if="ad.phone") {{ ad.phone }}
-          span.italic(v-else) not visible
-        .flex-row.p5
-          h4 Email address:&nbsp;
-          span(v-if="ad.email") {{ ad.email }}
-          span.italic(v-else) not visible
+      .tiny-border.p20.fs15.flex-row
+        .flex-1
+          .flex-row.p5
+            h4 Contact name:&nbsp;
+            span {{ ad.contactName }}
+          .flex-row.p5
+            h4 Phone number:&nbsp;
+            span(v-if="ad.phone") {{ ad.phone }}
+            span.italic(v-else) not visible
+          .flex-row.p5
+            h4 Email address:&nbsp;
+            span(v-if="ad.email") {{ ad.email }}
+            span.italic(v-else) not visible
+        .p20-side
+        .flex-1
+          .flex-row.p5
+            h4 City:&nbsp;
+            span {{ ad.city }}, {{ ad.postal }}
+          .flex-row.p5
+            h4 Address:&nbsp;
+            span {{ ad.address }}
 </template>
 
 <script>
