@@ -9,6 +9,7 @@ import 'firebase/auth'
 
 import VueSocketIO from 'vue-socket.io'
 import VueTimeago from 'vue-timeago'
+import SocialSharing from 'vue-social-sharing'
 
 import authMixin from '@/mixins/auth'
 import config from '@/config/appConfig.json'
@@ -20,6 +21,8 @@ import router from './router'
 import store from './store'
 import './style/main.scss'
 
+
+Vue.use(SocialSharing)
 Vue.use(Vuetify, {
   iconfont: 'fa'
 })

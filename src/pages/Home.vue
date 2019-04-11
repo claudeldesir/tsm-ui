@@ -11,7 +11,6 @@ import Map from '@/components/map/Map'
 const scripts = [
   // batch
   'jquery.min.js',
-  'sharing.jquery.min.js',
   // batch
   'revolutionslider/jquery.themepunch.revolution.min.js',
   'revolutionslider/jquery.themepunch.tools.min.js',

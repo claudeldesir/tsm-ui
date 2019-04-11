@@ -17,6 +17,7 @@
     "pug": "^2.0.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-social-sharing": "^2.4.3",
     "vue-socket.io": "^3.0.7",
     "vue-timeago": "^5.0.0",
     "vuefire": "^1.4.5",

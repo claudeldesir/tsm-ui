@@ -1,5 +1,5 @@
 <template>
-  <section id="map" class="mapa">
+  <section id="map" class="mapa" @click="checkInsidePopup">
     <h1 class="mar">That's Montreal</h1>
     <div class="container">
       <h5 style="color:white;text-align:center">
@@ -18,22 +18,48 @@
       <img class="imgmap" src="https://image.ibb.co/j9RVrK/mappfinal.png">
     </div>
 
-    <MapPoint v-for="mapPoint in mapPoints" :key="mapPoint.id" :pointData="mapPoint"/>
+    <MapPoint v-for="mapPoint in mapPoints" :key="mapPoint.id" :pointData="mapPoint" @selected="pointSelected"/>
+    <transition name="slide">
+      <StationPopup v-if="selectedPoint" :stationId="selectedPoint.id" @close="pointSelected(selectedPoint)"/>
+    </transition>
   </section>
 </template>
 
 <script>
 import MapPoint from '@/components/map/MapPoint'
+import StationPopup from '@/components/map/StationPopup'
 import { mapPoints } from '@/data/map-points'
 
 export default {
   data() {
     return {
-      mapPoints
+      mapPoints,
+      selectedPoint: null
+    }
+  },
+  methods: {
+    pointSelected(pointData) {
+      const noPoint = !this.selectedPoint
+      const changePoint = this.selectedPoint ? this.selectedPoint.id !== pointData.id : false
+      const show = noPoint || changePoint
+      const timeout = noPoint ? 0 : 200
+
+      this.selectedPoint = null
+      if (show) {
+        setTimeout(() => {
+          this.selectedPoint = pointData
+        }, timeout)
+      }
+    },
+    checkInsidePopup(e) {
+      const path = e.path.map(pathObj => pathObj.className || '').join(' ')
+      const inside = path.includes('station-popup') || path.includes('dot')
+      if (!inside) this.selectedPoint = null
     }
   },
   components: {
-    MapPoint
+    MapPoint,
+    StationPopup
   }
 }
 </script>

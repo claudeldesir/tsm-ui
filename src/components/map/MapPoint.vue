@@ -1,5 +1,5 @@
 <template lang="pug">
-  .dot(:style="getStyle" :id="'d' + pointData.id")
+  .dot(@click="$emit('selected', pointData)" :style="getStyle")
 </template>
 
 <script>
