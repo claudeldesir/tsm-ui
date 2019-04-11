@@ -14,6 +14,10 @@ module.exports = {
       '/api': {
         target: 'https://thatsmontreal.ca:8000',
         changeOrigin: true
+      },
+      '/': {
+        target: 'https://thatsmontreal.ca:8000',
+        changeOrigin: true
       }
     },
     // Various Dev Server settings

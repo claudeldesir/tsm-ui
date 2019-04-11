@@ -1,3 +1,4 @@
+import axios from 'axios'
 import auth from '@/services/auth'
 import http from './http'
 
@@ -107,5 +108,8 @@ export default {
         body: formData,
         headers: options.headers
       }))
+  },
+  contactUs(contactObj) {
+    return axios.post('/contact-us', contactObj)
   }
 }

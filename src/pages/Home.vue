@@ -5,6 +5,8 @@ import home02 from '@/assets/home/images/antares/home_02.jpg'
 import home03 from '@/assets/home/images/antares/home_03.jpg'
 import logce from '@/assets/home/images/antares/logce.png'
 
+import ContactForm from '@/components/ContactForm'
+
 const scripts = [
   // batch
   'jquery.min.js',
@@ -19,9 +21,7 @@ const scripts = [
 
 export default {
   created() {
-    setTimeout(() => {
-      this.loadScripts()
-    }, 4)
+    this.loadScripts()
   },
   data() {
     return {
@@ -41,6 +41,9 @@ export default {
         document.head.appendChild(scriptEl)
       })
     }
+  },
+  components: {
+    ContactForm
   }
 }
 </script>
@@ -904,55 +907,7 @@ export default {
         </div>
         <!-- End Address -->
         <!-- Contact Form Area -->
-        <div class="t-left contact">
-          <!-- Title -->
-          <h3 class="uppercase">
-            Drop us a <span style="color:#007e86">Message</span>
-          </h3>
-          <!-- Contact Form -->
-          <form id="contact_frm" name="contact_frm" class="font-15 normal">
-            <!-- Input with border effect -->
-            <span class="border-effect" style="display:none;">
-              <!-- Name -->
-              <input type="text" name="name" id="name" placeholder="Name" class="no-mt">
-              <!-- Border EFfects -->
-              <span class="left-br"></span>
-              <span class="right-br"></span>
-              <span class="top-br"></span>
-            </span>
-            <!-- Input with border effect -->
-            <span class="border-effect">
-              <!-- Email -->
-              <input type="email" name="email" id="email" required placeholder="E-Mail">
-              <!-- Border EFfects -->
-              <span class="left-br"></span>
-              <span class="right-br"></span>
-              <span class="top-br"></span>
-            </span>
-            <!-- Input with border effect -->
-            <span class="border-effect">
-              <!-- Subject -->
-              <input type="text" name="subject" id="subject" required placeholder="Subject">
-              <!-- Border EFfects -->
-              <span class="left-br"></span>
-              <span class="right-br"></span>
-              <span class="top-br"></span>
-            </span>
-            <!-- Input with border effect -->
-            <span class="border-effect">
-              <!-- Message -->
-              <textarea name="msg" id="msg" required placeholder="Message"></textarea>
-              <!-- Border EFfects -->
-              <span class="left-br"></span>
-              <span class="right-br"></span>
-              <span class="top-br"></span>
-            </span>
-            <!-- Send Button -->
-            <button type="submit" id="submit" class="contact-button click-effect dark-loading mt-57 white-hover bg-colored-hover slow">Send</button>
-            <!-- End Send Button -->
-          </form>
-          <!-- End Form -->
-        </div>
+        <ContactForm/>
         <!-- End Contact Form Area -->
       </div>
       <!-- End Contact Container -->
