@@ -233,6 +233,18 @@
   max-height: initial;
 }
 
+.home-page {
+  .white {
+    &:not(#qfm_button) {
+      background-color: inherit !important;
+    }
+  }
+}
+
+.fa-android, .fa-apple {
+  font-size: 12px !important;
+}
+
 // social media colors
 
 .fb {
