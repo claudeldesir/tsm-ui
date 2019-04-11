@@ -5561,7 +5561,17 @@ body.cookie-alert-active {
 	color: inherit;
 	-webkit-transition: bottom .4s;
 	-moz-transition: bottom .4s;
-	transition: bottom .4s
+	transition: bottom .4s;
+	font-family:"Font Awesome 5 Brands";
+	font-weight:400;
+}
+
+.qdr-hover-3.android-btn:before {
+	content:'\f17b';
+}
+
+.qdr-hover-3.apple-btn:before {
+	content:'\f179';
 }
 
 .countdown span.datename,
@@ -16134,7 +16144,7 @@ body.qdr-modal-open {
 	background-color: rgba(0, 0, 0, .03)
 }
 
-#qfm_button span.hide-modal {
+#qfm_button i.hide-modal {
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -16143,8 +16153,7 @@ body.qdr-modal-open {
 	text-align: center
 }
 
-#qfm_button span.hide-modal:before {
-	content: '\e082';
+#qfm_button i.hide-modal:before {
 	font-family: simple-line-icons;
 	font-size: 25px;
 	background-color: rgba(0, 0, 0, .05);
@@ -16160,7 +16169,7 @@ body.qdr-modal-open {
 	transition: background .3s
 }
 
-#qfm_button span.hide-modal:hover:before {
+#qfm_button i.hide-modal:hover:before {
 	background-color: rgba(22, 22, 22, .2)
 }
 
@@ -16169,7 +16178,7 @@ body.qdr-modal-open {
 	.quadra_fixed_modal_top div {
 		font-size: 17px
 	}
-	#qfm_button span.hide-modal,
+	#qfm_button i.hide-modal,
 	#qfm_title i {
 		width: 80px
 	}

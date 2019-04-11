@@ -8,7 +8,6 @@ import logce from '@/assets/home/images/antares/logce.png'
 const scripts = [
   // batch
   'jquery.min.js',
-  'revolutionslider/TweenLite.js',
   'sharing.jquery.min.js',
   // batch
   'revolutionslider/jquery.themepunch.revolution.min.js',
@@ -302,22 +301,22 @@ export default {
         <!-- Left Note -->
         <div class="left-note border-colored uppercase white">
           <p>
-            <i class="fa fa-globe"></i> Made for <span class="colored"> travelers.</span><br> <i class="fa fa-gift"></i> Watch videos and earn rewards. <br><i class="fa fa-rebel"></i>  Be rebel, be smart.
+            <i class="fas fa-globe"></i> Made for <span class="colored"> travelers.</span><br> <i class="fas fa-gift"></i> Watch videos and earn rewards. <br><i class="fab fa-rebel"></i>  Be rebel, be smart.
           </p>
         </div>
         <!-- Socials -->
         <div class="home-socials slow white">
           <!-- Social -->
           <a href="https://twitter.com/delamrmach" target="_blank">
-          <i class="fa fa-twitter"></i>
+          <i class="fab fa-twitter"></i>
           </a>
           <!-- Social -->
           <a href="https://facebook.com/mrmachovskimartin" target="_blank">
-          <i class="fa fa-facebook"></i>
+          <i class="fab fa-facebook"></i>
           </a>
           <!-- Social -->
           <a href="https://instagram.com/thatsmontreal" target="_blank">
-          <i class="fa fa-instagram"></i>
+          <i class="fab fa-instagram"></i>
           </a>
         </div>
         <!-- End Socials -->
@@ -347,12 +346,12 @@ export default {
         <!-- Button, select your color and background color. you can use data-color="#" attribute. -->
         <div id="qfm_button" class="white bg-dark">
           <!-- Comp. Hide Modal -->
-          <span class="hide-modal"></span>
+          <i class="fas fa-times hide_modal" style="position: absolute;right: 0;width:100px;"></i>
           Questions?
         </div>
         <!-- Title, select your color and background color. you can use data-color="#" attribute. -->
         <div data-bgcolor="#fafafa" id="qfm_title" class="dark">
-          <i class="fa fa-close close_modal"></i>
+          <i class="fas fa-times close_modal"></i>
           <span class="modal_title">We got answers.</span>
         </div>
       </div>
@@ -681,7 +680,7 @@ export default {
         <div class="relative z-index-1 xl-py">
           <!-- Animated Gradient, you can set the bg size, colors and opacity with class -->
           <div class="animated-gradient" data-gradient-size="600" data-gradient-bg="#1a2a6c, #b21f1f, #fdbb2d, #9733EE"></div>
-          <i style="display:block;margin:0 auto;font-size:5em" class="t-center white fa fa-gift hvr-buzz"></i>
+          <i style="display:block;margin:0 auto;font-size:5em" class="t-center white fas fa-gift hvr-buzz"></i>
           <h3 class="t-center white">GET A FREE GIFT FOR EACH VIDEO.-</h3>
           <h5 class="white t-center">Subcribe with your social media account, or send your email here.</h5>
           <div class="t-center" style="width:50%;display:block;margin:0 auto;color:white">
@@ -709,12 +708,12 @@ export default {
                 </p>
                 <div class="app-download-area">
                   <div style="padding:0px" class="col-sm-6 col-xs-6">
-                    <a href="#" style="padding:30px 0px 30px 0px" class="t-center stay xl-btn py-30 block-im bg-gradient white bs-lg-hover qdr-hover-3 fs-50 fa fa-android radius slow xxs-mt click-effect">
+                    <a href="#" style="padding:30px 0px 30px 0px" class="t-center stay xl-btn py-30 block-im bg-gradient white bs-lg-hover qdr-hover-3 fs-50 fa fa-android android-btn radius slow xxs-mt click-effect">
                       <h3>Im Android</h3>
                     </a>
                   </div>
                   <div style="padding:0px;margin-bottom:10px;" class="col-sm-6 col-xs-6">
-                    <a href="#" style="padding:30px 0px 30px 0px" class="t-center stay xl-btn py-30 block-im bg-gradient white bs-lg-hover qdr-hover-3 fs-50 fa fa-apple radius slow xxs-mt click-effect">
+                    <a href="#" style="padding:30px 0px 30px 0px" class="t-center stay xl-btn py-30 block-im bg-gradient white bs-lg-hover qdr-hover-3 fs-50 fa fa-apple apple-btn radius slow xxs-mt click-effect">
                       <h3>Im iOS</h3>
                     </a>
                   </div>
@@ -877,24 +876,24 @@ export default {
           <div class="ikoni">
             <!-- Basic Address -->
             <p>
-              <span class="fa fa-home"></span>
+              <span class="fas fa-home"></span>
               <span >
               &nbsp; Montreal, H1V-2X8, Canada
               </span>
             </p>
             <!-- Phone -->
             <p>
-              <span class="fa fa-phone"></span>
+              <span class="fas fa-phone"></span>
               <a href="tel:+1.438.351.0112" class="slow normal colored-hover"> +1.438.351.0112</a>
             </p>
             <!-- E-Mail -->
             <p>
-              <span class="fa fa-envelope"></span>
+              <span class="fas fa-envelope"></span>
               <a href="mailto:info@thatsmontreal.ca" class="slow normal colored-hover">info@thatsmontreal.ca</a>
             </p>
             <!-- Web -->
             <p>
-              <span class="fa fa-globe"></span>
+              <span class="fas fa-globe"></span>
               <a href="https://thatsmontreal.ca" target="_blank" class="slow normal colored-hover">www.thatsmontreal.ca</a>
             </p>
           </div>
@@ -965,10 +964,10 @@ export default {
       <!-- Container -->
       <div class="t-center zimz footer-body container">
         <h6 class="tekst xs-mt xxs-mb bold gray8">FOLLOW US</h6>
-        <a href="#" class="icon-xs radius bg-dark facebook white-hover slow1"><i class="fa fa-facebook"></i></a>
-        <a href="#" class="icon-xs radius bg-dark twitter white-hover slow1"><i class="fa fa-twitter"></i></a>
-        <a href="#" class="icon-xs radius bg-dark instagram white-hover slow1"><i class="fa fa-instagram"></i></a>
-        <a href="#" class="icon-xs radius bg-dark pinterest white-hover slow1"><i class="fa fa-pinterest"></i></a>
+        <a href="#" class="icon-xs radius bg-dark facebook white-hover slow1"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="icon-xs radius bg-dark twitter white-hover slow1"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="icon-xs radius bg-dark instagram white-hover slow1"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="icon-xs radius bg-dark pinterest white-hover slow1"><i class="fab fa-pinterest"></i></a>
       </div>
       <!-- End Column -->
       <!-- End Container -->
@@ -999,15 +998,15 @@ export default {
     </footer>
     <!-- END FOOTER -->
     <!-- Back To Top -->
-    <a id="back-to-top" class="dark" href="#top"><i class="fa fa-angle-up"></i></a>
+    <a id="back-to-top" class="dark" href="#top"><i class="fas fa-angle-up"></i></a>
     <!-- Messages for contact form -->
     <div id="error_message" class="clearfix">
-      <i class="fa fa-warning"></i>
+      <i class="fas fa-exclamation-triangle"></i>
       <span>Validation error occured. Please enter the fields and submit it again.</span>
     </div>
     <!-- Submit Message -->
     <div id="submit_message" class="clearfix">
-      <i class="fa fa-check"></i>
+      <i class="fas fa-check"></i>
       <span>Thank You ! Your email has been delivered.</span>
     </div>
   </div>
