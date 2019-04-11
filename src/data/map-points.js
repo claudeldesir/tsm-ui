@@ -1,0 +1,90 @@
+const mapPoints = [{
+  id: 40,
+  size: 1,
+  top: 54.4,
+  left: 23.25
+}, {
+  id: 44,
+  size: 1,
+  top: 70.7,
+  left: 37.9
+}, {
+  id: 47,
+  size: 1,
+  top: 70.7,
+  left: 49.6
+}, {
+  id: 48,
+  size: 1,
+  top: 67.4,
+  left: 52.5
+}, {
+  id: 53,
+  size: 2,
+  top: 47.47,
+  left: 63.75,
+  boxShadow: '0 0 12px 4px #fff,0 0 10px 3px #f0f,0 0 20px 8px #0ff'
+}, {
+  id: 54,
+  size: 1,
+  top: 43.5,
+  left: 60.25
+}, {
+  id: 55,
+  size: 1,
+  top: 40.53,
+  left: 57.57
+}, {
+  id: 58,
+  size: 1,
+  top: 31.5,
+  left: 49.5
+}, {
+  id: 71,
+  size: 1,
+  top: 47.85,
+  left: 40.9
+}, {
+  id: 78,
+  size: 1,
+  top: 18.5,
+  left: 55.5
+}, {
+  id: 93,
+  size: 1,
+  top: 57.6,
+  left: 55.5
+}, {
+  id: 95,
+  size: 1,
+  top: 51.1,
+  left: 61.3
+}, {
+  id: 97,
+  size: 1,
+  top: 43.7,
+  left: 67.9
+}, {
+  id: 102,
+  size: 1,
+  top: 28.4,
+  left: 75.9
+}, {
+  id: 51,
+  size: 1,
+  top: 57.6,
+  left: 61.3
+}]
+
+const pointSizes = [{
+  height: 1,
+  width: 1
+}, {
+  height: 1.2,
+  width: 1.2
+}, {
+  height: 2,
+  width: 2
+}]
+
+export { mapPoints, pointSizes }

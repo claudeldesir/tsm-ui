@@ -6,6 +6,7 @@ import home03 from '@/assets/home/images/antares/home_03.jpg'
 import logce from '@/assets/home/images/antares/logce.png'
 
 import ContactForm from '@/components/ContactForm'
+import Map from '@/components/map/Map'
 
 const scripts = [
   // batch
@@ -43,7 +44,8 @@ export default {
     }
   },
   components: {
-    ContactForm
+    ContactForm,
+    Map
   }
 }
 </script>
@@ -591,6 +593,8 @@ export default {
       <!-- Modal Body End -->
     </section>
     <!-- END QUADRA FIXED MODAL -->
+
+    <Map/>
 
     <!-- ABOUT SECTION -->
     <section id="about" class="bg-dark t-center py">
