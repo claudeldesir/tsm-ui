@@ -45,6 +45,10 @@ export default {
   getStations() {
     return http.get('/locations')
   },
+  getStation(stationId) {
+    return http.get(`/locations/${stationId}`)
+      .then(resp => resp.data)
+  },
   postStation(station) {
     return http.post('/locations', station)
   },
@@ -53,6 +57,10 @@ export default {
   },
   getMedia() {
     return http.get('/media')
+  },
+  getMediaForLocation(locId) {
+    return http.get('/media', { locId })
+      .then(resp => resp.data)
   },
   getOneMedia(mediaId) {
     return http.get(`/media/${mediaId}`)
