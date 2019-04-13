@@ -14,7 +14,9 @@ import SocialSharing from 'vue-social-sharing'
 import authMixin from '@/mixins/auth'
 import config from '@/config/appConfig.json'
 import { dateFilter, subscriberTypeFilter, subscriptionStatusFilter, lineTitleFilter, mediaTypeFilter, yesnoFilter } from '@/filters'
-import Page from '@/components/Page'
+
+import Page from '@/components/common/Page'
+import Loading from '@/components/common/Loading'
 
 import App from './App'
 import router from './router'
@@ -31,6 +33,7 @@ Vue.config.productionTip = false
 Vue.use(VueFire)
 Vue.mixin(authMixin)
 Vue.component('Page', Page)
+Vue.component('Loading', Loading)
 Vue.filter('date', dateFilter)
 Vue.filter('subType', subscriberTypeFilter)
 Vue.filter('subStatus', subscriptionStatusFilter)
