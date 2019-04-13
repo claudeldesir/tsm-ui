@@ -1,5 +1,5 @@
 <template>
-  <section id="map" class="mapa" @click="checkInsidePopup">
+  <section id="map" class="mapa">
     <h1 class="mar">That's Montreal</h1>
     <div class="container">
       <h5 style="color:white;text-align:center">
@@ -31,6 +31,14 @@ import StationPopup from '@/components/map/StationPopup'
 import { mapPoints } from '@/data/map-points'
 
 export default {
+  mounted() {
+    const map = document.getElementById('map')
+    map.addEventListener('click', this.checkPropagation)
+  },
+  beforeDestroy() {
+    const map = document.getElementById('map')
+    map.removeEventListener('click', this.checkPropagation)
+  },
   data() {
     return {
       mapPoints,
@@ -51,10 +59,14 @@ export default {
         }, timeout)
       }
     },
-    checkInsidePopup(e) {
-      const path = e.path.map(pathObj => pathObj.className || '').join(' ')
+    checkInsidePopup(elArr) {
+      const path = elArr.map(pathObj => pathObj.className || '').join(' ')
       const inside = path.includes('station-popup') || path.includes('dot')
       if (!inside) this.selectedPoint = null
+    },
+    checkPropagation(e) {
+      const elArr = e.propagationPath()
+      this.checkInsidePopup(elArr)
     }
   },
   components: {

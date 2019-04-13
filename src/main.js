@@ -18,11 +18,14 @@ import { dateFilter, subscriberTypeFilter, subscriptionStatusFilter, lineTitleFi
 import Page from '@/components/common/Page'
 import Loading from '@/components/common/Loading'
 
+import fixPropPath from '@/helpers/prop-path'
+
 import App from './App'
 import router from './router'
 import store from './store'
 import './style/main.scss'
 
+fixPropPath()
 
 Vue.use(SocialSharing)
 Vue.use(Vuetify, {
