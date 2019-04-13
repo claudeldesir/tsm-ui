@@ -9,6 +9,11 @@
             h3 {{ station.title }}
           .p5
             span {{ station.desc }}
+          .p5-ver.w100
+            carousel(:perPage="1")
+              slide(v-for="mediaItem in media" :key="mediaItem.id")
+                youtube(v-if="mediaItem.type === 0" video-id="BBJa32lCaaY")
+                .p5.tiny-border.text-center(v-else) Unsupported media type
           .p20
             button.btn.btn-outline-light.promoBtn
               i.fas.fa-gift
@@ -67,6 +72,9 @@ export default {
     },
     populateMedia(stationId) {
       return Api.getMediaForLocation(stationId)
+        .then((media) => {
+          this.media = media
+        })
     }
   },
   computed: {

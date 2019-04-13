@@ -10,6 +10,8 @@ import 'firebase/auth'
 import VueSocketIO from 'vue-socket.io'
 import VueTimeago from 'vue-timeago'
 import SocialSharing from 'vue-social-sharing'
+import VueCarousel from 'vue-carousel'
+import VueYoutube from 'vue-youtube'
 
 import authMixin from '@/mixins/auth'
 import config from '@/config/appConfig.json'
@@ -28,6 +30,8 @@ import './style/main.scss'
 fixPropPath()
 
 Vue.use(SocialSharing)
+Vue.use(VueCarousel)
+Vue.use(VueYoutube)
 Vue.use(Vuetify, {
   iconfont: 'fa'
 })
