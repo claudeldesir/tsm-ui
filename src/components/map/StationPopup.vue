@@ -10,9 +10,9 @@
           .p5
             span {{ station.desc }}
           .p5-ver.w100
-            carousel(:perPage="1")
+            carousel(:perPage="1" paginationActiveColor="#fff" paginationColor="#555" @page-change="transitionCount += 1")
               slide(v-for="mediaItem in media" :key="mediaItem.id")
-                MediaContainer(:mediaItem="mediaItem")
+                MediaContainer(:mediaItem="mediaItem" :transitionCount="transitionCount")
           .p20
             button.btn.btn-outline-light.promoBtn
               i.fas.fa-gift
@@ -64,7 +64,8 @@ export default {
     return {
       station: {},
       media: [],
-      loaded: false
+      loaded: false,
+      transitionCount: 0 // okaay...
     }
   },
   methods: {
