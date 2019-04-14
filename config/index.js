@@ -15,7 +15,7 @@ module.exports = {
         target: 'https://thatsmontreal.ca:8000',
         changeOrigin: true
       },
-      '/': {
+      '/contact-us': {
         target: 'https://thatsmontreal.ca:8000',
         changeOrigin: true
       }
