@@ -16,12 +16,11 @@
     </div>
     <div style="position:relative" id="mapContainer">
       <img class="imgmap" src="https://image.ibb.co/j9RVrK/mappfinal.png">
+      <MapPoint v-for="mapPoint in mapPoints" :key="mapPoint.id" :pointData="mapPoint" @selected="pointSelected"/>
+      <transition name="slide">
+        <StationPopup v-if="selectedPoint" :stationId="selectedPoint.id" @close="pointSelected(selectedPoint)"/>
+      </transition>
     </div>
-
-    <MapPoint v-for="mapPoint in mapPoints" :key="mapPoint.id" :pointData="mapPoint" @selected="pointSelected"/>
-    <transition name="slide">
-      <StationPopup v-if="selectedPoint" :stationId="selectedPoint.id" @close="pointSelected(selectedPoint)"/>
-    </transition>
   </section>
 </template>
 
