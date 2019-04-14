@@ -1,10 +1,10 @@
 <template lang="pug">
   .station-popup.w25(:style="getStyle")
-    .flex-col.p10.white.br5.tiny-border
+    .flex-col.white.br5.tiny-border
       div(v-if="loaded")
-        .flex-row.justify-end.close-popup.pointer(@click="$emit('close')")
+        .flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
           i.fs20.p5.fas.fa-times
-        .flex-col.p5.align-center
+        .flex-col.align-center
           .p5
             h3 {{ station.title }}
           .p5
