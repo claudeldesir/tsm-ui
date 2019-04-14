@@ -32,16 +32,19 @@ import { mapPoints } from '@/data/map-points'
 export default {
   mounted() {
     const map = document.getElementById('map')
-    map.addEventListener('click', this.checkPropagation)
+    map.addEventListener('mouseup', this.checkPropagation)
+    map.addEventListener('mousedown', this.checkPropagation)
   },
   beforeDestroy() {
     const map = document.getElementById('map')
-    map.removeEventListener('click', this.checkPropagation)
+    map.removeEventListener('mouseup', this.checkPropagation)
+    map.removeEventListener('mousedown', this.checkPropagation)
   },
   data() {
     return {
       mapPoints,
-      selectedPoint: null
+      selectedPoint: null,
+      mouseDownInside: false
     }
   },
   methods: {
@@ -58,14 +61,23 @@ export default {
         }, timeout)
       }
     },
-    checkInsidePopup(elArr) {
+    checkInsidePopup(elArr, direction) {
       const path = elArr.map(pathObj => pathObj.className || '').join(' ')
       const inside = path.includes('station-popup') || path.includes('dot')
-      if (!inside) this.selectedPoint = null
+
+      if (direction === 'd') {
+        this.mouseDownInside = inside
+      } else if (direction === 'u') {
+        if (!this.mouseDownInside && !inside) {
+          this.selectedPoint = null
+          this.mouseDownInside = false
+        }
+      }
     },
-    checkPropagation(e) {
+    checkPropagation(e) { // a bit system
       const elArr = e.propagationPath()
-      this.checkInsidePopup(elArr)
+      const direction = e.type === 'mousedown' ? 'd' : 'u'
+      this.checkInsidePopup(elArr, direction)
     }
   },
   components: {
