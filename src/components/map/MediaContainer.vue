@@ -18,7 +18,9 @@ export default {
   },
   watch: {
     transitionCount() {
-      this.toggleVideo(true)
+      setTimeout(() => {
+        this.toggleVideo(true)
+      }, 500)
     }
   },
   data() {
