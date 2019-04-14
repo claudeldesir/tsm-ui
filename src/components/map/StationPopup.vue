@@ -12,8 +12,7 @@
           .p5-ver.w100
             carousel(:perPage="1")
               slide(v-for="mediaItem in media" :key="mediaItem.id")
-                youtube(v-if="mediaItem.type === 0" video-id="BBJa32lCaaY")
-                .p5.tiny-border.text-center(v-else) Unsupported media type
+                MediaContainer(:mediaItem="mediaItem")
           .p20
             button.btn.btn-outline-light.promoBtn
               i.fas.fa-gift
@@ -39,6 +38,8 @@
 <script>
 import { mapPoints } from '@/data/map-points'
 import Api from '@/services/api'
+
+import MediaContainer from '@/components/map/MediaContainer'
 
 export default {
   props: {
@@ -85,6 +86,9 @@ export default {
         top: `${mapPoint.top + 2}%`,
       }
     }
+  },
+  components: {
+    MediaContainer
   }
 }
 </script>
