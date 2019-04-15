@@ -5,11 +5,15 @@
     .p5
       span {{ station.desc }}
     .p5-ver.w100
-      carousel(:perPage="1" paginationActiveColor="#fff" paginationColor="#555" @page-change="transitionCount += 1")
+      carousel(:perPage="1"
+        @page-change="onPageChange"
+        :navigateTo="getSelectedMediaIndex"
+        paginationActiveColor="#fff"
+        paginationColor="#555")
         slide(v-for="mediaItem in media" :key="mediaItem.id")
           MediaContainer(:mediaItem="mediaItem" :transitionCount="transitionCount")
     .p20
-      button.btn.btn-outline-light.promoBtn
+      button.btn.btn-outline-light.promoBtn(@click="$emit('map:goToPromos')")
         i.fas.fa-gift
         br
         span GET A FREE GIFT!
@@ -41,11 +45,41 @@ export default {
     media: {
       type: Array,
       required: true
+    },
+    selectedMedia: {
+      type: Number,
+      default: null
     }
+  },
+  created() {
+    if (this.selectedMedia == null) this.onPageChange(0)
   },
   data() {
     return {
       transitionCount: 0 // okaay... *but Nikola did this!*
+    }
+  },
+  computed: {
+    getSelectedMediaIndex() {
+      if (this.selectedMedia == null) return 0
+
+      let index = 0
+      // eslint-disable-next-line consistent-return
+      this.media.forEach((mediaItem, idx) => {
+        if (mediaItem.id === this.selectedMedia) {
+          index = idx
+          return true
+        }
+      })
+      return index
+    }
+  },
+  methods: {
+    onPageChange(index) {
+      this.transitionCount += 1
+      const mediaItem = this.media[index || 0]
+      const mediaId = mediaItem.id
+      this.$emit('map:mediaChanged', mediaId)
     }
   },
   components: {

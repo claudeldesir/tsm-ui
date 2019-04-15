@@ -4,7 +4,15 @@
       div(v-if="loaded")
         .flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
           i.fs20.p5.fas.fa-times
-        StationContainer(:station="station" :media="media")
+        StationContainer(v-show="step === 0"
+          :station="station"
+          :selectedMedia="selectedMedia"
+          :media="media"
+          @map:goToPromos="step = 1"
+          @map:mediaChanged="selectedMedia = $event")
+        PromoContainer(v-if="step === 1"
+          :mediaId="selectedMedia"
+          @map:goToMedia="step = 0")
       Loading.p10(v-else)
 </template>
 
@@ -13,6 +21,7 @@ import { mapPoints } from '@/data/map-points'
 import Api from '@/services/api'
 
 import StationContainer from '@/components/map/StationContainer'
+import PromoContainer from '@/components/map/PromoContainer'
 
 export default {
   props: {
@@ -37,7 +46,9 @@ export default {
     return {
       station: {},
       media: [],
-      loaded: false
+      selectedMedia: null,
+      loaded: false,
+      step: 0,
     }
   },
   methods: {
@@ -61,7 +72,8 @@ export default {
     }
   },
   components: {
-    StationContainer
+    StationContainer,
+    PromoContainer
   }
 }
 </script>
