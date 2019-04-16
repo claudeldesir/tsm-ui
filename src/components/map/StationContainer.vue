@@ -13,7 +13,7 @@
         slide(v-for="mediaItem in media" :key="mediaItem.id")
           MediaContainer(:mediaItem="mediaItem" :transitionCount="transitionCount")
     .p20
-      button.btn.btn-outline-light.promoBtn(@click="$emit('map:goToPromos')")
+      button.btn.btn-outline-light.promoBtn(@click="$emit('map:goToPromos')" v-if="selectedMedia && selectedMedia.promos.length")
         i.fas.fa-gift
         br
         span GET A FREE GIFT!
@@ -47,7 +47,7 @@ export default {
       required: true
     },
     selectedMedia: {
-      type: Number,
+      type: Object,
       default: null
     }
   },
@@ -66,7 +66,7 @@ export default {
       let index = 0
       // eslint-disable-next-line consistent-return
       this.media.forEach((mediaItem, idx) => {
-        if (mediaItem.id === this.selectedMedia) {
+        if (mediaItem.id === this.selectedMedia.id) {
           index = idx
           return true
         }
@@ -78,8 +78,7 @@ export default {
     onPageChange(index) {
       this.transitionCount += 1
       const mediaItem = this.media[index || 0]
-      const mediaId = mediaItem.id
-      this.$emit('map:mediaChanged', mediaId)
+      this.$emit('map:mediaChanged', mediaItem)
     }
   },
   components: {

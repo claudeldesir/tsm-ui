@@ -11,7 +11,7 @@
           @map:goToPromos="step = 1"
           @map:mediaChanged="selectedMedia = $event")
         PromoContainer(v-if="step === 1"
-          :mediaId="selectedMedia"
+          :mediaId="selectedMedia.id"
           @map:goToMedia="step = 0")
       Loading.p10(v-else)
 </template>
