@@ -4,15 +4,17 @@
       div(v-if="loaded")
         .flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
           i.fs20.p5.fas.fa-times
-        StationContainer(v-show="step === 0"
-          :station="station"
-          :selectedMedia="selectedMedia"
-          :media="media"
-          @map:goToPromos="step = 1"
-          @map:mediaChanged="selectedMedia = $event")
-        PromoContainer(v-if="step === 1"
-          :mediaId="selectedMedia.id"
-          @map:goToMedia="step = 0")
+        v-fade-transition
+          StationContainer(v-if="step === 0"
+            :station="station"
+            :selectedMedia="selectedMedia"
+            :media="media"
+            @map:goToPromos="step = 1"
+            @map:mediaChanged="selectedMedia = $event")
+        v-fade-transition
+          PromoContainer(v-if="step === 1"
+            :mediaId="selectedMedia.id"
+            @map:goToMedia="step = 0")
       Loading.p10(v-else)
 </template>
 
