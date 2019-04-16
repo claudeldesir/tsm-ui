@@ -1,14 +1,13 @@
 <template lang="pug">
-  div
-    youtube(ref="youtubeEl" :player-vars="playerVars" :resize="resize" :video-id="getVideoId()" @ready="fixSize")
+  .w100
+    youtube(ref="youtubeEl" :player-vars="playerVars" :video-id="getVideoId()" :width="getWidth()" :height="getHeight()")
 </template>
 
 <script>
-import Vue from 'vue'
-
 export default {
   props: {
-    videoUrl: String
+    videoUrl: String,
+    full: Boolean
   },
   data() {
     return {
@@ -21,12 +20,6 @@ export default {
     }
   },
   methods: {
-    fixSize() {
-      this.resize = false
-      Vue.nextTick(() => {
-        this.resize = true
-      })
-    },
     getVideoId() {
       return this.$youtube.getIdFromUrl(this.videoUrl)
     },
@@ -45,6 +38,12 @@ export default {
           youtubeEl.player.playVideo()
         }
       })
+    },
+    getWidth() {
+      return this.full ? '100%' : 640
+    },
+    getHeight() {
+      return this.full ? '56%' : 360
     }
   }
 }
