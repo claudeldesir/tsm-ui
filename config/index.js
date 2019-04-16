@@ -18,6 +18,10 @@ module.exports = {
       '/contact-us': {
         target: 'https://thatsmontreal.ca:8000',
         changeOrigin: true
+      },
+      '/public': {
+        target: 'https://thatsmontreal.ca:8000',
+        changeOrigin: true
       }
     },
     // Various Dev Server settings
