@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    .flex-col.align-center(v-if="loaded" v-show="loadedUi")
+    .flex-col.align-center(v-if="loaded")
       .p5
         h3 {{ media.title }}
       .p5
@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import Api from '@/services/api'
 
 export default {
@@ -44,23 +43,18 @@ export default {
   },
   created() {
     this.loaded = false
-    this.loadedUi = false
     return Api.getOneMedia(this.mediaId)
       .then((res) => {
         this.media = res.data
         setTimeout(() => { // small workaround
           this.loaded = true
-          Vue.nextTick(() => {
-            this.loadedUi = true
-          })
         }, 100)
       })
   },
   data() {
     return {
       media: {},
-      loaded: false,
-      loadedUi: false
+      loaded: false
     }
   },
   computed: {

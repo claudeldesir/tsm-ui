@@ -1,7 +1,7 @@
 <template lang="pug">
   .flex-col.h100
     div
-      YoutubeContainer(v-if="mediaItem.type === 0" ref="ytContainer" :videoUrl="mediaItem.url")
+      YoutubeContainer(v-if="mediaItem.type === 0" ref="ytContainer" :videoUrl="mediaItem.url" full)
       .p5.tiny-border.text-center(v-else) Unsupported media type
       .w100.h100.overlay(@click="toggleVideo(false)")
     .flex-1
