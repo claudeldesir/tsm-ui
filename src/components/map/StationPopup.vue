@@ -4,12 +4,13 @@
       .flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
         i.fs20.p5.fas.fa-times
       div(v-if="loaded")
-        StationContainer(v-if="step === 0"
-          :station="station"
-          :selectedMedia="selectedMedia"
-          :media="media"
-          @map:goToPromos="setStep(1)"
-          @map:mediaChanged="selectedMedia = $event")
+        v-slide-x-transition(leave-absolute hide-on-leave)
+          StationContainer(v-if="step === 0"
+            :station="station"
+            :selectedMedia="selectedMedia"
+            :media="media"
+            @map:goToPromos="setStep(1)"
+            @map:mediaChanged="selectedMedia = $event")
         PromoContainer(v-if="step === 1"
           :mediaId="selectedMedia.id"
           @map:goToMedia="setStep(0)")
@@ -18,6 +19,7 @@
 
 <script>
 import { mapPoints } from '@/data/map-points'
+import Vue from 'vue'
 import Api from '@/services/api'
 
 import StationContainer from '@/components/map/StationContainer'
@@ -39,6 +41,9 @@ export default {
         this.populateMedia(stationId)
           .then(() => {
             this.loaded = true
+            Vue.nextTick(() => {
+              this.step = 0
+            })
           })
       })
   },
@@ -48,7 +53,7 @@ export default {
       media: [],
       selectedMedia: null,
       loaded: false,
-      step: 0,
+      step: -1,
     }
   },
   methods: {
