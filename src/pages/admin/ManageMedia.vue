@@ -4,15 +4,15 @@
       .flex-1
       .flex-col.flex-2
         h1 Manage media
-        .p15-bot
-        h2 Stations
-        br
-        v-data-table.elevation-1(:items="stations" :headers="stationHeaders")
-          template(slot="items" slot-scope="props")
-            td(:title="props.item.desc") {{ props.item.title }}
-            td {{ props.item.line | line }}
-            td {{ props.item.latestCount || 0 }}
-            td {{ props.item.totalCount || 0}}
+        .p15-ver
+          h2 Stations
+          br
+          v-data-table.elevation-1(:items="stations" :headers="stationHeaders")
+            template(slot="items" slot-scope="props")
+              td(:title="props.item.desc") {{ props.item.title }}
+              td {{ props.item.line | line }}
+              td {{ props.item.latestCount || 0 }}
+              td {{ props.item.totalCount || 0 }}
         .p30-top
         hr(style="border-top:0.8px solid white")
         .p15-top
@@ -26,18 +26,20 @@
         .p30-top
         hr(style="border-top:0.8px solid white")
         .p15-top
-        h2 Media
-        br
-        v-data-table.elevation-1(:items="media" :headers="mediaHeaders")
-          template(slot="items" slot-scope="props")
-            td
-              a(:href="props.item.url" target="_blank") {{ props.item.title }}
-            td {{ props.item.type | mediaType }}
-            td {{ props.item.hasActiveSub | yesno }}
-            td {{ props.item.subscriber.id }}
-            td
-              div
-                v-btn.no-margin(@click="goToDetails(props.item.id)" small outline) Details
+          h2 Media
+          br
+          v-data-table.elevation-1(:items="media" :headers="mediaHeaders")
+            template(slot="items" slot-scope="props")
+              td
+                a(:href="props.item.url" target="_blank") {{ props.item.title }}
+              td {{ props.item.type | mediaType }}
+              td {{ props.item.hasActiveSub | yesno }}
+              td {{ props.item.subscriber.id }}
+              td
+                .flex-row
+                  v-btn.no-margin(@click="goToDetails(props.item.id)" small outline) Details
+                  .p5-side
+                  v-btn.no-margin(@click="deleteMedia(props.item.id)" small outline color="error") Delete
         .p30-top
         hr(style="border-top:0.8px solid white")
         .p15-top
@@ -141,6 +143,12 @@ export default {
         .then((res) => {
           this.media.push(res.data)
           this.$refs.mediaForm.reset()
+        })
+    },
+    deleteMedia(mediaId) {
+      return Api.deleteMedia(mediaId)
+        .then((res) => {
+          this.media = this.media.filter(mediaItem => mediaItem.id !== res.data.id)
         })
     },
     goToDetails(mediaId) {

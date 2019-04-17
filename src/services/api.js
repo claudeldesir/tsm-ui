@@ -68,6 +68,9 @@ export default {
   postMedia(media) {
     return http.post('/media', media)
   },
+  deleteMedia(mediaId) {
+    return http.delete(`/media/${mediaId}`)
+  },
   postPromo(promo, mediaId) {
     return http.post(`/media/${mediaId}/promos`, promo)
   },
