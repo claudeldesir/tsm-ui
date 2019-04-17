@@ -1,58 +1,60 @@
 <template lang="pug">
   Page(:loading="!loaded")
-    .flex-row
-      .flex-1
-      .flex-col.flex-2
-        h1 Manage media
-        .p15-ver
-          h2 Stations
-          br
-          v-data-table.elevation-1(:items="stations" :headers="stationHeaders")
-            template(slot="items" slot-scope="props")
-              td(:title="props.item.desc") {{ props.item.title }}
-              td {{ props.item.line | line }}
-              td {{ props.item.latestCount || 0 }}
-              td {{ props.item.totalCount || 0 }}
-        .p30-top
-        hr(style="border-top:0.8px solid white")
-        .p15-top
-          h2 Add new station
-          br
-          v-form(ref="stationForm")
-            v-text-field(v-model="station.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
-            v-textarea(v-model="station.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
-            v-select(v-model="station.line" :items="lines" item-text="title" item-value="id" :rules="[(v) => v != null || 'Line is required']" required placeholder="Line" solo)
-          v-btn(@click="submitStation" color="primary") Submit
-        .p30-top
-        hr(style="border-top:0.8px solid white")
-        .p15-top
-          h2 Media
-          br
-          v-data-table.elevation-1(:items="media" :headers="mediaHeaders")
-            template(slot="items" slot-scope="props")
-              td
-                a(:href="props.item.url" target="_blank") {{ props.item.title }}
-              td {{ props.item.type | mediaType }}
-              td {{ props.item.hasActiveSub | yesno }}
-              td {{ props.item.subscriber.id }}
-              td
-                .flex-row
-                  v-btn.no-margin(@click="goToDetails(props.item.id)" small outline) Details
-                  .p5-side
-                  v-btn.no-margin(@click="deleteMedia(props.item.id)" small outline color="error") Delete
-        .p30-top
-        hr(style="border-top:0.8px solid white")
-        .p15-top
-          h2 Add new media
-          br
-          v-form(ref="mediaForm")
-            v-select(v-model="mediaObj.locId" :items="stations" item-text="title" item-value="id" :rules="[(v) => v != null || 'Station is required']" required placeholder="Station" solo)
-            v-text-field(v-model="mediaObj.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
-            v-text-field(v-model="mediaObj.url" :rules="[(v) => !!v || 'Media URL is required']" required placeholder="Media URL" solo)
-            v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
-            v-select(v-model="mediaObj.entityId" :items="businesses" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business" solo)
-          v-btn(@click="submitMedia" color="primary") Submit
-      .flex-1
+    .flex-col.p30-side
+      h1 Manage media/stations
+      .p10-ver
+      v-tabs.p10
+        v-tab(key="stations") Stations
+        v-tab(key="media") Media
+        v-tab-item.flex-col
+          .p15-ver
+            h2 Stations
+            br
+            v-data-table.elevation-1(:items="stations" :headers="stationHeaders")
+              template(slot="items" slot-scope="props")
+                td(:title="props.item.desc") {{ props.item.title }}
+                td {{ props.item.line | line }}
+                td {{ props.item.latestCount || 0 }}
+                td {{ props.item.totalCount || 0 }}
+          .p30-top
+          hr(style="border-top:0.8px solid white")
+          .p15-top
+            h2 Add new station
+            br
+            v-form(ref="stationForm")
+              v-text-field(v-model="station.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
+              v-textarea(v-model="station.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
+              v-select(v-model="station.line" :items="lines" item-text="title" item-value="id" :rules="[(v) => v != null || 'Line is required']" required placeholder="Line" solo)
+            v-btn(@click="submitStation" color="primary") Submit
+          .p30-top
+        v-tab-item.flex-col
+          .p15-top
+            h2 Media
+            br
+            v-data-table.elevation-1(:items="media" :headers="mediaHeaders")
+              template(slot="items" slot-scope="props")
+                td
+                  a(:href="props.item.url" target="_blank") {{ props.item.title }}
+                td {{ props.item.type | mediaType }}
+                td {{ props.item.hasActiveSub | yesno }}
+                td {{ props.item.subscriber.id }}
+                td
+                  .flex-row
+                    v-btn.no-margin(@click="goToDetails(props.item.id)" small outline) Details
+                    .p5-side
+                    v-btn.no-margin(@click="deleteMedia(props.item.id)" small outline color="error") Delete
+          .p30-top
+          hr(style="border-top:0.8px solid white")
+          .p15-top
+            h2 Add new media
+            br
+            v-form(ref="mediaForm")
+              v-select(v-model="mediaObj.locId" :items="stations" item-text="title" item-value="id" :rules="[(v) => v != null || 'Station is required']" required placeholder="Station" solo)
+              v-text-field(v-model="mediaObj.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
+              v-text-field(v-model="mediaObj.url" :rules="[(v) => !!v || 'Media URL is required']" required placeholder="Media URL" solo)
+              v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
+              v-select(v-model="mediaObj.entityId" :items="businesses" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business" solo)
+            v-btn(@click="submitMedia" color="primary") Submit
 </template>
 
 <script>
