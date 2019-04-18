@@ -6,6 +6,7 @@
       v-tabs.p10
         v-tab(key="stations") Stations
         v-tab(key="media") Media
+        v-tab(key="dots") Dots
         v-tab-item.flex-col
           .p15-ver
             h2 Stations
@@ -55,10 +56,23 @@
               v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
               v-select(v-model="mediaObj.entityId" :items="businesses" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business" solo)
             v-btn(@click="submitMedia" color="primary") Submit
+        v-tab-item.flex-col
+          .p15-top
+            h2 Dots
+            br
+            v-data-table.elevation-1(:items="dotStations" :headers="dotStationHeaders")
+              template(slot="items" slot-scope="props")
+                td {{ getDotStation(props.item.dot).name }}
+                td
+                  .flex-row.align-center.p10-ver
+                    .flex-1
+                      v-select(:items="stations" :value="props.item.stationId" hide-details item-text="title" item-value="id" placeholder="Station" solo)
+                    .flex-5
 </template>
 
 <script>
 import Api from '@/services/api'
+import { mapPoints } from '@/data/map-points'
 import { lineTitleFilter } from '@/filters'
 
 export default {
@@ -86,6 +100,11 @@ export default {
         { text: 'Actions', value: null }
       ],
       businesses: [],
+      dotStations: [],
+      dotStationHeaders: [
+        { text: 'Dot', value: 'dot' },
+        { text: 'Station ID', value: 'stationId' }
+      ],
       loaded: false
     }
   },
@@ -94,6 +113,7 @@ export default {
       this.loaded = false
       Promise.all([this.getLines(),
         this.getStations(),
+        this.getDotStations(),
         this.getActiveBusinesses(),
         this.getMedia()])
         .then(() => {
@@ -119,6 +139,12 @@ export default {
       return Api.getStations()
         .then((res) => {
           this.stations = res.data
+        })
+    },
+    getDotStations() {
+      return Api.getDotStations()
+        .then((res) => {
+          this.dotStations = res.data
         })
     },
     submitStation() {
@@ -155,6 +181,9 @@ export default {
     },
     goToDetails(mediaId) {
       this.$router.push({ name: 'media-details', params: { mediaId } })
+    },
+    getDotStation(dotId) {
+      return mapPoints.find(mapPoint => mapPoint.id === dotId) || {}
     }
   }
 }

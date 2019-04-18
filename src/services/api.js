@@ -45,6 +45,9 @@ export default {
   getStations() {
     return http.get('/locations')
   },
+  getDotStations() {
+    return http.get('/dots')
+  },
   getStation(stationId) {
     return http.get(`/locations/${stationId}`)
       .then(resp => resp.data)

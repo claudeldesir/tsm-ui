@@ -350,6 +350,7 @@ const mapPoints = mapPointsObj.map((mapPoint) => {
   if (mapPointNew.size === 2) {
     mapPointNew.boxShadow = '0 0 12px 4px #fff,0 0 10px 3px #f0f,0 0 20px 8px #0ff'
   }
+  mapPointNew.name = `Dot ${mapPointNew.id}` // temp
   return mapPointNew
 })
 
