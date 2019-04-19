@@ -1,7 +1,7 @@
 <template lang="pug">
   Page(:loading="!loaded")
     .flex-col.p30-side
-      h1 Manage media/stations
+      h1 Manage stations and media
       .p10-ver
       v-tabs.p10
         v-tab(key="stations") Stations

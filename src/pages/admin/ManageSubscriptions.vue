@@ -1,47 +1,49 @@
 <template lang="pug">
   Page(:loading="!loaded")
-    .flex-row
-      .flex-1
-      .flex-col.flex-2
-        h1 Manage subscriptions
-        .p15-bot
-        h2 Subscribers
-        br
-        v-data-table.elevation-1(:items="subscribers" :headers="subscriberHeaders")
-          template(slot="items" slot-scope="props")
-            td {{ props.item.user.displayName }}
-            td {{ props.item.user.email }}
-            td {{ props.item.type | subType }}
-        .p30-top
-        hr(style="border-top:0.8px solid white")
-        .p15-top
-          h2 Add new subscriber
-          br
-          v-form(ref="subscriberForm")
-            v-select(v-model="subscriber.userId" :items="users" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'User is required']" required placeholder="User" solo)
-            v-select(v-model="subscriber.type" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type" solo)
-          v-btn(@click="submitSubscriber" color="primary") Submit
-        .p30-top
-        hr(style="border-top:0.8px solid white")
-        .p15-top
-        h2 Subscriptions
-        br
-        v-data-table.elevation-1(:items="subscriptions" :headers="subscriptionHeaders")
-          template(slot="items" slot-scope="props")
-            td {{ getSubscriberFromList(props.item.subscriber.id).user.email }}
-            td {{ props.item.package.desc }}
-            td {{ props.item.daysLeft }}
-            td {{ props.item.status | subStatus }}
-        .p30-top
-        hr(style="border-top:0.8px solid white")
-        .p15-top
-          h2 Add new subscription
-          br
-          v-form(ref="subscriptionForm")
-            v-select(v-model="subscription.entityId" :items="subscribers" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber" solo)
-            v-select(v-model="subscription.pkgId" :items="packages" item-text="desc" item-value="id" :rules="[(v) => v != null || 'Package is required']" required placeholder="Package" solo)
-          v-btn(@click="submitSubscription" color="primary") Submit
-      .flex-1
+    .flex-col.p30-side
+      h1 Manage subscribers and subscriptions
+      .p10-ver
+      v-tabs.p10
+        v-tab(key="subscribers") Subscribers
+        v-tab(key="subscriptions") Subscriptions
+        v-tab-item.flex-col
+          .p15-ver
+            h2 Subscribers
+            br
+            v-data-table.elevation-1(:items="subscribers" :headers="subscriberHeaders")
+              template(slot="items" slot-scope="props")
+                td {{ props.item.user.displayName }}
+                td {{ props.item.user.email }}
+                td {{ props.item.type | subType }}
+            .p30-top
+            hr(style="border-top:0.8px solid white")
+            .p15-top
+              h2 Add new subscriber
+              br
+              v-form(ref="subscriberForm")
+                v-select(v-model="subscriber.userId" :items="users" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'User is required']" required placeholder="User" solo)
+                v-select(v-model="subscriber.type" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type" solo)
+              v-btn(@click="submitSubscriber" color="primary") Submit
+            .p30-top
+        v-tab-item.flex-col
+          .p15-top
+            h2 Subscriptions
+            br
+            v-data-table.elevation-1(:items="subscriptions" :headers="subscriptionHeaders")
+              template(slot="items" slot-scope="props")
+                td {{ getSubscriberFromList(props.item.subscriber.id).user.email }}
+                td {{ props.item.package.desc }}
+                td {{ props.item.daysLeft }}
+                td {{ props.item.status | subStatus }}
+            .p30-top
+            hr(style="border-top:0.8px solid white")
+            .p15-top
+              h2 Add new subscription
+              br
+              v-form(ref="subscriptionForm")
+                v-select(v-model="subscription.entityId" :items="subscribers" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber" solo)
+                v-select(v-model="subscription.pkgId" :items="packages" item-text="desc" item-value="id" :rules="[(v) => v != null || 'Package is required']" required placeholder="Package" solo)
+              v-btn(@click="submitSubscription" color="primary") Submit
 </template>
 
 <script>
