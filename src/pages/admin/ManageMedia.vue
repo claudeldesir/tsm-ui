@@ -66,7 +66,9 @@
                 td
                   .flex-row.align-center.p10-ver
                     .flex-1
-                      v-select(:items="stations" :value="props.item.stationId" hide-details item-text="title" item-value="id" placeholder="Station" solo)
+                      v-combobox(:items="stations" :value="props.item" @change="updateDotStation(props.item, $event)" hide-details outline item-text="title" item-value="id" placeholder="Station" solo)
+                        template(slot="selection" slot-scope="data")
+                          span {{ getStation(props.item.stationId).title }}
                     .flex-5
 </template>
 
@@ -103,7 +105,7 @@ export default {
       dotStations: [],
       dotStationHeaders: [
         { text: 'Dot', value: 'dot' },
-        { text: 'Station ID', value: 'stationId' }
+        { text: 'Station', value: 'stationId' }
       ],
       loaded: false
     }
@@ -138,13 +140,11 @@ export default {
     getStations() {
       return Api.getStations()
         .then((res) => {
-          this.stations = res.data
-        })
-    },
-    getDotStations() {
-      return Api.getDotStations()
-        .then((res) => {
-          this.dotStations = res.data
+          this.stations = res.data.sort((a, b) => {
+            if (a.title > b.title) return 1
+            if (a.title > b.title) return -1
+            return 0
+          })
         })
     },
     submitStation() {
@@ -179,11 +179,38 @@ export default {
           this.media = this.media.filter(mediaItem => mediaItem.id !== res.data.id)
         })
     },
-    goToDetails(mediaId) {
+    goToDetails(mediaId) { // util
       this.$router.push({ name: 'media-details', params: { mediaId } })
     },
-    getDotStation(dotId) {
+    getDotStations() {
+      return Api.getDotStations()
+        .then((res) => {
+          this.dotStations = res.data
+        })
+    },
+    getDotStation(dotId) { // not api-related
       return mapPoints.find(mapPoint => mapPoint.id === dotId) || {}
+    },
+    getStation(stationId) { // not api-related, workaround
+      return this.stations.find(station => station.id === stationId)
+    },
+    updateDotStation(dotStation, station) {
+      if (station == null) return
+      const stationId = station.id || station
+      if (isNaN(stationId)) return
+      const dotToUpdate = {
+        ...dotStation,
+        stationId
+      }
+      Api.updateDotStation(dotToUpdate)
+        .then((resp) => {
+          const updatedDots = resp.data
+
+          this.dotStations = this.dotStations.map((dotStationObj) => {
+            const updatedDot = updatedDots.find(updatedDotObj => updatedDotObj.id === dotStationObj.id)
+            return updatedDot || dotStationObj
+          })
+        })
     }
   }
 }

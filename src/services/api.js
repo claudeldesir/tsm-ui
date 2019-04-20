@@ -48,6 +48,12 @@ export default {
   getDotStations() {
     return http.get('/dots')
   },
+  updateDotStation(dotStation) {
+    const dotStationObj = {
+      stationId: dotStation.stationId
+    }
+    return http.put(`/dots/${dotStation.id}`, dotStationObj)
+  },
   getStation(stationId) {
     return http.get(`/locations/${stationId}`)
       .then(resp => resp.data)
