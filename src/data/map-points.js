@@ -397,21 +397,15 @@ const mapPointsObj = [{ // here is orange
 }, { // here is yellow
   id: 67,
   size: 1,
-  top: 64.1,
-  left: 49.6,
+  top: 49.0,
+  left: 74.4,
   name: 'Jean-drapeau'
 }, {
   id: 68,
   size: 1,
-  top: 49.0,
-  left: 74.4,
-  name: 'Longueuil'
-}, {
-  id: 69,
-  size: 1,
   top: 50.0,
   left: 81.3,
-  name: 'name'
+  name: 'Longueuil'
 }]
 
 const mapPoints = mapPointsObj.map((mapPoint) => {
