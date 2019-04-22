@@ -14,6 +14,7 @@
         PromoContainer(v-if="step === 1"
           :mediaId="selectedMedia.id"
           @map:goToMedia="setStep(0)")
+        SharePanel(v-if="selectedMedia" :data="getShareData")
       Loading.p10(v-else)
 </template>
 
@@ -23,6 +24,7 @@ import Api from '@/services/api'
 
 import StationContainer from '@/components/map/StationContainer'
 import PromoContainer from '@/components/map/PromoContainer'
+import SharePanel from '@/components/SharePanel'
 
 export default {
   props: {
@@ -76,11 +78,21 @@ export default {
         left: `${mapPoint.left}%`,
         top: `${mapPoint.top + 2}%`,
       }
+    },
+    getShareData() {
+      const media = this.selectedMedia
+      if (!media) return null
+      return {
+        url: media.url,
+        title: media.title,
+        desc: media.desc
+      }
     }
   },
   components: {
     StationContainer,
-    PromoContainer
+    PromoContainer,
+    SharePanel
   }
 }
 </script>

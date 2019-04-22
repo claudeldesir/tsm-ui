@@ -70,8 +70,8 @@ export default {
   getMedia() {
     return http.get('/media')
   },
-  getMediaForLocation(locId) {
-    return http.get('/media', { params: { locId } })
+  getMediaForLocation(stationId) {
+    return http.get(`/locations/${stationId}/media`)
       .then(resp => resp.data)
   },
   getOneMedia(mediaId) {
