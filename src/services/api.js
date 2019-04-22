@@ -71,7 +71,7 @@ export default {
     return http.get('/media')
   },
   getMediaForLocation(locId) {
-    return http.get('/media', { locId })
+    return http.get('/media', { params: { locId } })
       .then(resp => resp.data)
   },
   getOneMedia(mediaId) {

@@ -94,6 +94,7 @@ export default {
         { text: 'Line', value: 'line' },
         { text: 'Recent media #', value: 'latestCount' },
         { text: 'Total media #', value: 'totalCount' },
+        { text: 'Actions', value: null }
       ],
       media: [],
       mediaObj: {},

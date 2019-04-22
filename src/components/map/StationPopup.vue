@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { mapPoints } from '@/data/map-points'
 import Vue from 'vue'
 import Api from '@/services/api'
 
@@ -27,13 +26,13 @@ import PromoContainer from '@/components/map/PromoContainer'
 
 export default {
   props: {
-    stationId: {
-      type: Number,
+    pointData: {
+      type: Object,
       required: true
     }
   },
   created() {
-    const stationId = 1 // temp
+    const stationId = this.pointData.stationId
     this.loaded = false
     this.getStation(stationId)
       .then((station) => {
@@ -72,7 +71,7 @@ export default {
   },
   computed: {
     getStyle() {
-      const mapPoint = mapPoints.find(mapPointObj => mapPointObj.id === this.stationId)
+      const mapPoint = this.pointData
       return {
         left: `${mapPoint.left}%`,
         top: `${mapPoint.top + 2}%`,

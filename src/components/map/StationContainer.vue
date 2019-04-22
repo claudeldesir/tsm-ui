@@ -18,7 +18,7 @@
         br
         span GET A FREE GIFT!
     span Share with your friends!
-    .flex-row.p5
+    v-layout(row wrap).p5
       social-sharing(url="https://google.com" media="https://google.com" title="this is title" description="this is desc" quote="this is quote" inline-template)
         .flex-row.center
           network(network="facebook")

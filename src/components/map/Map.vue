@@ -18,18 +18,30 @@
       <img class="imgmap" src="https://image.ibb.co/j9RVrK/mappfinal.png">
       <MapPoint v-for="mapPoint in mapPoints" :key="mapPoint.id" :pointData="mapPoint" @selected="pointSelected"/>
       <transition name="slide">
-        <StationPopup v-if="selectedPoint" :stationId="selectedPoint.id" @close="pointSelected(selectedPoint)"/>
+        <StationPopup v-if="selectedPoint" :pointData="selectedPoint" @close="pointSelected(selectedPoint)"/>
       </transition>
     </div>
   </section>
 </template>
 
 <script>
+import Api from '@/services/api'
 import MapPoint from '@/components/map/MapPoint'
 import StationPopup from '@/components/map/StationPopup'
 import { mapPoints } from '@/data/map-points'
 
 export default {
+  created() {
+    Api.getDotStations()
+      .then((resp) => {
+        const dotStations = resp.data
+        dotStations.forEach((dotStation) => {
+          const mapPoint = mapPoints.find(mapPointObj => mapPointObj.id === dotStation.dot)
+          mapPoint.stationId = dotStation.stationId
+          this.mapPoints.push(mapPoint)
+        })
+      })
+  },
   mounted() {
     const map = document.getElementById('map')
     map.addEventListener('mouseup', this.checkPropagation)
@@ -42,7 +54,7 @@ export default {
   },
   data() {
     return {
-      mapPoints,
+      mapPoints: [],
       selectedPoint: null,
       mouseDownInside: false
     }
