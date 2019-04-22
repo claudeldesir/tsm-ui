@@ -17,6 +17,9 @@
                 td {{ props.item.line | line }}
                 td {{ props.item.latestCount || 0 }}
                 td {{ props.item.totalCount || 0 }}
+                td
+                  .flex-row
+                    v-btn.no-margin(@click="deleteStation(props.item.id)" small outline color="error") Delete
           .p30-top
           hr(style="border-top:0.8px solid white")
           .p15-top
@@ -157,6 +160,13 @@ export default {
           this.$refs.stationForm.reset()
         })
     },
+    deleteStation(stationId) {
+      return Api.deleteStation(stationId)
+        .then((res) => {
+          const deleteId = Number(res.data.id)
+          this.stations = this.stations.filter(stationItem => stationItem.id !== deleteId)
+        })
+    },
     getMedia() {
       return Api.getMedia()
         .then((res) => {
@@ -176,7 +186,8 @@ export default {
     deleteMedia(mediaId) {
       return Api.deleteMedia(mediaId)
         .then((res) => {
-          this.media = this.media.filter(mediaItem => mediaItem.id !== res.data.id)
+          const deleteId = Number(res.data.id)
+          this.media = this.media.filter(mediaItem => mediaItem.id !== deleteId)
         })
     },
     goToDetails(mediaId) { // util

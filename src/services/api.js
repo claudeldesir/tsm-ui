@@ -61,6 +61,9 @@ export default {
   postStation(station) {
     return http.post('/locations', station)
   },
+  deleteStation(stationId) {
+    return http.delete(`/locations/${stationId}`)
+  },
   getActiveBusinesses() {
     return http.get('/businesses/active')
   },
