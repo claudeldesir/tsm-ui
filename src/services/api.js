@@ -110,6 +110,10 @@ export default {
   deletePromo(promoId) {
     return http.delete(`/promos/${promoId}`)
   },
+  reqPromoCode(promoId) {
+    return getAuthHeaders()
+      .then(options => http.post('/req-code', { promoId }, options))
+  },
   getAds() {
     return http.get('/ads')
   },

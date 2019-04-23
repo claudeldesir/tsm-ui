@@ -18,7 +18,8 @@
           @map:promoChanged="selectedPromo = $event")
         PromoDetails(v-if="step === 2"
           :promo="selectedPromo"
-          @map:goToPromos="setStep(1)")
+          @map:goToPromos="setStep(1)"
+          @map:generateCode="generateCode")
         SharePanel(v-if="selectedMedia" :data="getShareData")
       Loading.p10(v-else)
 </template>
@@ -78,6 +79,14 @@ export default {
           this.media = media
         })
     },
+    generateCode(promoId) {
+      if (this.getCurrentUser) {
+        Api.reqPromoCode(promoId)
+      } else {
+        console.log('please log in') // temp
+      }
+    },
+    // aux
     setStep(step) {
       this.step = step
     },

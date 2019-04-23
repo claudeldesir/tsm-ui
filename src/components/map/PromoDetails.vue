@@ -13,7 +13,7 @@
           div
             ImageItem(:image="promoImage" original)
             .w100.h100.overlayz
-    .p5-ver.w100
+    .p5-ver.w100(v-if="promoImages.length > 1")
       ImageItem.p5.pointer(v-for="(promoImage, idx) in promoImages" :image="promoImage" :full="false" :key="promoImage.id" @selected="selectedImage = idx")
     .w100.p20.flex-row.space-around
       button.btn.btn-outline-light.promoBtn(@click="$emit('map:goToPromos')")
@@ -21,7 +21,7 @@
         br
         span Back
       .flex-1
-      button.btn.btn-outline-light.promoBtn
+      button.btn.btn-outline-light.promoBtn(@click="$emit('map:generateCode', promo.id)")
         i.fas.fa-gift
         br
         span GET A FREE GIFT!

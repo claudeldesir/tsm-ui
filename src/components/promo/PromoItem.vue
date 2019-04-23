@@ -8,7 +8,7 @@
       .flex-row.p5
         .p15(v-for="promoImage in promo.promoImages" :key="promoImage.id")
           ImageItem(:image="promoImage")
-      v-btn(@click="deletePromo" color="error") Delete
+      v-btn(@click="deletePromo" color="error" outline) Delete
 </template>
 
 <script>
