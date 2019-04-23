@@ -1,5 +1,5 @@
 <template lang="pug">
-  .station-popup.w25(:style="getStyle")
+  .station-popup(:style="getStyle" ref="stationPopup")
     .flex-col.white.br5.tiny-border
       .flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
         i.fs20.p5.fas.fa-times
@@ -48,6 +48,9 @@ export default {
           })
       })
   },
+  mounted() {
+    this.correctPosition()
+  },
   data() {
     return {
       station: {},
@@ -55,6 +58,7 @@ export default {
       selectedMedia: null,
       loaded: false,
       step: -1,
+      correctionX: 0
     }
   },
   methods: {
@@ -69,13 +73,24 @@ export default {
     },
     setStep(step) {
       this.step = step
+    },
+    correctPosition() {
+      const el = this.$refs.stationPopup
+      if (!el) return
+      const sizeData = el.getBoundingClientRect()
+
+      let tipX = 0
+      if ((sizeData.x + sizeData.width) > window.innerWidth) {
+        tipX = ((((sizeData.x + sizeData.width) - window.innerWidth) / window.innerWidth) * 100) + 10
+      }
+      this.correctionX = tipX
     }
   },
   computed: {
     getStyle() {
       const mapPoint = this.pointData
       return {
-        left: `${mapPoint.left}%`,
+        left: `${mapPoint.left - this.correctionX}%`,
         top: `${mapPoint.top + 2}%`,
       }
     },
@@ -100,6 +115,8 @@ export default {
 <style lang="scss" scoped>
   .station-popup {
     position: absolute;
-    background: rgba(0,0,0,0.6)
+    background: rgba(0,0,0,0.6);
+    width: 30%;
+    min-width: 640px;
   }
 </style>
