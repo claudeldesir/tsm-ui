@@ -26,10 +26,10 @@
             h2 Add new station
             br
             v-form(ref="stationForm")
-              v-text-field(v-model="station.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
-              v-textarea(v-model="station.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
-              v-select(v-model="station.line" :items="lines" item-text="title" item-value="id" :rules="[(v) => v != null || 'Line is required']" required placeholder="Line" solo)
-            v-btn(@click="submitStation" color="primary") Submit
+              v-text-field(v-model="station.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo outline)
+              v-textarea(v-model="station.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo outline)
+              v-select(v-model="station.line" :items="lines" item-text="title" item-value="id" :rules="[(v) => v != null || 'Line is required']" required placeholder="Line" solo outline)
+            v-btn(@click="submitStation" color="primary" outline) Submit
           .p30-top
         v-tab-item.flex-col
           .p15-top
@@ -53,12 +53,14 @@
             h2 Add new media
             br
             v-form(ref="mediaForm")
-              v-select(v-model="mediaObj.locId" :items="stations" item-text="title" item-value="id" :rules="[(v) => v != null || 'Station is required']" required placeholder="Station" solo)
-              v-text-field(v-model="mediaObj.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
-              v-text-field(v-model="mediaObj.url" :rules="[(v) => !!v || 'Media URL is required']" required placeholder="Media URL" solo)
-              v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
-              v-select(v-model="mediaObj.entityId" :items="businesses" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business" solo)
-            v-btn(@click="submitMedia" color="primary") Submit
+              v-combobox(v-model="mediaObj.locId" :items="stations" item-text="title" item-value="id" :rules="[(v) => v != null || 'Station is required']" :return-object="false" required placeholder="Station" solo outline)
+                template(slot="selection" slot-scope="data")
+                  span {{ getStation(data.item).title }}
+              v-text-field(v-model="mediaObj.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo outline)
+              v-text-field(v-model="mediaObj.url" :rules="[(v) => !!v || 'Media URL is required']" required placeholder="Media URL" solo outline)
+              v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo outline)
+              v-select(v-model="mediaObj.entityId" :items="businesses" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business" solo outline)
+            v-btn(@click="submitMedia" color="primary" outline) Submit
         v-tab-item.flex-col
           .p15-top
             h2 Dots

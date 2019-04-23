@@ -21,9 +21,8 @@
               h2 Add new subscriber
               br
               v-form(ref="subscriberForm")
-                v-select(v-model="subscriber.userId" :items="users" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'User is required']" required placeholder="User" solo)
-                v-select(v-model="subscriber.type" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type" solo)
-              v-btn(@click="submitSubscriber" color="primary") Submit
+                v-select(v-model="subscriber.userId" :items="users" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'User is required']" required placeholder="User" solo outline)                v-select(v-model="subscriber.type" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type" solo)
+              v-btn(@click="submitSubscriber" color="primary" outline) Submit
             .p30-top
         v-tab-item.flex-col
           .p15-top
@@ -41,9 +40,9 @@
               h2 Add new subscription
               br
               v-form(ref="subscriptionForm")
-                v-select(v-model="subscription.entityId" :items="subscribers" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber" solo)
-                v-select(v-model="subscription.pkgId" :items="packages" item-text="desc" item-value="id" :rules="[(v) => v != null || 'Package is required']" required placeholder="Package" solo)
-              v-btn(@click="submitSubscription" color="primary") Submit
+                v-select(v-model="subscription.entityId" :items="subscribers" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber" solo outline)
+                v-select(v-model="subscription.pkgId" :items="packages" item-text="desc" item-value="id" :rules="[(v) => v != null || 'Package is required']" required placeholder="Package" solo outline)
+              v-btn(@click="submitSubscription" color="primary" outline) Submit
 </template>
 
 <script>

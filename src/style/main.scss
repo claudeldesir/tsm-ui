@@ -241,6 +241,10 @@
   max-height: initial;
 }
 
+.v-text-field--outline input {
+  margin-top: 0px !important;
+}
+
 .home-page {
   .white {
     &:not(#qfm_button) {
