@@ -3,7 +3,7 @@
     div
       YoutubeContainer(v-if="mediaItem.type === 0" ref="ytContainer" :videoUrl="mediaItem.url" full)
       .p5.tiny-border.text-center(v-else) Unsupported media type
-      .w100.h100.overlay(@click="toggleVideo(false)")
+      .w100.h100.overlayz(@click="toggleVideo(false)")
     .flex-1
     .flex-col.align-center.p5
       h4 {{ mediaItem.title }}
@@ -43,13 +43,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.overlay {
-  position: absolute !important;
-  top: 0;
-  z-index: 99999;
-  background-color: rgba(0,0,0,0.2);
-  left: auto;
-}
-</style>

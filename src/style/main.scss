@@ -280,3 +280,10 @@
 .hidden {
   display: none;
 }
+.overlayz {
+  position: absolute !important;
+  top: 0;
+  z-index: 99999;
+  background-color: rgba(0,0,0,0.2);
+  left: auto;
+}
