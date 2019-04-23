@@ -1,5 +1,5 @@
 <template lang="pug">
-  Page(:loading="!loaded")
+  Page.p20(:loading="!loaded")
     h1 {{ media.title }}
     br
     v-card
@@ -12,7 +12,7 @@
           div(v-if="media.type === 0")
             YoutubeContainer(:videoUrl="media.url")
     br
-    v-btn(@click="newPromo = !newPromo" color="primary" v-if="!newPromo") Create new promo
+    v-btn(@click="newPromo = !newPromo" color="primary" v-if="!newPromo" outline) Create new promo
     .frame.p10(v-if="newPromo")
       NewPromo(@promoSubmitted="promoSubmitted" @cancel="newPromo=false")
     br

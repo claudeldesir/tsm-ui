@@ -14,9 +14,13 @@
                   ImageItem(slotted :image="fileObj.metadata")
                     v-avatar(tile size="100")
                       img(:ref="`preview-${fileObj.metadata.id}`")
-                  v-btn(@click.stop.prevent="removeFile(fileObj.metadata.id)" color="error") Remove
+                  v-btn(@click.stop.prevent="removeFile(fileObj.metadata.id)" color="error" outline) Remove
                 .flex-row.p5.align-center(v-if="descRequired")
-                  v-text-field(v-model="fileObj.metadata.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
+                  v-text-field(v-model="fileObj.metadata.desc"
+                    :rules="[(v) => !!v || 'Description is required']"
+                    required placeholder="Description"
+                    solo
+                    outline)
 </template>
 
 <script>

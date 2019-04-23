@@ -4,13 +4,13 @@
       h2 Create new promo
       br
       v-form(ref="promoForm")
-        v-text-field(v-model="promo.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
-        v-text-field(v-model="promo.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo)
+        v-text-field(v-model="promo.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo outline)
+        v-text-field(v-model="promo.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo outline)
         v-checkbox(v-model="promo.active" label="Active")
         .flex-row
-          v-btn.no-margin(@click="submitPromo" color="success") Submit
+          v-btn.no-margin(@click="submitPromo" color="success" outline) Submit
           .p5-side
-          v-btn.no-margin(@click="$emit('cancel')" color="error") Cancel
+          v-btn.no-margin(@click="$emit('cancel')" color="error" outline) Cancel
     .flex-2
     .flex-3
       ImageUpload(@filesChanged="promoImagesChanged")
@@ -23,7 +23,9 @@ import ImageUpload from '@/components/ImageUpload'
 export default {
   data() {
     return {
-      promo: {},
+      promo: {
+        active: true
+      },
       promoImages: []
     }
   },
