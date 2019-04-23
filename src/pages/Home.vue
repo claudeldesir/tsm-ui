@@ -50,7 +50,6 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "../assets/home/css/custom.css";
   @import "../assets/home/css/plugins6da2.css";
   @import "../assets/home/css/theme6da2.css";
   @import "../assets/home/css/antares/antares.css";
@@ -331,7 +330,7 @@ export default {
 
     <!-- Dotted Navigation -->
     <section id="dotted-navigation" class="hide-on-home nav-menu">
-      <ul id="side-dotted-navigation" class="spy font-12 bold nav uppercase">
+      <ul id="side-dotted-navigation" class="font-12 bold nav uppercase spy">
         <li><a href="#home"><span>Home</span></a></li>
         <li><a href="#map"><span>Map</span></a></li>
         <li><a href="#about"><span>About</span></a></li>
