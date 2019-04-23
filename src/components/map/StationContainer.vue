@@ -4,7 +4,7 @@
       h3 {{ station.title }}
     .p5
       span {{ station.desc }}
-    .p5-ver.w100
+    .p5-ver.w100(v-if="media && media.length")
       carousel(:perPage="1"
         @page-change="onPageChange"
         :navigateTo="getSelectedMediaIndex"
@@ -12,11 +12,14 @@
         paginationColor="#555")
         slide(v-for="mediaItem in media" :key="mediaItem.id")
           MediaContainer(:mediaItem="mediaItem" :transitionCount="transitionCount")
-    .p20
+    .p20(v-if="media && media.length")
       button.btn.btn-outline-light.promoBtn(@click="$emit('map:goToPromos')" v-if="selectedMedia && selectedMedia.promos.length")
         i.fas.fa-gift
         br
         span GET A FREE GIFT!
+    .p15-bot(v-else)
+      .p5
+      h4 Nothing to see here... yet
 </template>
 
 <script>

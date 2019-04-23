@@ -4,20 +4,17 @@
       .flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
         i.fs20.p5.fas.fa-times
       div(v-if="loaded")
-        div(v-if="media && media.length")
-          v-slide-x-transition(leave-absolute hide-on-leave)
-            StationContainer(v-if="step === 0"
-              :station="station"
-              :selectedMedia="selectedMedia"
-              :media="media"
-              @map:goToPromos="setStep(1)"
-              @map:mediaChanged="selectedMedia = $event")
-          PromoContainer(v-if="step === 1"
-            :mediaId="selectedMedia.id"
-            @map:goToMedia="setStep(0)")
-          SharePanel(v-if="selectedMedia" :data="getShareData")
-        .p20-ver.flex-row.justify-center(v-else)
-          h3 Nothing to see here... yet
+        v-slide-x-transition(leave-absolute hide-on-leave)
+          StationContainer(v-if="step === 0"
+            :station="station"
+            :selectedMedia="selectedMedia"
+            :media="media"
+            @map:goToPromos="setStep(1)"
+            @map:mediaChanged="selectedMedia = $event")
+        PromoContainer(v-if="step === 1"
+          :mediaId="selectedMedia.id"
+          @map:goToMedia="setStep(0)")
+        SharePanel(v-if="selectedMedia" :data="getShareData")
       Loading.p10(v-else)
 </template>
 
