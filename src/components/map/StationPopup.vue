@@ -4,17 +4,20 @@
       .flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
         i.fs20.p5.fas.fa-times
       div(v-if="loaded")
-        v-slide-x-transition(leave-absolute hide-on-leave)
-          StationContainer(v-if="step === 0"
-            :station="station"
-            :selectedMedia="selectedMedia"
-            :media="media"
-            @map:goToPromos="setStep(1)"
-            @map:mediaChanged="selectedMedia = $event")
-        PromoContainer(v-if="step === 1"
-          :mediaId="selectedMedia.id"
-          @map:goToMedia="setStep(0)")
-        SharePanel(v-if="selectedMedia" :data="getShareData")
+        div(v-if="media && media.length")
+          v-slide-x-transition(leave-absolute hide-on-leave)
+            StationContainer(v-if="step === 0"
+              :station="station"
+              :selectedMedia="selectedMedia"
+              :media="media"
+              @map:goToPromos="setStep(1)"
+              @map:mediaChanged="selectedMedia = $event")
+          PromoContainer(v-if="step === 1"
+            :mediaId="selectedMedia.id"
+            @map:goToMedia="setStep(0)")
+          SharePanel(v-if="selectedMedia" :data="getShareData")
+        .p20-ver.flex-row.justify-center(v-else)
+          h3 Nothing to see here... yet
       Loading.p10(v-else)
 </template>
 
@@ -81,7 +84,7 @@ export default {
 
       let tipX = 0
       if ((sizeData.x + sizeData.width) > window.innerWidth) {
-        tipX = ((((sizeData.x + sizeData.width) - window.innerWidth) / window.innerWidth) * 100) + 10
+        tipX = ((((sizeData.x + sizeData.width) - window.innerWidth) / window.innerWidth) * 100) + 11
       }
       this.correctionX = tipX
     }
@@ -117,6 +120,6 @@ export default {
     position: absolute;
     background: rgba(0,0,0,0.6);
     width: 30%;
-    min-width: 640px;
+    min-width: 600px;
   }
 </style>
