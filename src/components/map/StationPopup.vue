@@ -13,7 +13,12 @@
             @map:mediaChanged="selectedMedia = $event")
         PromoContainer(v-if="step === 1"
           :mediaId="selectedMedia.id"
-          @map:goToMedia="setStep(0)")
+          @map:goToMedia="setStep(0)"
+          @map:goToPromoDetails="setStep(2)"
+          @map:promoChanged="selectedPromo = $event")
+        PromoDetails(v-if="step === 2"
+          :promo="selectedPromo"
+          @map:goToPromos="setStep(1)")
         SharePanel(v-if="selectedMedia" :data="getShareData")
       Loading.p10(v-else)
 </template>
@@ -24,6 +29,7 @@ import Api from '@/services/api'
 
 import StationContainer from '@/components/map/StationContainer'
 import PromoContainer from '@/components/map/PromoContainer'
+import PromoDetails from '@/components/map/PromoDetails'
 import SharePanel from '@/components/SharePanel'
 
 export default {
@@ -56,6 +62,7 @@ export default {
       station: {},
       media: [],
       selectedMedia: null,
+      selectedPromo: null,
       loaded: false,
       step: -1,
       correctionX: 0
@@ -107,6 +114,7 @@ export default {
   components: {
     StationContainer,
     PromoContainer,
+    PromoDetails,
     SharePanel
   }
 }

@@ -8,13 +8,14 @@
           span {{ media.desc }}
         .p5-ver.w100
           carousel(:perPage="1"
+            @page-change="onPageChange"
             paginationActiveColor="#fff"
             paginationColor="#555")
             slide(v-for="promo in promos" :key="promo.id")
               .flex-col.h100
                 div
-                  img.w100(:src="getOneImageForPromo(promo).imageUrl")
-                  .w100.h100.overlay
+                  ImageItem(:image="getOneImageForPromo(promo)" original)
+                  .w100.h100.overlayz
                 .flex-1
                 .flex-col.align-center.p5
                   h4 {{ promo.title }}
@@ -25,7 +26,7 @@
             br
             span Back
           .flex-1
-          button.btn.btn-outline-light.promoBtn
+          button.btn.btn-outline-light.promoBtn(@click="$emit('map:goToPromoDetails')")
             i.fas.fa-gift
             br
             span GET A FREE GIFT!
@@ -34,6 +35,7 @@
 
 <script>
 import Api from '@/services/api'
+import ImageItem from '@/components/ImageItem'
 
 export default {
   props: {
@@ -49,6 +51,7 @@ export default {
         this.media = res.data
         setTimeout(() => { // small workaround
           this.loaded = true
+          if (this.promos.length) this.onPageChange(0)
         }, 100)
       })
   },
@@ -65,18 +68,21 @@ export default {
   },
   methods: {
     getOneImageForPromo(promo) {
-      return promo.promoImages && promo.promoImages.length ? promo.promoImages[0] : null
+      if (promo.promoImages && promo.promoImages.length) {
+        return {
+          ...promo.promoImages[0],
+          featured: false
+        }
+      }
+      return null
+    },
+    onPageChange(index) {
+      const promoItem = this.promos[index || 0]
+      this.$emit('map:promoChanged', promoItem)
     }
+  },
+  components: {
+    ImageItem
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.overlay {
-  position: absolute !important;
-  top: 0;
-  z-index: 99999;
-  background-color: rgba(0,0,0,0.2);
-  left: auto;
-}
-</style>
