@@ -21,7 +21,8 @@
               h2 Add new subscriber
               br
               v-form(ref="subscriberForm")
-                v-select(v-model="subscriber.userId" :items="users" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'User is required']" required placeholder="User" solo outline)                v-select(v-model="subscriber.type" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type" solo)
+                v-select(v-model="subscriber.userId" :items="users" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'User is required']" required placeholder="User" solo outline)
+                v-select(v-model="subscriber.type" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type" solo outline)
               v-btn(@click="submitSubscriber" color="primary" outline) Submit
             .p30-top
         v-tab-item.flex-col
