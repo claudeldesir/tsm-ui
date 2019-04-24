@@ -1,6 +1,7 @@
 @import "./transitions.scss";
 
 .home-page {
+  @import "../assets/home/css/bootstrap.css";
   @import "../assets/home/css/plugins6da2.css";
   @import "../assets/home/css/theme6da2.css";
   @import "../assets/home/css/antares/antares.css";
