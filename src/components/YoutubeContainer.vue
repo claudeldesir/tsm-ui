@@ -1,6 +1,6 @@
 <template lang="pug">
   .w100
-    youtube(ref="youtubeEl" :player-vars="playerVars" :video-id="getVideoId()" :width="getWidth()" :height="getHeight()")
+    youtube(ref="youtubeEl" :player-vars="playerVars" :video-id="getVideoId()" :width="getWidth()" resize)
 </template>
 
 <script>
@@ -41,9 +41,6 @@ export default {
     },
     getWidth() {
       return this.full ? '100%' : 640
-    },
-    getHeight() {
-      return this.full ? '56%' : 360
     }
   }
 }
