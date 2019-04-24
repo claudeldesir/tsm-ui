@@ -49,13 +49,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "../assets/home/css/plugins6da2.css";
-  @import "../assets/home/css/theme6da2.css";
-  @import "../assets/home/css/antares/antares.css";
-  @import "../assets/home/css/revolutionslider/settings.css";
-</style>
-
 <template>
   <div class="home-page">
     <div class="page-loader bg-dark">

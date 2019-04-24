@@ -1,5 +1,18 @@
 @import "./transitions.scss";
 
+.home-page {
+  @import "../assets/home/css/plugins6da2.css";
+  @import "../assets/home/css/theme6da2.css";
+  @import "../assets/home/css/antares/antares.css";
+  @import "../assets/home/css/revolutionslider/settings.css";
+
+  .white {
+    &:not(#qfm_button) {
+      background-color: inherit !important;
+    }
+  }
+}
+
 .font-white {
   color: white;
 }
@@ -245,14 +258,6 @@
 
 .v-text-field--outline input {
   margin-top: 0px !important;
-}
-
-.home-page {
-  .white {
-    &:not(#qfm_button) {
-      background-color: inherit !important;
-    }
-  }
 }
 
 .fa-android, .fa-apple {
