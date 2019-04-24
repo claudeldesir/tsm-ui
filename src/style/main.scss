@@ -22,9 +22,11 @@
 }
 .flex-row {
   display: flex;
-  flex-direction: row;
   &.flex-reverse {
     flex-direction: row-reverse;
+  }
+  &:not(.flex-reverse) {
+    flex-direction: row;
   }
 }
 .flex-col {
