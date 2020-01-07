@@ -3,6 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const serverName = 'https://thatsmontreal.com:8000'
 
 module.exports = {
   dev: {
@@ -12,15 +13,15 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'https://thatsmontreal.ca:8000',
+        target: serverName,
         changeOrigin: true
       },
       '/contact-us': {
-        target: 'https://thatsmontreal.ca:8000',
+        target: serverName,
         changeOrigin: true
       },
       '/public': {
-        target: 'https://thatsmontreal.ca:8000',
+        target: serverName,
         changeOrigin: true
       }
     },

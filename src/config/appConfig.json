@@ -11,6 +11,6 @@
     "firebaseApiUrl": "https://us-central1-thatsmontrealcomments.cloudfunctions.net/"
   },
   "socketIoConfig": {
-    "connectionUrl": "https://thatsmontreal.ca:8000"
+    "connectionUrl": "https://thatsmontreal.com:8000"
   }
 }
