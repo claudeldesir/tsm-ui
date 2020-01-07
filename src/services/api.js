@@ -1,11 +1,10 @@
-import axios from 'axios'
 import auth from './auth'
 import http from './http'
 
 const getAuthHeaders = (opts) => {
   const options = opts || {}
   return auth.getUserToken()
-    .then((token) => ({
+    .then(token => ({
       ...options,
       headers: {
         Authorization: `Bearer ${token}`
