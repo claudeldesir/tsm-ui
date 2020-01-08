@@ -20,6 +20,7 @@ export default {
     return retObj
   },
   reduceStringSize(str, limit) {
+    if (!str) return ''
     const LIMIT = limit > 3 ? limit : 20
     if (str.length > LIMIT) {
       const string = str.substring(0, LIMIT - 3)

@@ -3,7 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-const serverName = 'https://thatsmontreal.com:8000'
+const serverName = 'https://thatsmontreal.com'
 
 module.exports = {
   dev: {
