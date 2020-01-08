@@ -58,7 +58,8 @@ export default {
   float: left;
   top: 50%;
   position: relative;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
+  float: right;
 }
 
 @media only screen and (max-width:1120px) {
@@ -92,7 +93,7 @@ export default {
             <img :src="logce" alt="Website Logo">
           </a>
         </div>
-        <div class="logos"><AuthPanel/></div>
+        <div class="logos"><AuthPanel dark/></div>
         <!-- End Navigation Elements -->
         <!-- Navigation Menu -->
       </div>

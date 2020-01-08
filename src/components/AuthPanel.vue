@@ -10,7 +10,7 @@
         v-icon(small color="white") fab fa-twitter
   .flex-row.justify-end.align-center(v-else)
     .flex-row.align-center.p5
-      .p10-right.fs18 {{ getCurrentUser.displayName }}
+      .p10-right.fs18(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
       ProfileImage(:user="getCurrentUser")
     v-btn.logout(@click="logout" color="primary" flat)
       v-icon(small color="white") fas fa-sign-out-alt
@@ -21,6 +21,9 @@ import ProfileImage from '@/components/ProfileImage'
 import auth from '@/services/auth'
 
 export default {
+  props: {
+    dark: Boolean
+  },
   data() {
     return {
       hovered: false
