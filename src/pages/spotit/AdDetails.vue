@@ -1,6 +1,7 @@
 <template lang="pug">
   Page(:loading="!loaded")
-    AuthPanel
+    .p10-side.p20-bot
+      AuthPanel
     AdDetails(:ad="ad")
 </template>
 

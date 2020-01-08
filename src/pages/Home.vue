@@ -5,6 +5,7 @@ import home02 from '@/assets/home/images/antares/home_02.jpg'
 import home03 from '@/assets/home/images/antares/home_03.jpg'
 import logce from '@/assets/home/images/antares/logce.png'
 
+import AuthPanel from '@/components/AuthPanel'
 import ContactForm from '@/components/ContactForm'
 import Map from '@/components/map/Map'
 
@@ -43,11 +44,32 @@ export default {
     }
   },
   components: {
+    AuthPanel,
     ContactForm,
     Map
   }
 }
 </script>
+
+<style>
+.logos {
+  width: auto;
+  height: auto;
+  float: left;
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%)
+}
+
+@media only screen and (max-width:1120px) {
+  .logos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+</style>
 
 <template>
   <div class="home-page">
@@ -70,6 +92,7 @@ export default {
             <img :src="logce" alt="Website Logo">
           </a>
         </div>
+        <div class="logos"><AuthPanel/></div>
         <!-- End Navigation Elements -->
         <!-- Navigation Menu -->
       </div>

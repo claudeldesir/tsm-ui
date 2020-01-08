@@ -1,7 +1,8 @@
 <template lang="pug">
   Page(:loading="!loaded")
     .p20-side
-      AuthPanel
+      .p10-side.p20-bot
+        AuthPanel
       v-text-field.w100(v-model="newMessage" @keyup.enter="postMessage" solo placeholder="Write anything!" hide-details outline)
       br
       div(v-if="!messages.length")

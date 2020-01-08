@@ -1,7 +1,8 @@
 <template lang="pug">
   Page(:loading="!loaded")
     .p20-side
-      AuthPanel
+      .p10-side.p20-bot
+        AuthPanel
       div
         h1 Spot It
         br
