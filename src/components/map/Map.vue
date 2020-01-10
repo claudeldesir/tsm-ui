@@ -61,6 +61,8 @@ export default {
   },
   methods: {
     pointSelected(pointData) {
+      if (pointData.stationId == null) return
+
       const noPoint = !this.selectedPoint
       const changePoint = this.selectedPoint ? this.selectedPoint.id !== pointData.id : false
       const show = noPoint || changePoint
