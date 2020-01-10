@@ -73,7 +73,7 @@
                     .flex-1
                       v-combobox(:items="stations" :value="props.item" @change="updateDotStation(props.item, $event)" hide-details outline item-text="title" item-value="id" placeholder="Station" solo)
                         template(slot="selection" slot-scope="data")
-                          span {{ getStation(props.item.stationId).title }}
+                          span {{ props.item.stationId != null ? getStation(props.item.stationId).title : '' }}
                     .flex-5
 </template>
 

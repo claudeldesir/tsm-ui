@@ -14,15 +14,18 @@ module.exports = {
     proxyTable: {
       '/api': {
         target: serverName,
-        changeOrigin: true
+        changeOrigin: true,
+        secure: false
       },
       '/contact-us': {
         target: serverName,
-        changeOrigin: true
+        changeOrigin: true,
+        secure: false
       },
       '/public': {
         target: serverName,
-        changeOrigin: true
+        changeOrigin: true,
+        secure: false
       }
     },
     // Various Dev Server settings
