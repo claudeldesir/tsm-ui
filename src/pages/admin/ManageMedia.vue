@@ -55,7 +55,7 @@
             v-form(ref="mediaForm")
               v-combobox(v-model="mediaObj.locId" :items="stations" item-text="title" item-value="id" :rules="[(v) => v != null || 'Station is required']" :return-object="false" required placeholder="Station" solo outline)
                 template(slot="selection" slot-scope="data")
-                  span {{ getStation(data.item).title }}
+                  span {{ data.item != null ? getStation(data.item).title : '' }}
               v-text-field(v-model="mediaObj.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo outline)
               v-text-field(v-model="mediaObj.url" :rules="[(v) => !!v || 'Media URL is required']" required placeholder="Media URL" solo outline)
               v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo outline)
