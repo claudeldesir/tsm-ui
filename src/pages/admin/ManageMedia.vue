@@ -26,9 +26,9 @@
             h3 Add new station
             br
             v-form(ref="stationForm")
-              v-text-field(v-model="station.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title")
-              v-textarea(v-model="station.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description")
+              v-combobox(v-model="station.title" :items="dotStationPoints" item-value="title" item-text="title" :return-object="false" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title")
               v-select(v-model="station.line" :items="lines" item-text="title" item-value="id" :rules="[(v) => v != null || 'Line is required']" required placeholder="Line")
+              v-textarea(v-model="station.desc" placeholder="Description")
             v-btn(@click="submitStation" color="primary" outline) Submit
           .p30-top
         v-tab-item.flex-col
@@ -39,9 +39,8 @@
               template(slot="items" slot-scope="props")
                 td
                   a(:href="props.item.url" target="_blank") {{ props.item.title }}
-                td {{ props.item.type | mediaType }}
+                td {{ getStation(props.item.locId).title }}
                 td {{ props.item.hasActiveSub | yesno }}
-                td {{ props.item.subscriber.id }}
                 td
                   .flex-row
                     v-btn.no-margin(@click="goToDetails(props.item.id)" small outline) Details
@@ -71,7 +70,7 @@
                 td
                   .flex-row.align-center.p10-ver
                     .flex-1
-                      v-combobox(:items="stations" :value="props.item" @change="updateDotStation(props.item, $event)" hide-details outline item-text="title" item-value="id" placeholder="Station" solo)
+                      v-combobox(:items="stations" :value="props.item" @change="updateDotStation(props.item, $event)" hide-details item-text="title" item-value="id" placeholder="Station")
                         template(slot="selection" slot-scope="data")
                           span {{ props.item.stationId != null ? getStation(props.item.stationId).title : '' }}
                     .flex-5
@@ -102,9 +101,8 @@ export default {
       mediaObj: {},
       mediaHeaders: [
         { text: 'Title', value: 'title' },
-        { text: 'Type', value: 'type' },
+        { text: 'Station', value: null },
         { text: 'Active subscription', value: 'hasActiveSub' },
-        { text: 'Subscriber ID', value: null },
         { text: 'Actions', value: null }
       ],
       businesses: [],
@@ -116,6 +114,20 @@ export default {
       loaded: false
     }
   },
+  computed: {
+    dotStationPoints() {
+      return this.dotStations
+        .filter(item => item.stationId == null)
+        .map((dotStation) => {
+          const point = mapPoints.find(item => item.id === dotStation.dot)
+          const dotStationPoint = {
+            ...dotStation,
+            title: point.name
+          }
+          return dotStationPoint
+        })
+    }
+  },
   methods: {
     initData() {
       this.loaded = false
@@ -123,7 +135,8 @@ export default {
         this.getStations(),
         this.getDotStations(),
         this.getActiveBusinesses(),
-        this.getMedia()])
+        this.getMedia()
+      ])
         .then(() => {
           this.loaded = true
         })

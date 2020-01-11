@@ -18,9 +18,7 @@
                 .flex-row.p5.align-center(v-if="descRequired")
                   v-text-field(v-model="fileObj.metadata.desc"
                     :rules="[(v) => !!v || 'Description is required']"
-                    required placeholder="Description"
-                    solo
-                    outline)
+                    required placeholder="Description")
 </template>
 
 <script>

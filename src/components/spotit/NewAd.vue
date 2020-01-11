@@ -6,16 +6,16 @@
       v-form(ref="adForm")
         .flex-row
           .flex-1
-            v-text-field(v-model="ad.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo)
-            v-textarea(v-model="ad.content" :rules="[(v) => !!v || 'Content is required']" required placeholder="Content" solo)
+            v-text-field(v-model="ad.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title")
+            v-textarea(v-model="ad.content" :rules="[(v) => !!v || 'Content is required']" required placeholder="Content")
             v-slider(v-model="ad.price" :label="'$'+ad.price" min="10" max="990" step="10" inverse-label)
           .p10-side
           .flex-1
-            v-text-field(v-model="ad.contactName" :rules="[(v) => !!v || 'Contact name is required']" required placeholder="Contact name" solo)
-            v-text-field(v-model="ad.address" :rules="[(v) => !!v || 'Address is required']" required placeholder="Address" solo)
-            v-text-field(v-model="ad.city" :rules="[(v) => !!v || 'City is required']" required placeholder="City" solo)
-            v-text-field(v-model="ad.postal" :rules="[(v) => !!v || 'Postal is required']" required placeholder="Postal" solo)
-            v-text-field(v-model="ad.phone" :rules="[(v) => !!v || 'Phone is required']" required placeholder="Phone" solo)
+            v-text-field(v-model="ad.contactName" :rules="[(v) => !!v || 'Contact name is required']" required placeholder="Contact name")
+            v-text-field(v-model="ad.address" :rules="[(v) => !!v || 'Address is required']" required placeholder="Address")
+            v-text-field(v-model="ad.city" :rules="[(v) => !!v || 'City is required']" required placeholder="City")
+            v-text-field(v-model="ad.postal" :rules="[(v) => !!v || 'Postal is required']" required placeholder="Postal")
+            v-text-field(v-model="ad.phone" :rules="[(v) => !!v || 'Phone is required']" required placeholder="Phone")
             v-checkbox(v-model="ad.contactByEmail" label="Contact by email")
             v-checkbox(v-model="ad.contactByPhone" label="Contact by phone")
         .flex-row
