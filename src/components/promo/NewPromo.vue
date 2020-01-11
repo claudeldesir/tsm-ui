@@ -4,8 +4,8 @@
       h2 Create new promo
       br
       v-form(ref="promoForm")
-        v-text-field(v-model="promo.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo outline)
-        v-text-field(v-model="promo.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo outline)
+        v-text-field(v-model="promo.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title")
+        v-text-field(v-model="promo.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description")
         v-checkbox(v-model="promo.active" label="Active")
         .flex-row
           v-btn.no-margin(@click="submitPromo" color="success" outline) Submit

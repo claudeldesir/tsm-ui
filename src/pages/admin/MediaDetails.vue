@@ -1,5 +1,5 @@
 <template lang="pug">
-  Page.p20(:loading="!loaded")
+  Page.p20(:loading="!loaded" :isAdmin="true")
     h1 {{ media.title }}
     br
     v-card

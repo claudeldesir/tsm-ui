@@ -1,5 +1,5 @@
 <template lang="pug">
-  Page(:loading="!loaded")
+  Page(:loading="!loaded" :isAdmin="true")
     .flex-col.p30-side
       h1 Manage stations and media
       .p10-ver
@@ -9,7 +9,7 @@
         v-tab(key="dots") Dots
         v-tab-item.flex-col
           .p15-ver
-            h2 Stations
+            h3 Stations
             br
             v-data-table.elevation-1(:items="stations" :headers="stationHeaders")
               template(slot="items" slot-scope="props")
@@ -23,17 +23,17 @@
           .p30-top
           hr(style="border-top:0.8px solid white")
           .p15-top
-            h2 Add new station
+            h3 Add new station
             br
             v-form(ref="stationForm")
-              v-text-field(v-model="station.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo outline)
-              v-textarea(v-model="station.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo outline)
-              v-select(v-model="station.line" :items="lines" item-text="title" item-value="id" :rules="[(v) => v != null || 'Line is required']" required placeholder="Line" solo outline)
+              v-text-field(v-model="station.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title")
+              v-textarea(v-model="station.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description")
+              v-select(v-model="station.line" :items="lines" item-text="title" item-value="id" :rules="[(v) => v != null || 'Line is required']" required placeholder="Line")
             v-btn(@click="submitStation" color="primary" outline) Submit
           .p30-top
         v-tab-item.flex-col
           .p15-top
-            h2 Media
+            h3 Media
             br
             v-data-table.elevation-1(:items="media" :headers="mediaHeaders")
               template(slot="items" slot-scope="props")
@@ -50,20 +50,20 @@
           .p30-top
           hr(style="border-top:0.8px solid white")
           .p15-top
-            h2 Add new media
+            h3 Add new media
             br
             v-form(ref="mediaForm")
-              v-combobox(v-model="mediaObj.locId" :items="stations" item-text="title" item-value="id" :rules="[(v) => v != null || 'Station is required']" :return-object="false" required placeholder="Station" solo outline)
+              v-combobox(v-model="mediaObj.locId" :items="stations" item-text="title" item-value="id" :rules="[(v) => v != null || 'Station is required']" :return-object="false" required placeholder="Station")
                 template(slot="selection" slot-scope="data")
                   span {{ data.item != null ? getStation(data.item).title : '' }}
-              v-text-field(v-model="mediaObj.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title" solo outline)
-              v-text-field(v-model="mediaObj.url" :rules="[(v) => !!v || 'Media URL is required']" required placeholder="Media URL" solo outline)
-              v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description" solo outline)
-              v-select(v-model="mediaObj.entityId" :items="businesses" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business" solo outline)
+              v-text-field(v-model="mediaObj.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title")
+              v-text-field(v-model="mediaObj.url" :rules="[(v) => !!v || 'Media URL is required']" required placeholder="Media URL")
+              v-textarea(v-model="mediaObj.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description")
+              v-select(v-model="mediaObj.entityId" :items="businesses" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Business is required']" required placeholder="Business")
             v-btn(@click="submitMedia" color="primary" outline) Submit
         v-tab-item.flex-col
           .p15-top
-            h2 Dots
+            h3 Dots
             br
             v-data-table.elevation-1(:items="dotStations" :headers="dotStationHeaders")
               template(slot="items" slot-scope="props")
@@ -206,7 +206,8 @@ export default {
       return mapPoints.find(mapPoint => mapPoint.id === dotId) || {}
     },
     getStation(stationId) { // not api-related, workaround
-      return this.stations.find(station => station.id === stationId)
+      const obj = this.stations.find(station => station.id === stationId)
+      return obj || { title: '' } // another workaround
     },
     updateDotStation(dotStation, station) {
       if (station == null) return

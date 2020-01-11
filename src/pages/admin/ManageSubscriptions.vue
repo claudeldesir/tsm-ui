@@ -1,5 +1,5 @@
 <template lang="pug">
-  Page(:loading="!loaded")
+  Page(:loading="!loaded" :isAdmin="true")
     .flex-col.p30-side
       h1 Manage subscribers and subscriptions
       .p10-ver
@@ -8,7 +8,7 @@
         v-tab(key="subscriptions") Subscriptions
         v-tab-item.flex-col
           .p15-ver
-            h2 Subscribers
+            h3 Subscribers
             br
             v-data-table.elevation-1(:items="subscribers" :headers="subscriberHeaders")
               template(slot="items" slot-scope="props")
@@ -18,16 +18,16 @@
             .p30-top
             hr(style="border-top:0.8px solid white")
             .p15-top
-              h2 Add new subscriber
+              h3 Add new subscriber
               br
               v-form(ref="subscriberForm")
-                v-select(v-model="subscriber.userId" :items="users" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'User is required']" required placeholder="User" solo outline)
-                v-select(v-model="subscriber.type" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type" solo outline)
+                v-select(v-model="subscriber.userId" :items="users" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'User is required']" required placeholder="User")
+                v-select(v-model="subscriber.type" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type")
               v-btn(@click="submitSubscriber" color="primary" outline) Submit
             .p30-top
         v-tab-item.flex-col
           .p15-top
-            h2 Subscriptions
+            h3 Subscriptions
             br
             v-data-table.elevation-1(:items="subscriptions" :headers="subscriptionHeaders")
               template(slot="items" slot-scope="props")
@@ -38,11 +38,11 @@
             .p30-top
             hr(style="border-top:0.8px solid white")
             .p15-top
-              h2 Add new subscription
+              h3 Add new subscription
               br
               v-form(ref="subscriptionForm")
-                v-select(v-model="subscription.entityId" :items="subscribers" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber" solo outline)
-                v-select(v-model="subscription.pkgId" :items="packages" item-text="desc" item-value="id" :rules="[(v) => v != null || 'Package is required']" required placeholder="Package" solo outline)
+                v-select(v-model="subscription.entityId" :items="subscribers" item-text="user.email" item-value="id" :rules="[(v) => v != null || 'Subscriber is required']" required placeholder="Subscriber")
+                v-select(v-model="subscription.pkgId" :items="packages" item-text="desc" item-value="id" :rules="[(v) => v != null || 'Package is required']" required placeholder="Package")
               v-btn(@click="submitSubscription" color="primary" outline) Submit
 </template>
 

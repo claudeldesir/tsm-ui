@@ -21,10 +21,15 @@
         br
         span Back
       .flex-1
-      button.btn.btn-outline-light.promoBtn(@click="$emit('map:generateCode', promo.id)")
-        i.fas.fa-gift
-        br
-        span GET A FREE GIFT!
+      .flex-col.align-center
+        button.btn.btn-outline-light.promoBtn(
+          @click="$emit('map:generateCode', promo.id)"
+          :disabled="!getCurrentUser"
+        )
+          i.fas.fa-gift
+          br
+          span GET A FREE GIFT!
+        i(v-if="!getCurrentUser") Please log in
 </template>
 
 <script>

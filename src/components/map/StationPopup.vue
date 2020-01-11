@@ -82,8 +82,6 @@ export default {
     generateCode(promoId) {
       if (this.getCurrentUser) {
         Api.reqPromoCode(promoId)
-      } else {
-        console.log('please log in') // temp
       }
     },
     // aux
