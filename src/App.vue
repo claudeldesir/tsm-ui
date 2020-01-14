@@ -1,5 +1,6 @@
 <template lang="pug">
   div(id="app")
+    notifications(group="basic")
     router-view
 </template>
 

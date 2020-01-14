@@ -82,6 +82,14 @@ export default {
     generateCode(promoId) {
       if (this.getCurrentUser) {
         Api.reqPromoCode(promoId)
+          .then(() => {
+            this.$notify({
+              group: 'basic',
+              type: 'basic',
+              title: 'Success',
+              text: 'Code generated! Please check your email'
+            })
+          })
       }
     },
     // aux

@@ -294,3 +294,13 @@
   background-color: rgba(0,0,0,0.2);
   left: auto;
 }
+.vue-notification {
+  &.basic {
+    margin-right: 10px;
+    margin-top: 10px;
+    background-color: #f5f5f5;
+    color: black;
+    border-left: 5px solid #bcbcbc;
+    font-size: 15px;
+  }
+}

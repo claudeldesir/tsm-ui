@@ -44,19 +44,32 @@
 <script>
 import Api from '@/services/api'
 
+const objTemplate = {
+  email: '',
+  subject: '',
+  msg: ''
+}
+
 export default {
   data() {
     return {
       contactObj: {
-        email: '',
-        subject: '',
-        msg: ''
+        ...objTemplate
       }
     }
   },
   methods: {
     onSubmit() {
       Api.contactUs(this.contactObj)
+        .then(() => {
+          this.$notify({
+            group: 'basic',
+            type: 'basic',
+            title: 'Success',
+            text: 'Message sent, thank you!'
+          })
+          this.contactObj = { ...objTemplate }
+        })
     }
   }
 }
