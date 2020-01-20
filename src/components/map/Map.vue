@@ -49,8 +49,10 @@ export default {
   },
   beforeDestroy() {
     const map = document.getElementById('map')
-    map.removeEventListener('mouseup', this.checkPropagation)
-    map.removeEventListener('mousedown', this.checkPropagation)
+    if (map) {
+      map.removeEventListener('mouseup', this.checkPropagation)
+      map.removeEventListener('mousedown', this.checkPropagation)
+    }
   },
   data() {
     return {

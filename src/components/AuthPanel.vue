@@ -11,9 +11,10 @@
   .flex-row.justify-end.align-center(v-else)
     .flex-row.align-center.p5
       .p10-right.fs18(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
-      ProfileImage(:user="getCurrentUser")
-    v-btn.logout(@click="logout" color="primary" flat)
-      v-icon(small color="white") fas fa-sign-out-alt
+      ProfileImage(:user="getCurrentUser" @onClick="gotoDashboard")
+    div
+      v-btn.logout(@click="logout" style="height:36px;" color="primary" flat)
+        v-icon(small color="white") fas fa-sign-out-alt
 </template>
 
 <script>
@@ -31,6 +32,9 @@ export default {
     }
   },
   methods: {
+    gotoDashboard() {
+      this.$router.push({ name: 'dashboard' })
+    },
     login(provider) {
       return auth.loginWithProvider(provider)
         .then(() => api.getUser())

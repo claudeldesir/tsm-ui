@@ -1,5 +1,5 @@
 <template lang="pug">
-  Page(:isAdmin="true")
+  Page(isAdmin)
     .flex-row
       .flex-1
       .flex-col.flex-2

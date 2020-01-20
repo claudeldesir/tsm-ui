@@ -1,5 +1,5 @@
 <template lang="pug">
-  Page(:loading="!loaded" :isAdmin="true")
+  Page(:loading="!loaded" isAdmin)
     .flex-col.p30-side
       h1 Manage subscribers and subscriptions
       .p10-ver

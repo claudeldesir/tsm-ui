@@ -7,6 +7,12 @@
       v-toolbar-items
         v-btn(flat :to="{ name: 'media' }") Media
         v-btn(flat :to="{ name: 'subscriptions' }") Subscriptions
+    v-toolbar(v-if="isUser" fixed flat)
+      router-link(:to="{ name: 'admin' }")
+        v-toolbar-title That's Montreal User
+      v-spacer
+      v-toolbar-items
+        AuthPanel
     v-content(style="padding-top:64px;")
       v-container(fluid)
         slot(v-if="!loading")
@@ -15,13 +21,19 @@
 </template>
 
 <script>
+import AuthPanel from '@/components/AuthPanel'
+
 export default {
   props: {
-    isAdmin: Boolean,
+    isAdmin: [Boolean, String],
+    isUser: Boolean,
     loading: {
       type: Boolean,
       default: false
     }
+  },
+  components: {
+    AuthPanel
   }
 }
 </script>

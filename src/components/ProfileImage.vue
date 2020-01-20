@@ -1,5 +1,5 @@
 <template lang="pug">
-  img.profile-img(:src="getImageUrl")
+  img.profile-img(:src="getImageUrl" @click="$emit('onClick')")
 </template>
 
 <script>

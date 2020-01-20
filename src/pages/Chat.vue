@@ -2,7 +2,7 @@
   Page(:loading="!loaded")
     .p20-side
       .p10-side.p20-bot
-        AuthPanel(dark)
+        AuthPanel
       v-text-field.w100(v-model="newMessage" @keyup.enter="postMessage" solo placeholder="Write anything!" hide-details outline)
       br
       div(v-if="!messages.length")
