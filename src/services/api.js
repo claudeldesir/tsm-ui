@@ -20,6 +20,11 @@ export default {
     return getAuthHeaders()
       .then(options => http.post('/chat', message, options))
   },
+  getUser() {
+    return getAuthHeaders()
+      .then(options => http.get('/auth', options))
+      .then(resp => resp.data)
+  },
   getUsers() {
     return http.get('/users')
   },

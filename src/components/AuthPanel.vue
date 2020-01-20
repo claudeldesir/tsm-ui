@@ -19,6 +19,7 @@
 <script>
 import ProfileImage from '@/components/ProfileImage'
 import auth from '@/services/auth'
+import api from '@/services/api'
 
 export default {
   props: {
@@ -32,6 +33,7 @@ export default {
   methods: {
     login(provider) {
       return auth.loginWithProvider(provider)
+        .then(() => api.getUser())
     },
     logout() {
       return auth.logout()
