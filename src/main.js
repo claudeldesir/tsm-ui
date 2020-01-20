@@ -13,6 +13,7 @@ import VueTimeago from 'vue-timeago'
 import SocialSharing from 'vue-social-sharing'
 import VueCarousel from 'vue-carousel'
 import VueYoutube from 'vue-youtube'
+import VueQRCodeComponent from 'vue-qr-generator'
 
 import authMixin from '@/mixins/auth'
 import config from '@/config/appConfig.json'
@@ -41,8 +42,11 @@ Vue.config.productionTip = false
 
 Vue.use(VueFire)
 Vue.mixin(authMixin)
+Vue.component('qr-code', VueQRCodeComponent)
+
 Vue.component('Page', Page)
 Vue.component('Loading', Loading)
+
 Vue.filter('date', dateFilter)
 Vue.filter('subType', subscriberTypeFilter)
 Vue.filter('subStatus', subscriptionStatusFilter)
@@ -54,15 +58,18 @@ firebase.initializeApp(config.firebaseConfig)
 
 const socketIoConfig = config.socketIoConfig
 
-Vue.use(new VueSocketIO({
-  debug: false,
-  connection: socketIoConfig.connectionUrl,
-  vuex: {
-    store,
-    actionPrefix: 'SOCKET_',
-    mutationPrefix: 'SOCKET_'
-  }
-}))
+const useSocket = false
+if (useSocket) {
+  Vue.use(new VueSocketIO({
+    debug: false,
+    connection: socketIoConfig.connectionUrl,
+    vuex: {
+      store,
+      actionPrefix: 'SOCKET_',
+      mutationPrefix: 'SOCKET_'
+    }
+  }))
+}
 
 Vue.use(VueTimeago, {
   name: 'Timeago',

@@ -6,6 +6,7 @@ import AdminHome from '@/pages/admin/AdminHome'
 import ManageSubscriptions from '@/pages/admin/ManageSubscriptions'
 import ManageMedia from '@/pages/admin/ManageMedia'
 import MediaDetails from '@/pages/admin/MediaDetails'
+import Dashboard from '@/pages/user/Dashboard'
 import SpotIt from '@/pages/spotit/SpotIt'
 import AdDetails from '@/pages/spotit/AdDetails'
 
@@ -62,6 +63,11 @@ export default new Router({
       path: '/spotit',
       name: 'spotit',
       component: SpotIt
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard
     },
   ],
   mode: 'history'

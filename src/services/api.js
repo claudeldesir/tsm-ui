@@ -114,14 +114,18 @@ export default {
   deletePromo(promoId) {
     return http.delete(`/promos/${promoId}`)
   },
-  reqPromoCode(promoId) {
-    return getAuthHeaders()
-      .then(options => http.post('/req-code', { promoId }, options))
-  },
   getCodes() {
     return getAuthHeaders()
       .then(options => http.get('/codes', options))
       .then(resp => resp.data)
+  },
+  reqPromoCode(promoId) {
+    return getAuthHeaders()
+      .then(options => http.post('/req-code', { promoId }, options))
+  },
+  banCode(code) {
+    return getAuthHeaders()
+      .then(options => http.post('/ban-code', { code }, options))
   },
   getAds() {
     return http.get('/ads')
