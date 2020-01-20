@@ -1,14 +1,21 @@
 <template lang="pug">
   Page.p20(:loading="!loaded" isAdmin)
-    h1 {{ media.title }}
+    h3 Media details
     br
     v-card
       .p10.flex-row
         .p10.flex-1
-          h3 {{ media.desc }}
+          v-text-field.fs20(v-model="media.title" filled label="Title")
+          v-textarea(v-model="media.desc" filled label="Description")
+          v-combobox(v-model="media.locId" :items="stations" item-text="title" item-value="id" :return-object="false" label="Station")
+            template(slot="selection" slot-scope="data")
+              span {{ data.item != null ? getStation(data.item).title : '' }}
           .p10
           v-checkbox(v-model="media.hasActiveSub" hide-details disabled label="Active subscription")
+          .p10
+          v-btn(@click="updateMedia" color="success" outline) Update
         .p10.flex-1
+          v-text-field.fs18(v-model="media.url" filled label="Media URL")
           div(v-if="media.type === 0")
             YoutubeContainer(:videoUrl="media.url")
     br
@@ -16,9 +23,12 @@
     .frame.p10(v-if="newPromo")
       NewPromo(@promoSubmitted="promoSubmitted" @cancel="newPromo=false")
     br
+    br
+    h3 Promos
+    br
     v-layout(row wrap)
       v-flex.p10(v-for="promo in media.promos" :key="promo.id")
-        PromoItem(:promo="promo" @deletePromo="deletePromo")
+        PromoItem(:promo="promo" @updatePromo="updatePromo" @deletePromo="deletePromo")
 </template>
 
 <script>
@@ -35,15 +45,15 @@ export default {
     }
   },
   created() {
+    this.getStations()
     this.getMedia()
   },
-  data() {
-    return {
-      media: {},
-      newPromo: false,
-      loaded: false
-    }
-  },
+  data: () => ({
+    media: {},
+    stations: [],
+    newPromo: false,
+    loaded: false
+  }),
   methods: {
     getMedia() {
       this.loaded = false
@@ -51,6 +61,16 @@ export default {
         .then((res) => {
           this.media = res.data
           this.loaded = true
+        })
+    },
+    getStations() {
+      return Api.getStations()
+        .then((res) => {
+          this.stations = res.data.sort((a, b) => {
+            if (a.title > b.title) return 1
+            if (a.title > b.title) return -1
+            return 0
+          })
         })
     },
     promoSubmitted(data) {
@@ -66,12 +86,34 @@ export default {
             })
         })
     },
+    getStation(stationId) { // not api-related, workaround
+      const obj = this.stations.find(station => station.id === stationId)
+      return obj || { title: '' } // another workaround
+    },
+    updatePromo(promo) {
+      Api.updatePromo(promo)
+        .then(() => {
+          this.getMedia() // smarter
+        })
+    },
     deletePromo(promoId) {
       // TODO: Add dialog
       Api.deletePromo(promoId)
         .then(() => {
           this.getMedia() // smarter
         })
+    },
+    updateMedia() {
+      const { id, title, desc, url, locId } = this.media
+      const mediaObj = {
+        id,
+        title,
+        desc,
+        url,
+        locId
+      }
+      Api.postMedia(mediaObj)
+        .then(this.getMedia)
     }
   },
   components: {

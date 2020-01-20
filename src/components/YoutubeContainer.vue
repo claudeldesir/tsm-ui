@@ -9,6 +9,9 @@ export default {
     videoUrl: String,
     full: Boolean
   },
+  created() {
+    this.videoUrlVal = this.videoUrl
+  },
   data() {
     return {
       resize: true,
@@ -17,11 +20,12 @@ export default {
         controls: 0,
         autohide: 1
       },
+      videoUrlVal: ''
     }
   },
   methods: {
     getVideoId() {
-      return this.$youtube.getIdFromUrl(this.videoUrl)
+      return this.$youtube.getIdFromUrl(this.videoUrlVal)
     },
     toggleVideo(forceStop) {
       const youtubeEl = this.$refs.youtubeEl

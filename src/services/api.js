@@ -34,6 +34,9 @@ export default {
   postSubscriber(subscriber) {
     return http.post('/subscribers', subscriber)
   },
+  updateSubscriber(subscriber) {
+    return http.put('/subscribers', subscriber)
+  },
   getPackages() {
     return http.get('/packages')
   },
@@ -110,6 +113,9 @@ export default {
       method: 'POST',
       body: formData
     })
+  },
+  updatePromo(promo) {
+    return http.put(`/promos/${promo.id}`, promo)
   },
   deletePromo(promoId) {
     return http.delete(`/promos/${promoId}`)

@@ -1,10 +1,10 @@
 <template lang="pug">
   .image-upload
-    .flex-column.align-center
+    .flex-col.align-center.justify-center
       label
         form(ref="fileform")
           input.hidden(type="file" ref="fileInput" @change="fileBrowsed")
-          .flex-column.h100.justify-center
+          .flex-col.h100.justify-center
             .p10.fs25 Drag and drop
             .far.fa-copy.fs60
             .p10.fs25 Click to browse

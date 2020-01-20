@@ -1,11 +1,11 @@
 <template lang="pug">
-  .flex-row.space-between.w100
+  .flex-row.space-between.align-center.w100
     .flex-5.p10
       h2 Create new promo
       br
       v-form(ref="promoForm")
         v-text-field(v-model="promo.title" :rules="[(v) => !!v || 'Title is required']" required placeholder="Title")
-        v-text-field(v-model="promo.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description")
+        v-textarea(v-model="promo.desc" :rules="[(v) => !!v || 'Description is required']" required placeholder="Description")
         v-checkbox(v-model="promo.active" label="Active")
         .flex-row
           v-btn.no-margin(@click="submitPromo" color="success" outline) Submit
@@ -21,14 +21,12 @@
 import ImageUpload from '@/components/ImageUpload'
 
 export default {
-  data() {
-    return {
-      promo: {
-        active: true
-      },
-      promoImages: []
-    }
-  },
+  data: () => ({
+    promo: {
+      active: true
+    },
+    promoImages: []
+  }),
   methods: {
     submitPromo() {
       const promoValid = this.$refs.promoForm.validate()

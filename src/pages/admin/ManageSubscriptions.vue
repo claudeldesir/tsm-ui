@@ -14,7 +14,8 @@
               template(slot="items" slot-scope="props")
                 td {{ props.item.user.displayName }}
                 td {{ props.item.user.email }}
-                td {{ props.item.type | subType }}
+                td
+                  v-select(:value="props.item.type" @change="subtypeChanged(props.item.id, $event)" :items="subscriberTypes" :rules="[(v) => v != null || 'Type is required']" required placeholder="Type")
             .p30-top
             hr(style="border-top:0.8px solid white")
             .p15-top
@@ -139,6 +140,13 @@ export default {
           this.$refs.subscriptionForm.reset()
         })
     },
+    subtypeChanged(subId, type) {
+      const reqObj = {
+        id: subId,
+        type
+      }
+      Api.updateSubscriber(reqObj)
+    }
   }
 }
 </script>

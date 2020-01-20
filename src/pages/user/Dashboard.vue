@@ -8,11 +8,11 @@
       div(v-else)
         v-card.p20(v-for="codeObj in codes" :key="codeObj.id")
           .flex-row
-            .flex-col.flex-1
+            .w50.flex-col
               h4 {{ codeObj.promo.title }}
               .p5
               h5 {{ codeObj.promo.desc }}
-            .flex-col.flex-1.align-center
+            .w50.flex-col.align-center
               h4 {{ codeObj.code }}
               .p5
               qr-code(:text="codeObj.code" :size="100")
