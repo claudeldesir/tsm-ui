@@ -62,7 +62,7 @@ export default {
   float: right;
 }
 
-@media only screen and (max-width:1120px) {
+@media only screen and (max-width:767px) {
   .logos {
     width: 100%;
     display: flex;
