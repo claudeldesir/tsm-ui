@@ -120,8 +120,13 @@ export default {
   deletePromo(promoId) {
     return http.delete(`/promos/${promoId}`)
   },
-  getCodes() {
-    return getAuthHeaders()
+  getCodes(promoId) {
+    let opts = {}
+    if (promoId) {
+      const params = { promoId }
+      opts = { params }
+    }
+    return getAuthHeaders(opts)
       .then(options => http.get('/codes', options))
       .then(resp => resp.data)
   },

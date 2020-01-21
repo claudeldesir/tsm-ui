@@ -28,7 +28,11 @@
     br
     v-layout(row wrap)
       v-flex.p10(v-for="promo in media.promos" :key="promo.id")
-        PromoItem(:promo="promo" @updatePromo="updatePromo" @deletePromo="deletePromo")
+        PromoItem(
+          :promo="promo"
+          @updatePromo="updatePromo"
+          @deletePromo="deletePromo"
+        )
 </template>
 
 <script>
