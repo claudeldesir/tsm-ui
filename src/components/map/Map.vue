@@ -38,7 +38,9 @@ export default {
         dotStations.forEach((dotStation) => {
           const mapPoint = mapPoints.find(mapPointObj => mapPointObj.id === dotStation.dot)
           mapPoint.stationId = dotStation.stationId
-          this.mapPoints.push(mapPoint)
+          if (dotStation.location.medias.length > 0) {
+            this.mapPoints.push(mapPoint)
+          }
         })
       })
   },
