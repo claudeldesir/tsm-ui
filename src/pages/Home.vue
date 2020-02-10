@@ -351,7 +351,6 @@ export default {
         <li><a href="#home"><span>Home</span></a></li>
         <li><a href="#map"><span>Map</span></a></li>
         <li><a href="#about"><span>About</span></a></li>
-        <li><a href="#subscribe"><span>Subscribe</span></a></li>
         <li><a href="#apps"><span>Our apps</span></a></li>
         <li><a href="#video"><span>Video</span></a></li>
         <li><a href="#contact"><span>Contact</span></a></li>
@@ -683,7 +682,7 @@ export default {
               <!-- Back Face -->
               <div style="background-color:#006a9e!important" class="back bg-colored">
                 <div style="font-size:1.2em" class="box-details">
-                  <p style="color:white">Under each videos, you will find special promotions. Subscribe to us with the 3 easy steps method and enjoy weekly promotions!</p>
+                  <p style="color:white">Under each videos, you will find special promotions. Sign up to our platform and enjoy weekly promotions!</p>
                 </div>
               </div>
             </div>
@@ -696,36 +695,19 @@ export default {
     </section>
     <!-- END ABOUT SECTION -->
 
-    <section id="subscribe">
-      <div>
-        <!-- Relative Container for animated gradient bg -->
-        <div class="relative z-index-1 xl-py">
-          <!-- Animated Gradient, you can set the bg size, colors and opacity with class -->
-          <div class="animated-gradient" data-gradient-size="600" data-gradient-bg="#1a2a6c, #b21f1f, #fdbb2d, #9733EE"></div>
-          <i style="display:block;margin:0 auto;font-size:5em" class="t-center white fas fa-gift hvr-buzz"></i>
-          <h3 class="t-center white">GET A FREE GIFT FOR EACH VIDEO.-</h3>
-          <h5 class="white t-center">Subcribe with your social media account, or send your email here.</h5>
-          <div class="t-center" style="width:50%;display:block;margin:0 auto;color:white">
-            <input type="text" style="margin-top:2%;color:white;" placeholder="YOUR EMAIL ADDRESS HERE:" id="subscribeBox" class="t-center classic_form big radius-lg bs-xl-hover light-placeholder bs-xl-focus">
-          </div>
-          <div class="t-center v-normal-mb">
-            <a class="xl-btn radius-lg icon-animated slow1 dark bold bg-white bs-lg-hover" id="subscribeBtn" role="button">SUBSCRIBE</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="special-area appContainer" id="apps" style="background-size:'100%;100%'; background-image: url(&quot;https://image.ibb.co/eK5DR8/ap.jpg&quot;);">
+    <section class="special-area appContainer" id="apps">
       <div>
         <div>
           <div class="row">
             <div class="col-sm-6 col-xs-6 t-center">
               <div class="special_description_img">
+                <img src="https://i.ibb.co/r2xbYj5/apps.png">
               </div>
             </div>
             <div style="margin-top:100px" class="simsov col-sm-6 col-xs-6 t-left">
               <div class="container special_description_content">
-                <h2 style="color:white">We are everywhere!</h2>
-                <p style="color:white;font-size:2em">We have a beautiful and simple app for both Android and iOS.
+                <h2 style="color:black">We are everywhere!</h2>
+                <p style="color:black;font-size:2em">We have a beautiful and simple app for both Android and iOS.
                   It's totally free, so make sure to give it a go!
                 </p>
                 <div class="app-download-area">
