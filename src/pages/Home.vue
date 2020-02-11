@@ -117,7 +117,7 @@ export default {
               data-transform_out="opacity:0;s:300;s:300;"
               data-hoffset="['0','0','0','0']"
               data-voffset="['-90','-70','-60','-60']">
-              Cool Places. Good Deals. <span class="theme-primary-text"> Be V.I.P</span>
+              Cool Places. Good Deals. <span class="theme-primary-text"> Be V.I.P.</span>
             </div>
             <!-- Layer -->
             <div class="tp-caption gray1 nowrap uppercase rs-parallaxlevel-0"
@@ -195,7 +195,7 @@ export default {
       <!-- Home Page Note -->
       <div class="page-note fullwidth c-default clearfix">
         <!-- Left Note -->
-        <div class="left-note border-colored uppercase white">
+        <div class="left-note primary-border uppercase white">
           <p>
             <i class="fas fa-globe"></i> Made for <span class="theme-primary-text"> travelers.</span><br> <i class="fas fa-gift"></i> Watch videos and earn rewards. <br><i class="fab fa-rebel"></i>  Be rebel, be smart.
           </p>
@@ -259,7 +259,7 @@ export default {
             <div class="cbp-caption">
               <div class="cbp-caption-defaultWrap">
                 <!-- Icon -->
-                <i class="icon-trophy"></i>
+                <i class="fas fa-trophy"></i>
                 <!-- Title -->
                 WHAT IS THAT'S MONTREAL AND HOW DOES IT WORK?
               </div>
@@ -488,7 +488,7 @@ export default {
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="t-center py" style="background-color: #000;">
+    <section id="about" class="t-center py-5" style="background-color: #000;">
       <!-- Title -->
       <h1 class="antitle light-title white">
         WE ARE LOOKING FOR YOU. LET'S EXPOSE YOUR BUSINESS TO A NEW LEVEL.
@@ -576,36 +576,36 @@ export default {
     <!-- END ABOUT SECTION -->
 
     <section class="special-area" id="apps">
-      <div class="row align-center">
-        <div class="col-sm-6 col-xs-12 t-center">
-          <img width="100%" src="https://i.ibb.co/r2xbYj5/apps.png">
-        </div>
-        <div class="simsov col-sm-6 col-xs-12 t-left">
-          <div class="container special_description_content">
-            <h2 class="everywhere">We are everywhere!</h2>
-            <div class="p30-bot"></div>
-            <p style="color:black;font-size:2em">We have a beautiful and simple app for both Android and iOS.
-              It's totally free, so make sure to give it a go!
-            </p>
-            <div class="p25-bot"></div>
-            <div class="row app-download-area">
-              <div class="col-md-6 col-sm-12 col-xs-12 app-button-wrapper">
-                <a href="#" class="t-center app-button app-android flex-row align-center">
-                  <div class="flex-row align-center">
-                    <i class="fs24 fab fa-android"></i>
-                    <div class="p5"></div>
-                    <h3>Android</h3>
-                  </div>
-                </a>
-              </div>
-              <div class="col-md-6 col-xs-12 app-button-wrapper">
-                <a href="#" class="t-center app-button app-ios flex-row align-center">
-                  <div class="flex-row align-center">
-                    <i class="fs24 fab fa-apple"></i>
-                    <div class="p5"></div>
-                    <h3>iOS</h3>
-                  </div>
-                </a>
+      <div class="container">
+        <div class="row align-center">
+          <div class="col-sm-6 col-xs-12 t-center order-2 order-sm-first pt-5 py-sm-0">
+            <img width="100%" src="https://i.ibb.co/r2xbYj5/apps.png">
+          </div>
+          <div class="col-sm-6 col-xs-12 t-left">
+            <div class="t-center-sm">
+              <h2 class="everywhere">We are everywhere!</h2>
+              <div class="p30-bot"></div>
+              <p style="color:black;font-size:2em">We have a beautiful and simple app for both Android and iOS. It's totally free, so make sure to give it a go!</p>
+              <div class="p25-bot"></div>
+              <div class="row app-download-area">
+                <div class="col-md-6 col-sm-12 col-xs-12 app-button-wrapper">
+                  <a href="#" class="t-center app-button app-android flex-row align-center">
+                    <div class="flex-row align-center">
+                      <i class="fs24 fab fa-android"></i>
+                      <div class="p5"></div>
+                      <h3>Android</h3>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-6 col-xs-12 app-button-wrapper">
+                  <a href="#" class="t-center app-button app-ios flex-row align-center">
+                    <div class="flex-row align-center">
+                      <i class="fs24 fab fa-apple"></i>
+                      <div class="p5"></div>
+                      <h3>iOS</h3>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -613,16 +613,16 @@ export default {
       </div>
     </section>
     <!-- CONTACT SECTION -->
-    <section id="contact" class="contact-type-1 normal font-16">
+    <section id="contact" class="contact-type-1 py-5 normal font-16">
       <!-- Contact Container -->
       <div class="container">
         <div class="row">
           <!-- Address -->
           <div class="t-left address col-sm-6 col-xs-12">
             <!-- Title -->
-            <h3 class="contact-title uppercase t-center-sm no-pm">GET <span class="theme-secondary-text">INVOLVED!</span></h3>
+            <h3 class="contact-title uppercase t-center-sm no-pm">GET INVOLVED!</h3>
             <!-- Callout -->
-            <div class="qdr-callout white-bg my-30 light border-colored">
+            <div class="qdr-callout my-20 light primary-border">
               <h3 class="light no-pm">
                 Our mediatouristic platform is 100% unique in the world.
               </h3>
@@ -630,30 +630,32 @@ export default {
                 Let's expose your local business to a new crowd, build new ideas, we want to hear from you! Our potential is to make shine yours!
               </p>
             </div>
-            <div class="ikoni">
-              <!-- Basic Address -->
-              <p>
-                <span class="fas fa-home"></span>
-                <span>Montreal, H1V-2X8, Canada</span>
-              </p>
-              <!-- Phone -->
-              <p>
-                <span class="fas fa-phone"></span>
-                <a href="tel:+1.438.351.0112" class="slow normal colored-hover">+1.438.351.0112</a>
-              </p>
-              <!-- E-Mail -->
-              <p>
-                <span class="fas fa-envelope"></span>
-                <a href="mailto:info@thatsmontreal.com" class="slow normal colored-hover">info@thatsmontreal.com</a>
-              </p>
-              <!-- Web -->
-              <p>
-                <span class="fas fa-globe"></span>
-                <a href="https://thatsmontreal.com" target="_blank" class="slow normal colored-hover">www.thatsmontreal.com</a>
-              </p>
+            <div class="flex-col align-items-center align-items-sm-start">
+              <div class="t-left">
+                <!-- Basic Address -->
+                <p>
+                  <span class="fas fa-home theme-primary-text"></span>
+                  <span>Montreal, H1V-2X8, Canada</span>
+                </p>
+                <!-- Phone -->
+                <p>
+                  <span class="fas fa-phone theme-primary-text"></span>
+                  <a href="tel:+1.438.351.0112" class="slow normal colored-hover">+1.438.351.0112</a>
+                </p>
+                <!-- E-Mail -->
+                <p>
+                  <span class="fas fa-envelope theme-primary-text"></span>
+                  <a href="mailto:info@thatsmontreal.com" class="slow normal colored-hover">info@thatsmontreal.com</a>
+                </p>
+                <!-- Web -->
+                <p>
+                  <span class="fas fa-globe theme-primary-text"></span>
+                  <a href="https://thatsmontreal.com" target="_blank" class="slow normal colored-hover">www.thatsmontreal.com</a>
+                </p>
+              </div>
             </div>
             <!-- Google Map Button -->
-            <a style="margin-top:20px" href="https://www.google.com/maps/d/viewer?hl=en&msa=0&z=10&ie=UTF8&mid=1ZQ0O34TiFpL7j6P5QbJRvvXl3OI&ll=45.521607696857004%2C-73.602781" target="_blank" class="click-effect contact-button mt-50 bg-colored-hover white-hover slow">
+            <a target="_blank" class="click-effect contact-button mt-50 primary-hover white-hover slow mt-5" href="https://www.google.com/maps/d/viewer?hl=en&msa=0&z=10&ie=UTF8&mid=1ZQ0O34TiFpL7j6P5QbJRvvXl3OI&ll=45.521607696857004%2C-73.602781">
             Show Google Map</a>
           </div>
           <!-- End Address -->
@@ -671,24 +673,27 @@ export default {
 
     <!-- FOOTER -->
     <footer id="footer" class="classic_footer font-15 normal">
-      <!-- Container -->
-      <div class="t-center zimz footer-body container">
-        <h6 class="tekst xs-mt xxs-mb bold gray8">FOLLOW US</h6>
-        <a href="#" class="icon-xs radius bg-dark facebook white-hover slow1"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="icon-xs radius bg-dark twitter white-hover slow1"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="icon-xs radius bg-dark instagram white-hover slow1"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="icon-xs radius bg-dark pinterest white-hover slow1"><i class="fab fa-pinterest"></i></a>
-      </div>
-      <!-- End Column -->
-      <!-- End Container -->
-      <!-- Footer Bottom -->
-      <div class="footer-bottom py-3">
+      <div class="footer-bottom py-4">
         <div class="container">
           <div class="d-flex flex-md-row flex-col align-center t-center-xs">
-            <div class="flex-row align-center t-left t-center-xs py-3 py-sm-0">
+
+            <div class="flex-row align-center t-left t-center-xs py-2 py-md-0 abs-third">
               <img :src="logce" alt="logo icon" class="logo">
             </div>
-            <div class="flex-col justify-center align-items-md-end align-items-center">
+
+            <div class="t-center">
+              <div class="flex-col pb-4 pb-md-0">
+                <h6 class="tekst xs-mt xxs-mb bold gray8">FOLLOW US</h6>
+                <div class="flex-row justify-center text-white">
+                  <a href="#" class="icon-xs radius bg-dark facebook slow1 mr-1"><i class="fab fa-facebook"></i></a>
+                  <a href="#" class="icon-xs radius bg-dark twitter slow1 mr-1"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="icon-xs radius bg-dark instagram slow1 mr-1"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="icon-xs radius bg-dark pinterest slow1 mr-1"><i class="fab fa-pinterest"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-col justify-center align-items-md-end align-items-center abs-third">
               <div class="flex-row t-center-xs" style="line-height: 1.35">
                 <a href="#" target="_blank" class="gray6-hover underline-hover">Terms and Condition</a>&nbsp;|&nbsp;
                 <a href="#" target="_blank" class="gray6-hover underline-hover">Privacy Policy</a>
@@ -698,6 +703,7 @@ export default {
                 <a href="https://headboxmedias.com" target="_blank" class="colored-hover underline-hover">Headbox Medias</a>.
               </div>
             </div>
+
           </div>
         </div>
       </div>
