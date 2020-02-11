@@ -13,7 +13,7 @@
             paginationColor="#555")
             slide(v-for="promo in promos" :key="promo.id")
               .flex-col.h100
-                div
+                .relative
                   ImageItem(:image="getOneImageForPromo(promo)" original)
                   .w100.h100.overlayz
                 .flex-1

@@ -10,7 +10,7 @@
         paginationActiveColor="#fff"
         paginationColor="#555")
         slide(v-for="promoImage in promoImages" :key="promoImage.id")
-          div
+          .relative
             ImageItem(:image="promoImage" original)
             .w100.h100.overlayz
     .p5-ver.w100(v-if="promoImages.length > 1")

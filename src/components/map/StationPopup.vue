@@ -1,7 +1,7 @@
 <template lang="pug">
   div(:style="getStyle" ref="stationPopup" :class="{'station-popup': true, 'full-screen': fullscreen}")
-    .flex-col.white.br5.tiny-border(:style="{'height': fullscreen ? '92vh' : 'inherit' + 'px'}")
-      .flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
+    .flex-col.white--text.br5.fat-outline(:style="{'height': fullscreen ? '92vh' : 'inherit' + 'px'}")
+      .absolute.abs-right.flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
         i.fs20.p5.fas.fa-times
       div(v-if="loaded")
         v-slide-x-transition(leave-absolute hide-on-leave)
@@ -136,16 +136,17 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .station-popup {
+    z-index: 999;
     position: absolute;
-    background: rgba(0,0,0,0.6);
+    background:black;
     width: 30%;
     min-width: 600px;
-  }
 
-  .station-popup.full-screen {
-    position: fixed !important;
-    width: 98% !important;
+    .full-screen {
+      position: fixed !important;
+      width: 98% !important;
+    }
   }
 </style>

@@ -1,17 +1,15 @@
 @import "./variables.scss";
 @import "./transitions.scss";
 
+.lato {
+  font-family: lato, sans-serif;
+}
+
 .home-page {
   @import "../assets/home/css/bootstrap.css";
   @import "../assets/home/css/theme6da2.css";
   @import "../assets/home/css/antares/antares.css";
   @import "../assets/home/css/revolutionslider/settings.css";
-
-  .white {
-    &:not(#qfm_button) {
-      background-color: inherit !important;
-    }
-  }
 }
 
 .font-white {
@@ -94,6 +92,12 @@
 @for $i from 1 through 40 {
   .m#{$i * 5} {
     margin: $i * 5px
+  }
+}
+// .m5-left, .m10-left...
+@for $i from 1 through 20 {
+  .m#{$i * 5}#{-left} {
+    margin-left: $i * 5px
   }
 }
 @for $i from 1 through 20 {
@@ -191,6 +195,9 @@
 .tiny-border {
   border: 1px solid gray;
 }
+.fat-outline {
+  box-shadow: 0 0px 0px 4px #fff;
+}
 .frame {
   border: 2px solid #bbbbbb;
   border-radius: 5px;
@@ -209,6 +216,12 @@
 }
 .no-margin {
   margin: 0px;
+}
+.absolute {
+  position: absolute;
+}
+.abs-right {
+  right: 0;
 }
 .relative {
   position: relative;

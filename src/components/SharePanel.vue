@@ -1,7 +1,7 @@
 <template lang="pug">
-  .flex-col.align-center
-    span Share with your friends!
-    v-layout(row).p5
+  .flex-col.align-center.white
+    span.font-black.p10-top.font-weight-bold Share with your friends!
+    v-layout.font-black.p5(row)
       social-sharing(:url="data.url"
         :media="data.url"
         :title="data.title"

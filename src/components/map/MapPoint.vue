@@ -31,15 +31,15 @@ export default {
 }
 </script>
 
-<style scoped>
-  .dot {
-    background: white;
-    position: absolute;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow:
-      0 0 6px 1px #fff,
-      0 0 8px 2px #f0f,
-      0 0 10px 3px #0ff;
-  }
+<style>
+.dot {
+  background: white;
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow:
+    0 0 6px 1px #fff,
+    0 0 8px 2px #f0f,
+    0 0 10px 3px #0ff;
+}
 </style>

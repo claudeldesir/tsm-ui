@@ -8,7 +8,7 @@
         v-btn(flat :to="{ name: 'media' }") Media
         v-btn(flat :to="{ name: 'subscriptions' }") Subscriptions
     v-toolbar(v-if="isUser" fixed flat)
-      router-link(:to="{ name: 'admin' }")
+      router-link(:to="{ name: 'dashboard' }")
         v-toolbar-title That's Montreal User
       v-spacer
       v-toolbar-items
