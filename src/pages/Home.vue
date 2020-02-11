@@ -1,5 +1,4 @@
 <script>
-
 import home01 from '@/assets/home/images/antares/home_01.jpg'
 import home02 from '@/assets/home/images/antares/home_02.jpg'
 import home03 from '@/assets/home/images/antares/home_03.jpg'
@@ -63,90 +62,8 @@ export default {
 }
 </script>
 
-<style>
-.logos {
-  width: auto;
-  height: auto;
-  float: left;
-  top: 50%;
-  position: relative;
-  transform: translateY(-50%);
-  float: right;
-}
-
-.mobile-nb {
-  display: none !important;
-}
-
-.tparrows {
-  display: none !important;
-}
-
-@media only screen and (max-width: 767px) {
-  .logos {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .mobile-hidden {
-    display: none !important;
-  }
-}
-
-.box-details-text {
-  color: white;
-  font-size: 19px;
-}
-
-.special-area {
-  padding: 40px 20px;
-}
-
-.everywhere {
-  color: black;
-  font-size: 2.5em;
-  line-height: 0.8;
-}
-@media only screen and (min-width: 768px) {
-  .everywhere {
-    font-size: 4em;
-  }
-  .simsov {
-    padding-right: 6.75%;
-  }
-}
-
-.dark-nav.scrolled {
-  background-color: #000 !important;
-}
-
-@media only screen and (max-width: 767px) {
-  .app-button-wrapper {
-    padding: 5px 0;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .app-button-wrapper {
-    padding: 0 10px;
-  }
-}
-
-.app-button {
-  padding: 10px 0;
-  border: 1px solid #000 !important;
-  border-radius: 20px;
-  cursor: pointer;
-}
-@media only screen and (max-width: 767px) {
-  .app-button {
-    padding: 20px 0 !important;
-  }
-}
-
-.contact-type-1 {
-  padding: 0 0 30px !important;
-}
+<style lang="scss">
+@import "@/style/home.scss";
 </style>
 
 <template>
@@ -173,9 +90,9 @@ export default {
             <img :src="logce" alt="Website Logo">
           </a>
         </div>
-        <div class="logos">
+        <div class="hidden-sm">
           <AuthPanel dark/>
-          </div>
+        </div>
         <!-- End Navigation Elements -->
         <!-- Navigation Menu -->
       </div>
@@ -200,7 +117,7 @@ export default {
               data-transform_out="opacity:0;s:300;s:300;"
               data-hoffset="['0','0','0','0']"
               data-voffset="['-90','-70','-60','-60']">
-              Cool Places. Good Deals. <span class="theme-text"> Be V.I.P</span>
+              Cool Places. Good Deals. <span class="theme-primary-text"> Be V.I.P</span>
             </div>
             <!-- Layer -->
             <div class="tp-caption gray1 nowrap uppercase rs-parallaxlevel-0"
@@ -255,7 +172,7 @@ export default {
               data-voffset="['16','12','8','5']">
             </div>
             <!-- Layer -->
-            <div class="tp-caption white nowrap uppercase rs-parallaxlevel-0 mobile-hidden"
+            <div class="tp-caption white nowrap uppercase rs-parallaxlevel-0 hidden-sm"
               data-x="['center','center','center','center']"
               data-y="['middle','middle','middle','middle']"
               data-start="2200"
@@ -265,7 +182,7 @@ export default {
               data-transform_out="opacity:0;s:300;s:300;"
               data-hoffset="['0','0','0','0']"
               data-voffset="['120','103','86','74']">
-              <a href="#map" class="slow no-lightbox quadra-btn theme-text bg-colored1-hover border-colored2-hover white-hover">
+              <a href="#map" class="slow no-lightbox quadra-btn theme-primary-text bg-colored1-hover border-colored2-hover white-hover">
                 EXPLORE THE MAP
               </a>
             </div>
@@ -280,7 +197,7 @@ export default {
         <!-- Left Note -->
         <div class="left-note border-colored uppercase white">
           <p>
-            <i class="fas fa-globe"></i> Made for <span class="theme-text"> travelers.</span><br> <i class="fas fa-gift"></i> Watch videos and earn rewards. <br><i class="fab fa-rebel"></i>  Be rebel, be smart.
+            <i class="fas fa-globe"></i> Made for <span class="theme-primary-text"> travelers.</span><br> <i class="fas fa-gift"></i> Watch videos and earn rewards. <br><i class="fab fa-rebel"></i>  Be rebel, be smart.
           </p>
         </div>
         <!-- Socials -->
@@ -308,7 +225,7 @@ export default {
     <section id="dotted-navigation" class="hide-on-home nav-menu">
       <ul id="side-dotted-navigation" class="font-12 bold nav uppercase spy">
         <li><a href="#home"><span>Home</span></a></li>
-        <li class="mobile-hidden"><a href="#map"><span>Map</span></a></li>
+        <li class="hidden-sm"><a href="#map"><span>Map</span></a></li>
         <li><a href="#about"><span>About</span></a></li>
         <li><a href="#apps"><span>Our apps</span></a></li>
         <li><a href="#contact"><span>Contact</span></a></li>
@@ -350,7 +267,7 @@ export default {
               <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-body">
                   We are the first Platform in the world based around the metro (metroactive platform or mediatouristic platform) located in montreal, made for travelers by local citizens and entreprenors.
-                  ThatsMontreal.ca is user friendly. Once you arrived on the metro map, select 1 metro station. A video will appear. At the left of the screen, symbolic icons gives informations for international tourists. On the right, the professional video of the location.
+                  thatsmontreal.com is user friendly. Once you arrived on the metro map, select 1 metro station. A video will appear. At the left of the screen, symbolic icons gives informations for international tourists. On the right, the professional video of the location.
                   Under each video, press "Get the free gift" button and receive ur free gift by email! It’s only 1 click for the gifts, comments and shares! You can choose between manny social medias, such as Facebook, Google, and Twitter, just to name a few.
                   That’s right! Under each normal video of youtube, you can comment with various social medias!
                   Select a clip from the selection of content with the dots under each videos. Now visit more talents from the same local area!
@@ -391,7 +308,7 @@ export default {
               <!-- Details -->
               <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-body">
-                  Please write to info@thatsmontreal.ca or call at 1-438-351-0112.
+                  Please write to info@thatsmontreal.com or call at 1-438-351-0112.
                 </div>
               </div>
             </div>
@@ -500,7 +417,7 @@ export default {
               <!-- Details -->
               <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-body">
-                  Please <a href="https://thatsmontreal.ca/apps">click here</a> for more informations.
+                  Please <a href="https://thatsmontreal.com/apps">click here</a> for more informations.
                 </div>
               </div>
             </div>
@@ -536,7 +453,7 @@ export default {
               <!-- Details -->
               <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-body">
-                  We are sorry to hear this. Please refresh the page and try again. If it's not working, please try with another browser ( Safari ,Chrome, Firefox etc). If the problem persist, please contact us at <a href="mailto:info@thatsmontreal.ca">info@thatsmontreal.ca.</a> You don't need to contact the business in the video gift.
+                  We are sorry to hear this. Please refresh the page and try again. If it's not working, please try with another browser ( Safari ,Chrome, Firefox etc). If the problem persist, please contact us at <a href="mailto:info@thatsmontreal.com">info@thatsmontreal.com.</a> You don't need to contact the business in the video gift.
                 </div>
               </div>
             </div>
@@ -566,8 +483,8 @@ export default {
     </section>
     <!-- END QUADRA FIXED MODAL -->
 
-    <section id="map" class="mapa mobile-hidden">
-      <Map />
+    <section id="map" class="mapa hidden-sm">
+      <Map/>
     </section>
 
     <!-- ABOUT SECTION -->
@@ -579,12 +496,12 @@ export default {
       <!-- Strips -->
       <div class="title-strips"></div>
       <!-- Subtitle -->
-      <h3 class="light xs-mt theme-text">
+      <h3 class="light xs-mt theme-primary-text">
         Who are we? Why do you chose us?
       </h3>
       <!-- Description -->
       <p class="mxw-970 container light-title description">
-        We plan to reach <span class="theme-text">millions of people</span> in the Metro environements, airplane screens, strategic terminals in the city, and all over the world, by smartphones and other devices.
+        We plan to reach <span class="theme-primary-text">millions of people</span> in the Metro environements, airplane screens, strategic terminals in the city, and all over the world, by smartphones and other devices.
       </p>
       <!-- Container -->
       <!-- Container -->
@@ -672,8 +589,8 @@ export default {
             </p>
             <div class="p25-bot"></div>
             <div class="row app-download-area">
-              <div class="col-sm-6 col-xs-12 app-button-wrapper">
-                <a href="#" class="t-center app-button flex-row align-center">
+              <div class="col-md-6 col-sm-12 col-xs-12 app-button-wrapper">
+                <a href="#" class="t-center app-button app-android flex-row align-center">
                   <div class="flex-row align-center">
                     <i class="fs24 fab fa-android"></i>
                     <div class="p5"></div>
@@ -681,8 +598,8 @@ export default {
                   </div>
                 </a>
               </div>
-              <div class="col-sm-6 col-xs-12 app-button-wrapper">
-                <a href="#" class="t-center app-button flex-row align-center">
+              <div class="col-md-6 col-xs-12 app-button-wrapper">
+                <a href="#" class="t-center app-button app-ios flex-row align-center">
                   <div class="flex-row align-center">
                     <i class="fs24 fab fa-apple"></i>
                     <div class="p5"></div>
@@ -698,55 +615,55 @@ export default {
     <!-- CONTACT SECTION -->
     <section id="contact" class="contact-type-1 normal font-16">
       <!-- Contact Container -->
-      <div class="container clearfix qdr-col-2">
-        <!-- Address -->
-        <div class="t-left address">
-          <!-- Title -->
-          <h3 class="contact-title uppercase no-pm">
-            GET <span style="color:#576d00">INVOLVED!</span>
-          </h3>
-          <!-- Callout -->
-          <div class="qdr-callout white-bg my-40 light border-colored">
-            <h3 class="light no-pm">
-              Our mediatouristic platform is 100% unique in the world.
-            </h3>
-            <p>
-              Let's expose your local business to a new crowd, build new ideas, we want to hear from you! Our potential is to make shine yours!
-            </p>
+      <div class="container">
+        <div class="row">
+          <!-- Address -->
+          <div class="t-left address col-sm-6 col-xs-12">
+            <!-- Title -->
+            <h3 class="contact-title uppercase t-center-sm no-pm">GET <span class="theme-secondary-text">INVOLVED!</span></h3>
+            <!-- Callout -->
+            <div class="qdr-callout white-bg my-30 light border-colored">
+              <h3 class="light no-pm">
+                Our mediatouristic platform is 100% unique in the world.
+              </h3>
+              <p>
+                Let's expose your local business to a new crowd, build new ideas, we want to hear from you! Our potential is to make shine yours!
+              </p>
+            </div>
+            <div class="ikoni">
+              <!-- Basic Address -->
+              <p>
+                <span class="fas fa-home"></span>
+                <span>Montreal, H1V-2X8, Canada</span>
+              </p>
+              <!-- Phone -->
+              <p>
+                <span class="fas fa-phone"></span>
+                <a href="tel:+1.438.351.0112" class="slow normal colored-hover">+1.438.351.0112</a>
+              </p>
+              <!-- E-Mail -->
+              <p>
+                <span class="fas fa-envelope"></span>
+                <a href="mailto:info@thatsmontreal.com" class="slow normal colored-hover">info@thatsmontreal.com</a>
+              </p>
+              <!-- Web -->
+              <p>
+                <span class="fas fa-globe"></span>
+                <a href="https://thatsmontreal.com" target="_blank" class="slow normal colored-hover">www.thatsmontreal.com</a>
+              </p>
+            </div>
+            <!-- Google Map Button -->
+            <a style="margin-top:20px" href="https://www.google.com/maps/d/viewer?hl=en&msa=0&z=10&ie=UTF8&mid=1ZQ0O34TiFpL7j6P5QbJRvvXl3OI&ll=45.521607696857004%2C-73.602781" target="_blank" class="click-effect contact-button mt-50 bg-colored-hover white-hover slow">
+            Show Google Map</a>
           </div>
-          <div class="ikoni">
-            <!-- Basic Address -->
-            <p>
-              <span class="fas fa-home"></span>
-              <span >
-              &nbsp; Montreal, H1V-2X8, Canada
-              </span>
-            </p>
-            <!-- Phone -->
-            <p>
-              <span class="fas fa-phone"></span>
-              <a href="tel:+1.438.351.0112" class="slow normal colored-hover"> +1.438.351.0112</a>
-            </p>
-            <!-- E-Mail -->
-            <p>
-              <span class="fas fa-envelope"></span>
-              <a href="mailto:info@thatsmontreal.ca" class="slow normal colored-hover">info@thatsmontreal.ca</a>
-            </p>
-            <!-- Web -->
-            <p>
-              <span class="fas fa-globe"></span>
-              <a href="https://thatsmontreal.ca" target="_blank" class="slow normal colored-hover">www.thatsmontreal.ca</a>
-            </p>
+          <!-- End Address -->
+          <!-- Contact Form Area -->
+          <div class="col-sm-6 col-xs-12 flex-col">
+            <div class="p25-ver visible-xs"></div>
+            <ContactForm/>
           </div>
-          <!-- Google Map Button -->
-          <a style="margin-top:20px" href="https://www.google.com/maps/d/viewer?hl=en&msa=0&z=10&ie=UTF8&mid=1ZQ0O34TiFpL7j6P5QbJRvvXl3OI&ll=45.521607696857004%2C-73.602781" target="_blank" class="click-effect contact-button mt-50 bg-colored-hover white-hover slow">
-          Show Google Map
-          </a>
+          <!-- End Contact Form Area -->
         </div>
-        <!-- End Address -->
-        <!-- Contact Form Area -->
-        <ContactForm/>
-        <!-- End Contact Form Area -->
       </div>
       <!-- End Contact Container -->
     </section>
@@ -765,23 +682,21 @@ export default {
       <!-- End Column -->
       <!-- End Container -->
       <!-- Footer Bottom -->
-      <div class="footer-bottom">
+      <div class="footer-bottom py-3">
         <div class="container">
-          <div class="row clearfix calculate-height t-center-xs">
-            <div class="col-sm-6 col-xs-12 table-im t-left height-auto-mobile t-center-xs">
-              <div class="v-middle">
-                <img :src="logce" alt="logo icon" class="logo">
-              </div>
+          <div class="d-flex flex-md-row flex-col align-center t-center-xs">
+            <div class="flex-row align-center t-left t-center-xs py-3 py-sm-0">
+              <img :src="logce" alt="logo icon" class="logo">
             </div>
-            <!-- Bottom Note -->
-            <div class="col-sm-6 col-xs-12 table-im t-right height-auto-mobile t-center-xs xxs-mt-mobile">
-              <p class="v-middle">
-                <a href="#" target="_blank" class="gray6-hover underline-hover">Term and Condition</a> |
-                <a href="#" target="_blank" class="gray6-hover underline-hover"> Privacy Policy</a> <br class="hidden-xs">
-                <br>
-                © 2020. Powered By
-                <a href="https://headboxmedias.com" target="_blank" class="colored-hover underline-hover"> Headbox Medias</a>.
-              </p>
+            <div class="flex-col justify-center align-items-md-end align-items-center">
+              <div class="flex-row t-center-xs" style="line-height: 1.35">
+                <a href="#" target="_blank" class="gray6-hover underline-hover">Terms and Condition</a>&nbsp;|&nbsp;
+                <a href="#" target="_blank" class="gray6-hover underline-hover">Privacy Policy</a>
+              </div>
+              <div class="flex-row t-center-xs pt-md-1" style="line-height: 1.35">
+                <span>© 2020. Powered By&nbsp;</span>
+                <a href="https://headboxmedias.com" target="_blank" class="colored-hover underline-hover">Headbox Medias</a>.
+              </div>
             </div>
           </div>
         </div>

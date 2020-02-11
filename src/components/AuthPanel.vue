@@ -15,7 +15,7 @@
       .p10-right.fs18(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
       ProfileImage(:user="getCurrentUser" @onClick="gotoDashboard")
     div
-      v-btn.theme-bg.logout(@click="logout" style="height:36px;" flat)
+      v-btn.theme-primary-bg.logout(@click="logout" style="height:36px;" flat)
         v-icon(small color="black") fas fa-sign-out-alt
 </template>
 

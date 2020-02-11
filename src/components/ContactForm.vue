@@ -1,11 +1,9 @@
 <template>
-  <div class="t-left contact">
+  <div class="t-left contact flex-col flex-1">
     <!-- Title -->
-    <h3 class="uppercase">
-      Drop us a <span style="color:#576d00">Message</span>
-    </h3>
+    <h3 class="uppercase contact-title t-center-sm">Drop us a <span class="theme-secondary-text">Message</span></h3>
     <!-- Contact Form -->
-    <form @submit.prevent="onSubmit" id="contact_frm" name="contact_frm" class="font-15 normal">
+    <form @submit.prevent="onSubmit" id="contact_frm" name="contact_frm" class="font-15 normal p25-top flex-col flex-1">
       <!-- Input with border effect -->
       <span class="border-effect">
         <!-- Email -->
@@ -33,8 +31,9 @@
         <span class="right-br"></span>
         <span class="top-br"></span>
       </span>
+      <div class="flex-sm-grow-1"></div>
       <!-- Send Button -->
-      <button type="submit" id="submit" class="contact-button click-effect dark-loading mt-57 white-hover bg-colored-hover slow">Send</button>
+      <button type="submit" id="submit" class="contact-button click-effect dark-loading white-hover bg-colored-hover slow">Send</button>
       <!-- End Send Button -->
     </form>
     <!-- End Form -->

@@ -1,0 +1,92 @@
+@import "@/style/variables.scss";
+
+.home-page {
+  .container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .mobile-nb {
+    display: none !important;
+  }
+
+  .tparrows {
+    display: none !important;
+  }
+
+  .box-details-text {
+    color: white;
+    font-size: 19px;
+  }
+
+  .special-area {
+    padding: 60px 30px 10px;
+  }
+
+  .everywhere {
+    color: black;
+    font-size: 2.5em;
+    line-height: 0.9;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .everywhere {
+      font-size: 4em;
+    }
+    .simsov {
+      padding-right: 6.75%;
+    }
+  }
+
+  .dark-nav.scrolled {
+    background-color: #000 !important;
+  }
+
+  .app-button {
+    cursor: pointer;
+    padding: 10px 0;
+    border: 1px solid;
+    border-color: rgba(0,0,0,1);
+    border-radius: 20px;
+    transition: .35s ease-out;
+  }
+  .app-button.app-ios:hover {
+    border-color: rgba(0,0,0,0.2);
+    background:
+      linear-gradient(#fff,#fff) padding-box,
+      linear-gradient(225deg, #999 20%, $theme-primary 100%) border-box;
+  }
+  .app-button.app-android:hover {
+    color: $theme-secondary;
+    border-color: $theme-secondary;
+  }
+
+  .contact-type-1 {
+    padding: 30px 0 !important;
+  }
+  .contact-type-1.contact-title {
+    padding: 0;
+    margin: 0 0 20px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .app-button-wrapper {
+      padding: 5px 0;
+    }
+    .app-button {
+      padding: 20px 0 !important;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .app-button-wrapper {
+      padding: 0 10px;
+    }
+    .contact-type-1.contact-title {
+      margin: 0 0 60px;
+    }
+  }
+
+  .colored-hover:hover {
+    color: $theme-primary;
+  }
+}

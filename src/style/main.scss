@@ -1,3 +1,4 @@
+@import "./variables.scss";
 @import "./transitions.scss";
 
 .home-page {
@@ -304,10 +305,16 @@
   }
 }
 
-$theme-color: #ffde00;
-.theme-bg {
-  background-color: $theme-color !important;
+.theme-primary-bg {
+  background-color: $theme-primary !important;
 }
-.theme-text {
-  color: $theme-color !important;
+.theme-primary-text {
+  color: $theme-primary !important;
+}
+
+.theme-secondary-bg {
+  background-color: $theme-secondary !important;
+}
+.theme-secondary-text {
+  color: $theme-secondary !important;
 }
