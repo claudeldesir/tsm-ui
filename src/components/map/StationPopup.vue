@@ -2,8 +2,9 @@
   div(:style="getStyle" ref="stationPopup" :class="{'station-popup': true, 'full-screen': fullscreen}")
     .flex-col.white--text.br5.fat-outline(:style="{'height': fullscreen ? '92vh' : 'inherit' + 'px'}")
       .absolute.abs-right.flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
-        i.fs20.p5.fas.fa-times
+        i.fs20.p10.fas.fa-times
       div(v-if="loaded")
+        .p5
         v-slide-x-transition(leave-absolute hide-on-leave)
           StationContainer(v-if="step === 0"
             :station="station"

@@ -269,9 +269,12 @@
 .v-input input {
   max-height: initial;
 }
-
 .v-text-field--outline input {
   margin-top: 0px !important;
+}
+.v-overlay,
+.v-dialog__content {
+  height: 100vh;
 }
 
 // social media colors

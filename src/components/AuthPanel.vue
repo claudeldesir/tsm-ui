@@ -1,15 +1,9 @@
 <template lang="pug">
-  div(v-if="!isLoggedIn && !loading" style="width:min-content;")
-    .flex-row.justify-end.align-center(v-show="false")
-      .p5-side
-      v-btn.fb(@click="login('fb')" flat)
-        v-icon(small color="white") fab fa-facebook-f
-      v-btn.gg(@click="login('gg')" flat)
-        v-icon(small color="white") fab fa-google
-      v-btn.tw(@click="login('tw')" flat)
-        v-icon(small color="white") fab fa-twitter
-      v-btn.em(@click="loginWithEmail" flat)
-        v-icon(small color="white") fas fa-envelope
+  div(v-if="!isLoggedIn && !loading")
+    Dialog(:visible="loginModalVisible" @close="loginModalVisible=false")
+      LoginPanel
+    .flex-row.justify-end.align-center(v-if="!loginModalVisible")
+      span.white--text.fs17.pointer(@click="loginModalVisible=true") Log in
   .flex-row.justify-end.align-center(v-else)
     .flex-row.align-center.p5
       .p10-right.fs18(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
@@ -20,7 +14,10 @@
 </template>
 
 <script>
+import Dialog from '@/components/common/Dialog'
+import LoginPanel from '@/components/LoginPanel'
 import ProfileImage from '@/components/ProfileImage'
+
 import auth from '@/services/auth'
 import api from '@/services/api'
 import eventbus from '@/services/event-bus'
@@ -38,7 +35,7 @@ export default {
     eventbus.$off('pushLoginData')
   },
   data: () => ({
-    hovered: false,
+    loginModalVisible: false,
     loading: false
   }),
   methods: {
@@ -62,6 +59,8 @@ export default {
     }
   },
   components: {
+    Dialog,
+    LoginPanel,
     ProfileImage
   }
 }

@@ -12,8 +12,16 @@
           v-text-field.white--text.white-field.w100(v-model="loginData.username" :rules="[(v) => !!v || 'Username is required']" placeholder="Username" required color="#fff" background-color="transparent" hide-details)
       br
       v-btn.w100(type="submit") {{ action === 'signup' ? 'Sign up' : 'Log in' }}
+      br
+      .flex-row.space-around
+        v-btn.fb(flat)
+          v-icon(small color="white") fab fa-facebook-f
+        v-btn.gg(flat)
+          v-icon(small color="white") fab fa-google
+        v-btn.tw(flat)
+          v-icon(small color="white") fab fa-twitter
     .p20-side.p20-bot
-      a(@click="toggleAction") {{ action === 'login' ? 'Sign up' : 'Log in' }} instead
+      a.white--text(@click="toggleAction") {{ action === 'login' ? 'Sign up' : 'Log in' }} instead
 </template>
 
 <script>
@@ -51,15 +59,15 @@ export default {
 
 <style lang="scss">
 .login-box {
+  line-height: 2rem;
+
   .white-field input::placeholder {
     color: #fff !important;
     opacity: 1;
   }
-
   .white-field input {
     color: #fff !important;
   }
-
   .white-field .v-label {
     color: #fff;
     opacity: 1;

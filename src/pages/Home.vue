@@ -7,9 +7,6 @@ import logce from '@/assets/home/images/antares/logce.png'
 import AuthPanel from '@/components/AuthPanel'
 import ContactForm from '@/components/ContactForm'
 import Map from '@/components/map/Map'
-import Dialog from '@/components/common/Dialog'
-import LoginPanel from '@/components/LoginPanel'
-import eventbus from '@/services/event-bus'
 
 const scripts = [
   // batch
@@ -24,21 +21,14 @@ const scripts = [
 
 export default {
   created() {
-    eventbus.$on('toggleEmailLoginModal', (val) => {
-      this.emailLoginDialogVisible = val
-    })
     this.loadScripts()
-  },
-  destroyed() {
-    eventbus.$off('toggleEmailLoginModal')
   },
   data() {
     return {
       home01,
       home02,
       home03,
-      logce,
-      emailLoginDialogVisible: false,
+      logce
     }
   },
   methods: {
@@ -55,9 +45,7 @@ export default {
   components: {
     AuthPanel,
     ContactForm,
-    Map,
-    Dialog,
-    LoginPanel
+    Map
   }
 }
 </script>
@@ -68,9 +56,6 @@ export default {
 
 <template>
   <div class="home-page">
-    <Dialog :visible="emailLoginDialogVisible" @close="emailLoginDialogVisible=false">
-      <LoginPanel/>
-    </Dialog>
     <div class="page-loader bg-dark">
       <div class="v-center t-center">
         <div class="spinner">
@@ -83,7 +68,7 @@ export default {
     </div>
     <nav id="navigation" class="shrink border hover dark-nav modern dotted" data-offset="55">
       <!-- Columns -->
-      <div class="columns clearfix container-xl">
+      <div class="flex-row align-center space-between container-xl">
         <!-- Logo -->
         <div class="logo">
           <a href="#home">
@@ -172,7 +157,7 @@ export default {
               data-voffset="['16','12','8','5']">
             </div>
             <!-- Layer -->
-            <div class="tp-caption white nowrap uppercase rs-parallaxlevel-0 hidden-sm"
+            <div class="tp-caption white--text nowrap uppercase rs-parallaxlevel-0 hidden-sm"
               data-x="['center','center','center','center']"
               data-y="['middle','middle','middle','middle']"
               data-start="2200"
@@ -195,13 +180,13 @@ export default {
       <!-- Home Page Note -->
       <div class="page-note fullwidth c-default clearfix">
         <!-- Left Note -->
-        <div class="left-note primary-border uppercase white">
+        <div class="left-note primary-border uppercase white--text">
           <p>
             <i class="fas fa-globe"></i> Made for <span class="theme-primary-text"> travelers.</span><br> <i class="fas fa-gift"></i> Watch videos and earn rewards. <br><i class="fab fa-rebel"></i>  Be rebel, be smart.
           </p>
         </div>
         <!-- Socials -->
-        <div class="home-socials slow white">
+        <div class="home-socials slow white--text">
           <!-- Social -->
           <a href="https://twitter.com/delamrmach" target="_blank">
           <i class="fab fa-twitter"></i>
@@ -238,7 +223,7 @@ export default {
       <!-- Modal title and title -->
       <div class="quadra_fixed_modal_top slow-qdr no-border">
         <!-- Button, select your color and background color. you can use data-color="#" attribute. -->
-        <div id="qfm_button" class="white bg-dark">
+        <div id="qfm_button" class="white--text bg-dark">
           <!-- Comp. Hide Modal -->
           <i class="fas fa-times hide_modal" style="position: absolute;right: 0;width:100px;"></i>
           Questions?
@@ -490,7 +475,7 @@ export default {
     <!-- ABOUT SECTION -->
     <section id="about" class="t-center py-5" style="background-color: #000;">
       <!-- Title -->
-      <h1 class="antitle light-title white">
+      <h1 class="antitle light-title white--text">
         WE ARE LOOKING FOR YOU. LET'S EXPOSE YOUR BUSINESS TO A NEW LEVEL.
       </h1>
       <!-- Strips -->
@@ -622,7 +607,7 @@ export default {
             <!-- Title -->
             <h3 class="contact-title uppercase t-center-sm no-pm">GET INVOLVED!</h3>
             <!-- Callout -->
-            <div class="qdr-callout my-20 light primary-border">
+            <div class="qdr-callout my-20 light primary-border t-center-sm">
               <h3 class="light no-pm">
                 Our mediatouristic platform is 100% unique in the world.
               </h3>
@@ -684,7 +669,7 @@ export default {
             <div class="t-center">
               <div class="flex-col pb-4 pb-md-0">
                 <h6 class="tekst xs-mt xxs-mb bold gray8">FOLLOW US</h6>
-                <div class="flex-row justify-center text-white">
+                <div class="flex-row justify-center white--text">
                   <a href="#" class="icon-xs radius bg-dark facebook slow1 mr-1"><i class="fab fa-facebook"></i></a>
                   <a href="#" class="icon-xs radius bg-dark twitter slow1 mr-1"><i class="fab fa-twitter"></i></a>
                   <a href="#" class="icon-xs radius bg-dark instagram slow1 mr-1"><i class="fab fa-instagram"></i></a>
