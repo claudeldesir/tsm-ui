@@ -1,9 +1,26 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
+const getCurrentUser = () => firebase.auth().currentUser
+const logout = () => {
+  if (getCurrentUser()) return firebase.auth().signOut()
+  return Promise.reject()
+}
+
+const emailLoginFn = data => firebase.auth().signInWithEmailAndPassword(data.email, data.password)
+const emailSignupFn = (data) => {
+  const { email, password, username } = data
+  return firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(result => result.user)
+    .then(user => user.updateProfile({ displayName: username }))
+    .then(() => logout())
+    .then(() => emailLoginFn(data))
+}
+
 export default {
-  loginWithProvider(provider) {
+  loginWithProvider(provider, { data, action }) {
     let providerObj = null
+    let popup = true
     switch (provider) {
       case 'fb':
         providerObj = new firebase.auth.FacebookAuthProvider()
@@ -16,25 +33,24 @@ export default {
       case 'tw':
         providerObj = new firebase.auth.TwitterAuthProvider()
         break
+      case 'em':
+        popup = false
+        break
       default:
         providerObj = {}
     }
-    return firebase.auth().signInWithPopup(providerObj)
-      .then(res => Promise.resolve(res.user))
+
+    const emailDirectionFn = action === 'login' ? emailLoginFn : emailSignupFn
+    const loginFn = popup ? firebase.auth().signInWithPopup(providerObj) : emailDirectionFn(data)
+    return loginFn
+      .then(res => Promise.resolve(res))
       .catch(err => Promise.reject(err.code))
   },
-  logout() {
-    if (firebase.auth().currentUser) {
-      return firebase.auth().signOut()
-    }
-    return Promise.reject()
-  },
-  getCurrentUser() {
-    return firebase.auth().currentUser
-  },
   getUserToken() {
-    const user = firebase.auth().currentUser
+    const user = getCurrentUser()
     if (!user) return Promise.reject()
     return user.getIdToken()
-  }
+  },
+  getCurrentUser,
+  logout
 }

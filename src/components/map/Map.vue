@@ -1,5 +1,5 @@
 <template>
-  <section id="map" class="mapa">
+  <div>
     <h1 class="mar">That's Montreal</h1>
     <div class="container">
       <h5 style="color:white;text-align:center">
@@ -21,7 +21,7 @@
         <StationPopup v-if="selectedPoint" :pointData="selectedPoint" @close="pointSelected(selectedPoint)"/>
       </transition>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

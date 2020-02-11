@@ -8,6 +8,9 @@ import logce from '@/assets/home/images/antares/logce.png'
 import AuthPanel from '@/components/AuthPanel'
 import ContactForm from '@/components/ContactForm'
 import Map from '@/components/map/Map'
+import Dialog from '@/components/common/Dialog'
+import LoginPanel from '@/components/LoginPanel'
+import eventbus from '@/services/event-bus'
 
 const scripts = [
   // batch
@@ -22,7 +25,13 @@ const scripts = [
 
 export default {
   created() {
+    eventbus.$on('toggleEmailLoginModal', (val) => {
+      this.emailLoginDialogVisible = val
+    })
     this.loadScripts()
+  },
+  destroyed() {
+    eventbus.$off('toggleEmailLoginModal')
   },
   data() {
     return {
@@ -30,6 +39,7 @@ export default {
       home02,
       home03,
       logce,
+      emailLoginDialogVisible: false,
     }
   },
   methods: {
@@ -46,7 +56,9 @@ export default {
   components: {
     AuthPanel,
     ContactForm,
-    Map
+    Map,
+    Dialog,
+    LoginPanel
   }
 }
 </script>
@@ -62,6 +74,10 @@ export default {
   float: right;
 }
 
+.mobile-nb {
+  display: none !important;
+}
+
 @media only screen and (max-width:767px) {
   .logos {
     width: 100%;
@@ -70,10 +86,19 @@ export default {
     align-items: center;
   }
 }
+
+@media only screen and (max-width:800px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}
 </style>
 
 <template>
   <div class="home-page">
+    <Dialog :visible="emailLoginDialogVisible" @close="emailLoginDialogVisible=false">
+      <LoginPanel/>
+    </Dialog>
     <div class="page-loader bg-dark">
       <div class="v-center t-center">
         <div class="spinner">
@@ -93,7 +118,9 @@ export default {
             <img :src="logce" alt="Website Logo">
           </a>
         </div>
-        <div class="logos"><AuthPanel dark/></div>
+        <div class="logos">
+          <AuthPanel dark/>
+          </div>
         <!-- End Navigation Elements -->
         <!-- Navigation Menu -->
       </div>
@@ -173,7 +200,7 @@ export default {
               data-voffset="['16','12','8','5']">
             </div>
             <!-- Layer -->
-            <div class="tp-caption white nowrap uppercase rs-parallaxlevel-0"
+            <div class="tp-caption white nowrap uppercase rs-parallaxlevel-0 mobile-hidden"
               data-x="['center','center','center','center']"
               data-y="['middle','middle','middle','middle']"
               data-start="2200"
@@ -184,7 +211,7 @@ export default {
               data-hoffset="['0','0','0','0']"
               data-voffset="['120','103','86','74']">
               <a href="#map" class="slow no-lightbox quadra-btn colored bg-colored1-hover border-colored2-hover white-hover">
-              EXPLORE THE MAP
+                EXPLORE THE MAP
               </a>
             </div>
           </li>
@@ -236,7 +263,7 @@ export default {
               You god this.
             </div>
             <!-- Layer -->
-            <div class="tp-caption white nowrap uppercase rs-parallaxlevel-0"
+            <div class="tp-caption white nowrap uppercase rs-parallaxlevel-0 mobile-hidden"
               data-x="['center','center','center','center']"
               data-y="['middle','middle','middle','middle']"
               data-start="2200"
@@ -256,7 +283,7 @@ export default {
             <!-- Background Image -->
             <img :src="home03"  alt="Home Background Image"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="9" class="rev-slidebg" data-no-retina>
             <!-- Layer -->
-            <div class="tp-caption gray1 dosis badscript nowrap rs-parallaxlevel-0"
+            <div class="tp-caption gray1 dosis badscript nowrap rs-parallaxlevel-0 mobile-hidden"
               data-x="['center','center','center','center']"
               data-y="['middle','middle','middle','middle']"
               data-start="2200"
@@ -307,7 +334,7 @@ export default {
               data-transform_out="opacity:0;s:300;s:300;"
               data-hoffset="['0','0','0','0']"
               data-voffset="['103','95','95','70']">
-              <a href="#map" class="slow no-lightbox quadra-btn colored bg-colored1-hover border-colored2-hover white-hover">
+              <a href="#map" class="slow no-lightbox quadra-btn colored bg-colored1-hover border-colored2-hover white-hover mobile-hidden">
               Explore the map
               </a>
             </div>
@@ -349,7 +376,7 @@ export default {
     <section id="dotted-navigation" class="hide-on-home nav-menu">
       <ul id="side-dotted-navigation" class="font-12 bold nav uppercase spy">
         <li><a href="#home"><span>Home</span></a></li>
-        <li><a href="#map"><span>Map</span></a></li>
+        <li class="mobile-hidden"><a href="#map"><span>Map</span></a></li>
         <li><a href="#about"><span>About</span></a></li>
         <li><a href="#apps"><span>Our apps</span></a></li>
         <li><a href="#video"><span>Video</span></a></li>
@@ -608,7 +635,9 @@ export default {
     </section>
     <!-- END QUADRA FIXED MODAL -->
 
-    <Map/>
+    <section id="map" class="mapa mobile-hidden">
+      <Map />
+    </section>
 
     <!-- ABOUT SECTION -->
     <section id="about" class="bg-dark t-center py">
@@ -942,10 +971,8 @@ export default {
                 <a href="#" target="_blank" class="gray6-hover underline-hover">Term and Condition</a> |
                 <a href="#" target="_blank" class="gray6-hover underline-hover"> Privacy Policy</a> <br class="hidden-xs">
                 <br>
-                © 2018. Powered By
+                © 2020. Powered By
                 <a href="https://headboxmedias.com" target="_blank" class="colored-hover underline-hover"> Headbox Medias</a>.
-                <br>
-                Design: <a class="colored-hover underline-hover" href="https://mrks.con.mk">MrMach</a>
               </p>
             </div>
           </div>

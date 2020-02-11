@@ -1,5 +1,6 @@
 <template lang="pug">
-  img.profile-img(:src="getImageUrl" @click="$emit('onClick')")
+  div
+    img.profile-img(v-if="getImageUrl" :src="getImageUrl" @click="$emit('onClick')")
 </template>
 
 <script>
