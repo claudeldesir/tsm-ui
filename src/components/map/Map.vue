@@ -18,7 +18,7 @@
       <img class="imgmap" src="https://image.ibb.co/j9RVrK/mappfinal.png">
       <MapPoint v-for="mapPoint in mapPoints" :key="mapPoint.id" :pointData="mapPoint" @selected="pointSelected"/>
       <transition name="slide">
-        <StationPopup v-if="selectedPoint" :pointData="selectedPoint" @close="pointSelected(selectedPoint)"/>
+        <StationPopup v-if="selectedPoint" :pointData="selectedPoint" @close="stationPopupClosed(selectedPoint)" :fullscreen="fullscreen && selectedPoint.stationId === showId"/>
       </transition>
     </div>
   </div>
@@ -31,7 +31,14 @@ import StationPopup from '@/components/map/StationPopup'
 import { mapPoints } from '@/data/map-points'
 
 export default {
-  created() {
+  mounted() {
+    const showId = this.$route.query.show
+    this.showId = showId ? Number(showId) : null
+
+    const map = document.getElementById('map')
+    map.addEventListener('mouseup', this.checkPropagation)
+    map.addEventListener('mousedown', this.checkPropagation)
+
     Api.getDotStations()
       .then((resp) => {
         const dotStations = resp.data
@@ -41,13 +48,14 @@ export default {
           if (dotStation.location.medias.length > 0) {
             this.mapPoints.push(mapPoint)
           }
+          if (this.showId === mapPoint.stationId) {
+            this.fullscreen = true
+            setTimeout(() => {
+              this.pointSelected(mapPoint)
+            }, 2000)
+          }
         })
       })
-  },
-  mounted() {
-    const map = document.getElementById('map')
-    map.addEventListener('mouseup', this.checkPropagation)
-    map.addEventListener('mousedown', this.checkPropagation)
   },
   beforeDestroy() {
     const map = document.getElementById('map')
@@ -59,6 +67,8 @@ export default {
   data() {
     return {
       mapPoints: [],
+      showId: null,
+      fullscreen: false,
       selectedPoint: null,
       mouseDownInside: false
     }
@@ -96,6 +106,10 @@ export default {
       const elArr = e.propagationPath()
       const direction = e.type === 'mousedown' ? 'd' : 'u'
       this.checkInsidePopup(elArr, direction)
+    },
+    stationPopupClosed(selectedPoint) {
+      this.pointSelected(selectedPoint)
+      this.fullscreen = false
     }
   },
   components: {

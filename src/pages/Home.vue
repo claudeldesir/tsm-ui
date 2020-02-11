@@ -78,19 +78,74 @@ export default {
   display: none !important;
 }
 
-@media only screen and (max-width:767px) {
+.tparrows {
+  display: none !important;
+}
+
+@media only screen and (max-width: 767px) {
   .logos {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
   }
 }
 
-@media only screen and (max-width:800px) {
+@media only screen and (max-width: 767px) {
   .mobile-hidden {
     display: none !important;
   }
+}
+
+.box-details-text {
+  color: white;
+  font-size: 19px;
+}
+
+.special-area {
+  padding: 40px 20px;
+}
+
+.everywhere {
+  color: black;
+  font-size: 2.5em;
+  line-height: 0.8;
+}
+@media only screen and (min-width: 768px) {
+  .everywhere {
+    font-size: 4em;
+  }
+  .simsov {
+    padding-right: 6.75%;
+  }
+}
+
+.dark-nav.scrolled {
+  background-color: #000 !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .app-button-wrapper {
+    padding: 5px 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .app-button-wrapper {
+    padding: 0 10px;
+  }
+}
+
+.app-button {
+  padding: 10px 0;
+  border: 1px solid #000 !important;
+  border-radius: 20px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 767px) {
+  .app-button {
+    padding: 20px 0 !important;
+  }
+}
+
+.contact-type-1 {
+  padding: 0 0 30px !important;
 }
 </style>
 
@@ -145,7 +200,7 @@ export default {
               data-transform_out="opacity:0;s:300;s:300;"
               data-hoffset="['0','0','0','0']"
               data-voffset="['-90','-70','-60','-60']">
-              Cool Places. Good Deals. <span class="colored"> Be V.I.P</span>
+              Cool Places. Good Deals. <span class="theme-text"> Be V.I.P</span>
             </div>
             <!-- Layer -->
             <div class="tp-caption gray1 nowrap uppercase rs-parallaxlevel-0"
@@ -210,135 +265,12 @@ export default {
               data-transform_out="opacity:0;s:300;s:300;"
               data-hoffset="['0','0','0','0']"
               data-voffset="['120','103','86','74']">
-              <a href="#map" class="slow no-lightbox quadra-btn colored bg-colored1-hover border-colored2-hover white-hover">
+              <a href="#map" class="slow no-lightbox quadra-btn theme-text bg-colored1-hover border-colored2-hover white-hover">
                 EXPLORE THE MAP
               </a>
             </div>
           </li>
           <!-- End Slides -->
-          <!-- Slide -->
-          <li data-masterspeed="1000" data-transition="fade" :data-thumb="home02" data-saveperformance="off"  data-title="Metro" data-description="Home Slider">
-            <!-- Background Image -->
-            <img :src="home02"  alt="Image Background"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="9" class="rev-slidebg" data-no-retina>
-            <!-- Layer -->
-            <div class="tp-caption gray1 dosis badscript nowrap rs-parallaxlevel-0"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="2200"
-              data-fontsize="['18','18','18','19']"
-              data-type="text"
-              data-transform_in="y:-50px;opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-mask_in="x:0;y:-20;s:inherit;e:inherit;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['-100','-100','-80','-70']">
-              <span>From local to </span><span class="colored">international. </span>
-            </div>
-            <!-- Layer -->
-            <div class="tp-caption gray1 nowrap rs-parallaxlevel-0"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="1000"
-              data-lineheight="80"
-              data-fontsize="['60','50','40','30']"
-              data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:2000;e:Power3.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-mask_in="x:[100%];y:0;s:inherit;e:inherit;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['-50','-50','-30','-30']">
-              Your talent is a value.
-            </div>
-            <!-- Layer -->
-            <div class="tp-caption gray1 nowrap rs-parallaxlevel-0"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="1000"
-              data-lineheight="80"
-              data-fontsize="['60','50','40','30']"
-              data-transform_in="x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:2000;e:Power3.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-mask_in="x:[-100%];y:0;s:inherit;e:inherit;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['20','20','15','15']">
-              You god this.
-            </div>
-            <!-- Layer -->
-            <div class="tp-caption white nowrap uppercase rs-parallaxlevel-0 mobile-hidden"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="2200"
-              data-fontsize="['15','15','15','20']"
-              data-transform_in="y:50px;opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['100','95','95','75']">
-              <!-- Video will be playable when you upload the files to server - Thumbnail image will come automatically. -->
-              <a href="#map" class="slow no-lightbox quadra-btn colored bg-colored1-hover border-colored2-hover white-hover">
-              Explore the map
-              </a>
-            </div>
-          </li>
-          <!-- Slide -->
-          <li data-masterspeed="1000" data-transition="fade" :data-thumb="home03" data-saveperformance="off"  data-title="Perspective" data-description="Home Slider">
-            <!-- Background Image -->
-            <img :src="home03"  alt="Home Background Image"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="9" class="rev-slidebg" data-no-retina>
-            <!-- Layer -->
-            <div class="tp-caption gray1 dosis badscript nowrap rs-parallaxlevel-0 mobile-hidden"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="2200"
-              data-fontsize="['18','18','18','19']"
-              data-type="text"
-              data-transform_in="y:-50px;opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-mask_in="x:0;y:-20;s:inherit;e:inherit;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['-100','-100','-80','-70']">
-              Interactive <a href="#map"><span class="colored"> Web </span></a> Vision
-            </div>
-            <!-- Layer -->
-            <div class="tp-caption gray1 nowrap rs-parallaxlevel-0"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="1000"
-              data-lineheight="80"
-              data-fontsize="['60','50','40','30']"
-              data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:2000;e:Power3.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-mask_in="x:[100%];y:0;s:inherit;e:inherit;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['-50','-50','-30','-30']">
-              Everyone who visit us
-            </div>
-            <!-- Layer -->
-            <div class="tp-caption gray1 nowrap rs-parallaxlevel-0"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="1000"
-              data-lineheight="80"
-              data-fontsize="['60','50','40','30']"
-              data-transform_in="x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:2000;e:Power3.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-mask_in="x:[-100%];y:0;s:inherit;e:inherit;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['20','20','15','15']">
-              get out immediately.
-            </div>
-            <!-- Layer -->
-            <div class="tp-caption white nowrap uppercase rs-parallaxlevel-0"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="2200"
-              data-fontsize="['15','15','15','20']"
-              data-transform_in="y:50px;opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['103','95','95','70']">
-              <a href="#map" class="slow no-lightbox quadra-btn colored bg-colored1-hover border-colored2-hover white-hover mobile-hidden">
-              Explore the map
-              </a>
-            </div>
-          </li>
         </ul>
         <!-- End Container -->
       </div>
@@ -348,7 +280,7 @@ export default {
         <!-- Left Note -->
         <div class="left-note border-colored uppercase white">
           <p>
-            <i class="fas fa-globe"></i> Made for <span class="colored"> travelers.</span><br> <i class="fas fa-gift"></i> Watch videos and earn rewards. <br><i class="fab fa-rebel"></i>  Be rebel, be smart.
+            <i class="fas fa-globe"></i> Made for <span class="theme-text"> travelers.</span><br> <i class="fas fa-gift"></i> Watch videos and earn rewards. <br><i class="fab fa-rebel"></i>  Be rebel, be smart.
           </p>
         </div>
         <!-- Socials -->
@@ -379,7 +311,6 @@ export default {
         <li class="mobile-hidden"><a href="#map"><span>Map</span></a></li>
         <li><a href="#about"><span>About</span></a></li>
         <li><a href="#apps"><span>Our apps</span></a></li>
-        <li><a href="#video"><span>Video</span></a></li>
         <li><a href="#contact"><span>Contact</span></a></li>
       </ul>
     </section>
@@ -640,7 +571,7 @@ export default {
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="bg-dark t-center py">
+    <section id="about" class="t-center py" style="background-color: #000;">
       <!-- Title -->
       <h1 class="antitle light-title white">
         WE ARE LOOKING FOR YOU. LET'S EXPOSE YOUR BUSINESS TO A NEW LEVEL.
@@ -648,12 +579,12 @@ export default {
       <!-- Strips -->
       <div class="title-strips"></div>
       <!-- Subtitle -->
-      <h3 class="colored light xs-mt">
+      <h3 class="light xs-mt theme-text">
         Who are we? Why do you chose us?
       </h3>
       <!-- Description -->
       <p class="mxw-970 container light-title description">
-        We plan to reach <span class="colored">millions of people</span> in the Metro environements, airplane screens, strategic terminals in the city, and all over the world, by smartphones and other devices.
+        We plan to reach <span class="theme-text">millions of people</span> in the Metro environements, airplane screens, strategic terminals in the city, and all over the world, by smartphones and other devices.
       </p>
       <!-- Container -->
       <!-- Container -->
@@ -664,16 +595,17 @@ export default {
           <div class="rotate-container hover1 col-sm-4 col-xs-12 xxs-mt" ontouchstart="this.classList.toggle('hover');">
             <div class="rotate-box">
               <!-- Front Face -->
-              <div class="front bg-soft bg-soft-dark5 bg-cover" data-background="https://images.pond5.com/camera-lens-3d-animation-footage-076322876_prevstill.jpeg">
+              <div class="front bg-soft bg-gray1 bg-cover">
                 <div class="box-details">
-                  <h4 style="color:white">VIDEO SERVICES</h4>
-                  <h5 style="color:white">Expose yourself!</h5>
+                  <i style="color:black;font-size:2em;padding: 5px;" class="fas fa-film"></i>
+                  <h4 style="color:#000">VIDEO SERVICES</h4>
+                  <h5 style="color:#000">Expose yourself!</h5>
                 </div>
               </div>
               <!-- Back Face -->
-              <div style="background-color:#006a9e!important"  class="back bg-colored">
+              <div style="background-color:#000!important"  class="back bg-colored">
                 <div style="font-size:1.2em" class="box-details">
-                  <p style="color:white">Headbox Medias will create the best about you and your business.  Through our videos, we will try to represent you in the way that customers will see what they want to see. </p>
+                  <p class="box-details-text">Headbox Medias will create the best about you and your business.  Through our videos, we will try to represent you in the way that customers will see what they want to see. </p>
                 </div>
               </div>
             </div>
@@ -683,16 +615,17 @@ export default {
           <div class="rotate-container hover1 col-sm-4 col-xs-12 xxs-mt" ontouchstart="this.classList.toggle('hover');">
             <div class="rotate-box">
               <!-- Front Face -->
-              <div class="front bg-soft bg-soft-dark5 bg-cover" data-background="https://udemy-images.udemy.com/course/750x422/394968_538b_7.jpg">
+              <div class="front bg-soft bg-gray1 bg-cover">
                 <div class="box-details">
-                  <h4 style="color:white">PHOTOGRAPHY</h4>
-                  <h5 style="color:white">Let your true colors shine though</h5>
+                  <i style="color:black;font-size:2em;padding: 5px;" class="far fa-images"></i>
+                  <h4 style="color:#000">PHOTOGRAPHY</h4>
+                  <h5 style="color:#000">Let your true colors shine though</h5>
                 </div>
               </div>
               <!-- Back Face -->
-              <div style="background-color:#006a9e!important"  class="back bg-colored">
+              <div style="background-color:#000!important"  class="back bg-colored">
                 <div style="font-size:1.2em" class="box-details">
-                  <p style="color:white">Every picture tells a story.  Let us help you tell yours.</p>
+                  <p class="box-details-text">Every picture tells a story. Let us help you tell yours.</p>
                 </div>
               </div>
             </div>
@@ -702,16 +635,17 @@ export default {
           <div class="rotate-container hover1 col-sm-4 col-xs-12 xxs-mt" ontouchstart="this.classList.toggle('hover');">
             <div class="rotate-box">
               <!-- Front Face -->
-              <div class="front bg-soft bg-soft-dark5 bg-cover" data-background="https://static1.squarespace.com/static/5817589546c3c4f1cb2a4e02/58208d4720099e9ace66e70f/5821d8e6579fb3beb3de49e1/1486036798470/how+liquide+workforce....jpg?format=1500w">
+              <div class="front bg-soft bg-gray1 bg-cover">
                 <div class="box-details">
-                  <h4 style="color:white">SPECIAL PROMOTIONS</h4>
-                  <h5 style="color:white">Get even more.</h5>
+                  <i style="color:black;font-size:2em;padding: 5px;" class="fas fa-bullhorn"></i>
+                  <h4 style="color:#000">SPECIAL PROMOTIONS</h4>
+                  <h5 style="color:#000">Get even more.</h5>
                 </div>
               </div>
               <!-- Back Face -->
-              <div style="background-color:#006a9e!important" class="back bg-colored">
+              <div style="background-color:#000!important" class="back bg-colored">
                 <div style="font-size:1.2em" class="box-details">
-                  <p style="color:white">Under each videos, you will find special promotions. Sign up to our platform and enjoy weekly promotions!</p>
+                  <p class="box-details-text">Under each videos, you will find special promotions. Sign up to our platform and enjoy weekly promotions!</p>
                 </div>
               </div>
             </div>
@@ -724,169 +658,43 @@ export default {
     </section>
     <!-- END ABOUT SECTION -->
 
-    <section class="special-area appContainer" id="apps">
-      <div>
-        <div>
-          <div class="row">
-            <div class="col-sm-6 col-xs-6 t-center">
-              <div class="special_description_img">
-                <img src="https://i.ibb.co/r2xbYj5/apps.png">
+    <section class="special-area" id="apps">
+      <div class="row align-center">
+        <div class="col-sm-6 col-xs-12 t-center">
+          <img width="100%" src="https://i.ibb.co/r2xbYj5/apps.png">
+        </div>
+        <div class="simsov col-sm-6 col-xs-12 t-left">
+          <div class="container special_description_content">
+            <h2 class="everywhere">We are everywhere!</h2>
+            <div class="p30-bot"></div>
+            <p style="color:black;font-size:2em">We have a beautiful and simple app for both Android and iOS.
+              It's totally free, so make sure to give it a go!
+            </p>
+            <div class="p25-bot"></div>
+            <div class="row app-download-area">
+              <div class="col-sm-6 col-xs-12 app-button-wrapper">
+                <a href="#" class="t-center app-button flex-row align-center">
+                  <div class="flex-row align-center">
+                    <i class="fs24 fab fa-android"></i>
+                    <div class="p5"></div>
+                    <h3>Android</h3>
+                  </div>
+                </a>
               </div>
-            </div>
-            <div style="margin-top:100px" class="simsov col-sm-6 col-xs-6 t-left">
-              <div class="container special_description_content">
-                <h2 style="color:black">We are everywhere!</h2>
-                <p style="color:black;font-size:2em">We have a beautiful and simple app for both Android and iOS.
-                  It's totally free, so make sure to give it a go!
-                </p>
-                <div class="app-download-area">
-                  <div style="padding:0px" class="col-sm-6 col-xs-6">
-                    <a href="#" style="padding:30px 0px 30px 0px" class="t-center stay xl-btn py-30 block-im bg-gradient white bs-lg-hover qdr-hover-3 fs-50 fa fa-android android-btn radius slow xxs-mt click-effect">
-                      <h3>Im Android</h3>
-                    </a>
+              <div class="col-sm-6 col-xs-12 app-button-wrapper">
+                <a href="#" class="t-center app-button flex-row align-center">
+                  <div class="flex-row align-center">
+                    <i class="fs24 fab fa-apple"></i>
+                    <div class="p5"></div>
+                    <h3>iOS</h3>
                   </div>
-                  <div style="padding:0px;margin-bottom:10px;" class="col-sm-6 col-xs-6">
-                    <a href="#" style="padding:30px 0px 30px 0px" class="t-center stay xl-btn py-30 block-im bg-gradient white bs-lg-hover qdr-hover-3 fs-50 fa fa-apple apple-btn radius slow xxs-mt click-effect">
-                      <h3>Im iOS</h3>
-                    </a>
-                  </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- VIDEO SECTION -->
-    <section id="video" class="rev_slider_wrapper">
-      <div id="background-video" class="rev_slider fullwidthabanner">
-        <!-- Container -->
-        <ul>
-          <!-- Slide -->
-          <li data-index="rs-01" data-title="Video"  data-description="Vimeo Video">
-            <!-- Background Image -->
-            <img src="https://images8.alphacoders.com/430/thumb-1920-430779.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-            <!-- Video -->
-            <div class="rs-background-video-layer"
-              data-forcerewind="on"
-              data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;"
-              data-transform_out="opacity:0;s:1000;s:1000;"
-              data-start="0"
-              data-responsive_offset="on"
-              data-vimeoid="284594787"
-              data-videowidth="100%"
-              data-videoheight="100%"
-              data-videoloop="loop"
-              data-videostartat="00:10"
-              data-videoendat="02:00"
-              data-forceCover="1"
-              data-aspectratio="4:3"
-              data-autoplay="on"
-              data-autoplayonlyfirsttime="false"
-              data-volume="2">
-            </div>
-            <!-- Dark Background -->
-            <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-0"
-              id="slide-140-layer-5"
-              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-              data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
-              data-width="full"
-              data-height="full"
-              data-transform_idle="o:1;"
-              data-transform_in="opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-start="0"
-              data-basealign="slide"
-              data-responsive_offset="on"
-              data-lasttriggerstate="reset"
-              style="z-index: 1; background-color:rgba(54, 54, 54, 0.8);">
-            </div>
-            <!-- Title-->
-            <div class="tp-caption nowrap gray1 uppercase rs-parallaxlevel-0"
-              id="slide-140-layer-1"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="1000"
-              data-fontsize="['30','30','30','25']"
-              data-transform_in="opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['-60','-60','-60','-60']">
-              OUR VISUAL <span class="colored">DEMO</span>
-            </div>
-            <!-- Description -->
-            <div class="tp-caption gray1 mxw-600 badscript rs-parallaxlevel-0"
-              id="slide-140-layer-8"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="1000"
-              data-fontsize="['17','17','17','17']"
-              data-transform_in="opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['60','60','60','60']">
-              Watch the video ; Visual commercials from <a href="https://headboxmedias.com" target="_blank">Headbox Medias.</a>
-            </div>
-            <!-- Strip -->
-            <div class="tp-caption rs-parallaxlevel-0"
-              id="slide-140-layer-2"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-width="full"
-              data-height="1"
-              data-whitespace="nowrap"
-              data-transform_idle="o:1;"
-              data-transform_in="opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-start="1000"
-              data-basealign="slide"
-              data-responsive_offset="on"
-              data-lasttriggerstate="reset"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['0','0','0','0']"
-              style="background-color:rgba(168,168,168,0.2); width: calc(50% - 30px);">
-            </div>
-            <!-- Watch Video Button -->
-            <div class="tp-caption rs-parallaxlevel-0 qdr-hover-1 colored uppercase"
-              id="slide-140-layer-4"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="1000"
-              data-fontsize="['15','15','15','15']"
-              data-paddingtop="6" data-paddingbottom="6"
-              data-paddingleft="20" data-paddingright="20"
-              data-transform_in="opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:100;s:100;"
-              data-actions='[{"event":"click","action":"playvideo","layer":"slide-140-layer-3","delay":"1000"},{"event":"click","action":"togglelayer","layerstatus":"visible","layer":"slide-140-layer-5","delay":"0"},{"event":"click","action":"stoplayer","layer":"slide-140-layer-1","delay":"0"},{"event":"click","action":"stoplayer","layer":"slide-140-layer-2","delay":"0"},{"event":"click","action":"stoplayer","layer":"slide-140-layer-4","delay":"0"},{"event":"click","action":"togglelayer","layer":"slide-140-layer-7","delay":"0"},{"event":"click","action":"startlayer","layer":"slide-140-layer-6","delay":"0"},{"event":"click","action":"togglelayer","layer":"slide-140-layer-8","delay":"0"},{"event":"click","action":"togglelayer","layer":"slide-140-layer-9","delay":"0"}]'
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['0','0','0','0']"
-              style="background-color:rgba(91,91,91,0.8); border:1px solid rgba(91,91,91,0.9); cursor: pointer;" >
-              Watch Video
-            </div>
-            <!-- Read More About Us Button -->
-            <div class="tp-caption qdr-hover-1 px-25 py-10 c-pointer white bg-colored1 uppercase nowrap rs-parallaxlevel-0"
-              id="slide-140-layer-6"
-              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-              data-y="['bottom','bottom','bottom','bottom']" data-voffset="['40','30','20','20']"
-              data-fontsize="['15','15','15','15']"
-              data-transform_idle="o:1;"
-              data-transform_in="y:80px;opacity:1;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-start="bytrigger"
-              data-splitin="none"
-              data-splitout="none"
-              data-actions='[{"event":"click","action":"stopvideo","layer":"slide-140-layer-3","delay":"0"},{"event":"click","action":"stoplayer","layer":"slide-140-layer-6","delay":"0"},{"event":"click","action":"startlayer","layer":"slide-140-layer-5","delay":"0"},{"event":"click","action":"startlayer","layer":"slide-140-layer-1","delay":"0"},{"event":"click","action":"startlayer","layer":"slide-140-layer-2","delay":"0"},{"event":"click","action":"startlayer","layer":"slide-140-layer-7","delay":"0"},{"event":"click","action":"startlayer","layer":"slide-140-layer-4","delay":"0"},{"event":"click","action":"startlayer","layer":"slide-140-layer-8","delay":"0"},{"event":"click","action":"startlayer","layer":"slide-140-layer-9","delay":"0"}]'
-              data-responsive="on"
-              data-end="bytrigger"
-              data-lasttriggerstate="reset">
-              CLOSE
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-    <!-- END VIDEO SECTION -->
-
     <!-- CONTACT SECTION -->
     <section id="contact" class="contact-type-1 normal font-16">
       <!-- Contact Container -->
@@ -895,7 +703,7 @@ export default {
         <div class="t-left address">
           <!-- Title -->
           <h3 class="contact-title uppercase no-pm">
-            GET <span style="color:#007e86">INVOLVED!</span>
+            GET <span style="color:#576d00">INVOLVED!</span>
           </h3>
           <!-- Callout -->
           <div class="qdr-callout white-bg my-40 light border-colored">

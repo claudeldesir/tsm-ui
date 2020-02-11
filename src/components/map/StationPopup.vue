@@ -1,6 +1,6 @@
 <template lang="pug">
-  .station-popup(:style="getStyle" ref="stationPopup")
-    .flex-col.white.br5.tiny-border
+  div(:style="getStyle" ref="stationPopup" :class="{'station-popup': true, 'full-screen': fullscreen}")
+    .flex-col.white.br5.tiny-border(:style="{'height': fullscreen ? '92vh' : 'inherit' + 'px'}")
       .flex-row.p10.justify-end.close-popup.pointer(@click="$emit('close')")
         i.fs20.p5.fas.fa-times
       div(v-if="loaded")
@@ -38,7 +38,8 @@ export default {
     pointData: {
       type: Object,
       required: true
-    }
+    },
+    fullscreen: Boolean
   },
   created() {
     const stationId = this.pointData.stationId
@@ -112,8 +113,8 @@ export default {
     getStyle() {
       const mapPoint = this.pointData
       return {
-        left: `${mapPoint.left - this.correctionX}%`,
-        top: `${mapPoint.top + 2}%`,
+        left: !this.fullscreen ? `${mapPoint.left - this.correctionX}%` : '1%',
+        top: !this.fullscreen ? `${mapPoint.top + 2}%` : '7%',
       }
     },
     getShareData() {
@@ -141,5 +142,10 @@ export default {
     background: rgba(0,0,0,0.6);
     width: 30%;
     min-width: 600px;
+  }
+
+  .station-popup.full-screen {
+    position: fixed !important;
+    width: 98% !important;
   }
 </style>

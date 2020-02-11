@@ -2,7 +2,7 @@
   <div class="t-left contact">
     <!-- Title -->
     <h3 class="uppercase">
-      Drop us a <span style="color:#007e86">Message</span>
+      Drop us a <span style="color:#576d00">Message</span>
     </h3>
     <!-- Contact Form -->
     <form @submit.prevent="onSubmit" id="contact_frm" name="contact_frm" class="font-15 normal">

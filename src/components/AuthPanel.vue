@@ -1,6 +1,6 @@
 <template lang="pug">
   div(v-if="!isLoggedIn && !loading" style="width:min-content;")
-    .flex-row.justify-end.align-center
+    .flex-row.justify-end.align-center(v-show="false")
       .p5-side
       v-btn.fb(@click="login('fb')" flat)
         v-icon(small color="white") fab fa-facebook-f
@@ -15,8 +15,8 @@
       .p10-right.fs18(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
       ProfileImage(:user="getCurrentUser" @onClick="gotoDashboard")
     div
-      v-btn.logout(@click="logout" style="height:36px;" color="primary" flat)
-        v-icon(small color="white") fas fa-sign-out-alt
+      v-btn.theme-bg.logout(@click="logout" style="height:36px;" flat)
+        v-icon(small color="black") fas fa-sign-out-alt
 </template>
 
 <script>

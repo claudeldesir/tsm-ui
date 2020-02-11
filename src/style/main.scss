@@ -260,10 +260,6 @@
   margin-top: 0px !important;
 }
 
-.fa-android, .fa-apple {
-  font-size: 12px !important;
-}
-
 // social media colors
 
 .fb {
@@ -306,4 +302,12 @@
     border-left: 5px solid #bcbcbc;
     font-size: 15px;
   }
+}
+
+$theme-color: #ffde00;
+.theme-bg {
+  background-color: $theme-color !important;
+}
+.theme-text {
+  color: $theme-color !important;
 }
