@@ -18,9 +18,8 @@ const emailSignupFn = (data) => {
 }
 
 export default {
-  loginWithProvider(provider, { data, action }) {
+  loginWithProvider(provider) {
     let providerObj = null
-    let popup = true
     switch (provider) {
       case 'fb':
         providerObj = new firebase.auth.FacebookAuthProvider()
@@ -33,15 +32,17 @@ export default {
       case 'tw':
         providerObj = new firebase.auth.TwitterAuthProvider()
         break
-      case 'em':
-        popup = false
-        break
       default:
         providerObj = {}
     }
 
+    return firebase.auth().signInWithPopup(providerObj)
+      .then(res => Promise.resolve(res))
+      .catch(err => Promise.reject(err.code))
+  },
+  loginWithEmail({ data, action }) {
     const emailDirectionFn = action === 'login' ? emailLoginFn : emailSignupFn
-    const loginFn = popup ? firebase.auth().signInWithPopup(providerObj) : emailDirectionFn(data)
+    const loginFn = emailDirectionFn(data)
     return loginFn
       .then(res => Promise.resolve(res))
       .catch(err => Promise.reject(err.code))

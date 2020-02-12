@@ -1,7 +1,7 @@
 <template lang="pug">
   div(data-app)
     v-dialog(:value="visible" @input="v => v || emitClose()" width="30%" content-class="dialog-custom")
-      v-card(style="background-color: #bbb")
+      v-card.white
         slot
 </template>
 

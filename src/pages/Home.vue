@@ -68,7 +68,7 @@ export default {
     </div>
     <nav id="navigation" class="shrink border hover dark-nav modern dotted" data-offset="55">
       <!-- Columns -->
-      <div class="flex-row align-center space-between container-xl">
+      <div class="flex-row align-center space-between container-xl p20-side">
         <!-- Logo -->
         <div class="logo">
           <a href="#home">

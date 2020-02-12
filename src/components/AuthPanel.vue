@@ -1,7 +1,7 @@
 <template lang="pug">
   div(v-if="!isLoggedIn && !loading")
     Dialog(:visible="loginModalVisible" @close="loginModalVisible=false")
-      LoginPanel
+      LoginPanel(@loggedIn="loginModalVisible=false")
     .flex-row.justify-end.align-center(v-if="!loginModalVisible")
       span.white--text.fs17.pointer(@click="loginModalVisible=true") Log in
   .flex-row.justify-end.align-center(v-else)
@@ -19,20 +19,10 @@ import LoginPanel from '@/components/LoginPanel'
 import ProfileImage from '@/components/ProfileImage'
 
 import auth from '@/services/auth'
-import api from '@/services/api'
-import eventbus from '@/services/event-bus'
 
 export default {
   props: {
     dark: Boolean
-  },
-  created() {
-    eventbus.$on('pushLoginData', (payload) => {
-      this.login('em', payload)
-    })
-  },
-  destroyed() {
-    eventbus.$off('pushLoginData')
   },
   data: () => ({
     loginModalVisible: false,
@@ -41,18 +31,6 @@ export default {
   methods: {
     gotoDashboard() {
       this.$router.push({ name: 'dashboard' })
-    },
-    loginWithEmail() {
-      eventbus.$emit('toggleEmailLoginModal', true)
-    },
-    login(provider, payload) {
-      this.loading = true
-      auth.loginWithProvider(provider, payload)
-        .then(() => {
-          api.getUser()
-          eventbus.$emit('toggleEmailLoginModal', false)
-          this.loading = false
-        })
     },
     logout() {
       return auth.logout()
