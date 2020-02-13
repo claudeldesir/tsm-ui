@@ -1,6 +1,8 @@
 <template lang="pug">
-  div
-    img.profile-img(v-if="getImageUrl" :src="getImageUrl" @click="$emit('onClick')")
+  .d-flex(@click="$emit('onClick', $event)")
+    img.profile-img(v-if="getImageUrl" :src="getImageUrl")
+    v-btn.m5(v-else icon)
+      v-icon(color="white") fas fa-user
 </template>
 
 <script>

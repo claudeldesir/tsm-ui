@@ -1,16 +1,25 @@
 <template lang="pug">
-  div(v-if="!isLoggedIn && !loading")
-    Dialog(:visible="loginModalVisible" @close="loginModalVisible=false")
-      LoginPanel(@loggedIn="loginModalVisible=false")
-    .flex-row.justify-end.align-center(v-if="!loginModalVisible")
-      span.white--text.fs17.pointer(@click="loginModalVisible=true") Log in
-  .flex-row.justify-end.align-center(v-else)
-    .flex-row.align-center.p5
-      .p10-right.fs18(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
-      ProfileImage(:user="getCurrentUser" @onClick="gotoDashboard")
-    div
-      v-btn.theme-primary-bg.logout(@click="logout" style="height:36px;" flat)
-        v-icon(small color="black") fas fa-sign-out-alt
+  .auth-panel
+    div(v-if="!isLoggedIn && !loading")
+      Dialog(:visible="loginModalVisible" @close="loginModalVisible=false")
+        LoginPanel(@loggedIn="loginModalVisible=false")
+      .flex-row.justify-end.align-center(v-show="!loginModalVisible")
+        span.white--text.fs17.pointer(@click="loginModalVisible=true") Log in
+    .auth-menu.flex-row.justify-end.align-center.relative.nav-deps(v-else)
+      v-menu(attach=".auth-menu" content-class="nav-deps-children")
+        template(v-slot:activator="{ on }")
+          .flex-row.align-center
+            .fs18(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
+            ProfileImage(:user="getCurrentUser" v-on="on" @onClick="on.click")
+        v-list.transparent.line-normal.pointer
+          .flex-row.space-between.align-center.p15-left.p10-right.p5-ver.white--text.fs18
+            span Your gifts
+            .p5-side
+            v-icon(color="white") fas fa-fw fa-gifts
+          .flex-row.space-between.align-center.p15-left.p10-right.p5-ver.white--text.fs18(@click="logout")
+            span Log out
+            .p5-side
+            v-icon(color="white") fas fa-fw fa-sign-out-alt
 </template>
 
 <script>
@@ -43,3 +52,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.auth-panel {
+  .nav-deps-children {
+    left: auto !important;
+    max-width: 110%;
+    width: 110%;
+  }
+}
+</style>

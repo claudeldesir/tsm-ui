@@ -7,9 +7,9 @@
           timeago(:datetime="ad.createdAt" :autoUpdate="true")
     br
     .flex-row
-      .w66.p10.tiny-border.flex-row.align-center
+      .two-thirds.p10.tiny-border.flex-row.align-center
         ImageItem(:image="currentImage" original)
-      .w33.p10
+      .third.p10
         .flex-row.w100.justify-center
           img(src="http://staticmapmaker.com/img/google.png")
     .flex-row.m5

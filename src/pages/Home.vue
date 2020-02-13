@@ -68,11 +68,11 @@ export default {
     </div>
     <nav id="navigation" class="shrink border hover dark-nav modern dotted" data-offset="55">
       <!-- Columns -->
-      <div class="flex-row align-center space-between container-xl p20-side">
+      <div class="flex-row align-center space-between container-xl p25-side fit">
         <!-- Logo -->
         <div class="logo">
           <a href="#home">
-            <img :src="logce" alt="Website Logo">
+            <img :src="logce" alt="TSM">
           </a>
         </div>
         <div class="hidden-sm">
@@ -474,89 +474,91 @@ export default {
 
     <!-- ABOUT SECTION -->
     <section id="about" class="t-center py-5" style="background-color: #000;">
-      <!-- Title -->
-      <h1 class="antitle light-title white--text">
-        WE ARE LOOKING FOR YOU. LET'S EXPOSE YOUR BUSINESS TO A NEW LEVEL.
-      </h1>
-      <!-- Strips -->
-      <div class="title-strips"></div>
-      <!-- Subtitle -->
-      <h3 class="light xs-mt theme-primary-text">
-        Who are we? Why do you chose us?
-      </h3>
-      <!-- Description -->
-      <p class="mxw-970 container light-title description">
-        We plan to reach <span class="theme-primary-text">millions of people</span> in the Metro environements, airplane screens, strategic terminals in the city, and all over the world, by smartphones and other devices.
-      </p>
-      <!-- Container -->
-      <!-- Container -->
-      <div class="container t-center">
-        <!-- Row for cols -->
-        <div class="row">
-          <!-- Container to rotate box -->
-          <div class="rotate-container hover1 col-sm-4 col-xs-12 xxs-mt" ontouchstart="this.classList.toggle('hover');">
-            <div class="rotate-box">
-              <!-- Front Face -->
-              <div class="front bg-soft bg-gray1 bg-cover">
-                <div class="box-details">
-                  <i style="color:black;font-size:2em;padding: 5px;" class="fas fa-film"></i>
-                  <h4 style="color:#000">VIDEO SERVICES</h4>
-                  <h5 style="color:#000">Expose yourself!</h5>
+      <div class="container">
+        <!-- Title -->
+        <h1 class="antitle light-title white--text">
+          WE ARE LOOKING FOR YOU. LET'S EXPOSE YOUR BUSINESS TO A NEW LEVEL.
+        </h1>
+        <!-- Strips -->
+        <div class="title-strips"></div>
+        <!-- Subtitle -->
+        <h3 class="light xs-mt theme-primary-text">
+          Who are we? Why do you chose us?
+        </h3>
+        <!-- Description -->
+        <p class="mxw-970 container light-title description">
+          We plan to reach <span class="theme-primary-text">millions of people</span> in the Metro environements, airplane screens, strategic terminals in the city, and all over the world, by smartphones and other devices.
+        </p>
+        <!-- Container -->
+        <!-- Container -->
+        <div class="container t-center">
+          <!-- Row for cols -->
+          <div class="row">
+            <!-- Container to rotate box -->
+            <div class="rotate-container hover1 col-sm-4 col-xs-12 xxs-mt" ontouchstart="this.classList.toggle('hover');">
+              <div class="rotate-box">
+                <!-- Front Face -->
+                <div class="front bg-soft bg-gray1 bg-cover">
+                  <div class="box-details">
+                    <i style="color:black;font-size:2em;padding: 5px;" class="fas fa-film"></i>
+                    <h4 style="color:#000">VIDEO SERVICES</h4>
+                    <h5 style="color:#000">Expose yourself!</h5>
+                  </div>
                 </div>
-              </div>
-              <!-- Back Face -->
-              <div style="background-color:#000!important"  class="back bg-colored">
-                <div style="font-size:1.2em" class="box-details">
-                  <p class="box-details-text">Headbox Medias will create the best about you and your business.  Through our videos, we will try to represent you in the way that customers will see what they want to see. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End box -->
-          <!-- Container to rotate box -->
-          <div class="rotate-container hover1 col-sm-4 col-xs-12 xxs-mt" ontouchstart="this.classList.toggle('hover');">
-            <div class="rotate-box">
-              <!-- Front Face -->
-              <div class="front bg-soft bg-gray1 bg-cover">
-                <div class="box-details">
-                  <i style="color:black;font-size:2em;padding: 5px;" class="far fa-images"></i>
-                  <h4 style="color:#000">PHOTOGRAPHY</h4>
-                  <h5 style="color:#000">Let your true colors shine though</h5>
-                </div>
-              </div>
-              <!-- Back Face -->
-              <div style="background-color:#000!important"  class="back bg-colored">
-                <div style="font-size:1.2em" class="box-details">
-                  <p class="box-details-text">Every picture tells a story. Let us help you tell yours.</p>
+                <!-- Back Face -->
+                <div style="background-color:#000!important"  class="back bg-colored">
+                  <div style="font-size:1.2em" class="box-details">
+                    <p class="box-details-text">Headbox Medias will create the best about you and your business.  Through our videos, we will try to represent you in the way that customers will see what they want to see. </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- End box -->
-          <!-- Container to rotate box -->
-          <div class="rotate-container hover1 col-sm-4 col-xs-12 xxs-mt" ontouchstart="this.classList.toggle('hover');">
-            <div class="rotate-box">
-              <!-- Front Face -->
-              <div class="front bg-soft bg-gray1 bg-cover">
-                <div class="box-details">
-                  <i style="color:black;font-size:2em;padding: 5px;" class="fas fa-bullhorn"></i>
-                  <h4 style="color:#000">SPECIAL PROMOTIONS</h4>
-                  <h5 style="color:#000">Get even more.</h5>
+            <!-- End box -->
+            <!-- Container to rotate box -->
+            <div class="rotate-container hover1 col-sm-4 col-xs-12 xxs-mt" ontouchstart="this.classList.toggle('hover');">
+              <div class="rotate-box">
+                <!-- Front Face -->
+                <div class="front bg-soft bg-gray1 bg-cover">
+                  <div class="box-details">
+                    <i style="color:black;font-size:2em;padding: 5px;" class="far fa-images"></i>
+                    <h4 style="color:#000">PHOTOGRAPHY</h4>
+                    <h5 style="color:#000">Let your true colors shine though</h5>
+                  </div>
                 </div>
-              </div>
-              <!-- Back Face -->
-              <div style="background-color:#000!important" class="back bg-colored">
-                <div style="font-size:1.2em" class="box-details">
-                  <p class="box-details-text">Under each videos, you will find special promotions. Sign up to our platform and enjoy weekly promotions!</p>
+                <!-- Back Face -->
+                <div style="background-color:#000!important"  class="back bg-colored">
+                  <div style="font-size:1.2em" class="box-details">
+                    <p class="box-details-text">Every picture tells a story. Let us help you tell yours.</p>
+                  </div>
                 </div>
               </div>
             </div>
+            <!-- End box -->
+            <!-- Container to rotate box -->
+            <div class="rotate-container hover1 col-sm-4 col-xs-12 xxs-mt" ontouchstart="this.classList.toggle('hover');">
+              <div class="rotate-box">
+                <!-- Front Face -->
+                <div class="front bg-soft bg-gray1 bg-cover">
+                  <div class="box-details">
+                    <i style="color:black;font-size:2em;padding: 5px;" class="fas fa-bullhorn"></i>
+                    <h4 style="color:#000">SPECIAL PROMOTIONS</h4>
+                    <h5 style="color:#000">Get even more.</h5>
+                  </div>
+                </div>
+                <!-- Back Face -->
+                <div style="background-color:#000!important" class="back bg-colored">
+                  <div style="font-size:1.2em" class="box-details">
+                    <p class="box-details-text">Under each videos, you will find special promotions. Sign up to our platform and enjoy weekly promotions!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End box -->
           </div>
-          <!-- End box -->
+          <!-- End Row for cols -->
         </div>
-        <!-- End Row for cols -->
+        <!-- End Container -->
       </div>
-      <!-- End Container -->
     </section>
     <!-- END ABOUT SECTION -->
 
@@ -663,7 +665,7 @@ export default {
           <div class="d-flex flex-md-row flex-col align-center t-center-xs">
 
             <div class="flex-row align-center t-left t-center-xs py-2 py-md-0 abs-third">
-              <img :src="logce" alt="logo icon" class="logo">
+              <img :src="logce" alt="TSM" class="logo">
             </div>
 
             <div class="t-center">

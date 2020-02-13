@@ -1,16 +1,18 @@
 <template lang="pug">
-  .login-box
+  .login-box.line-normal
     v-form.p40.flex-col.align-center(@submit="onLoginSubmit" ref="loginForm" lazy-validation)
-      .logo.black.p10
-        img(:src="logce" alt="Website Logo")
+      .logo.p10
+        img(:src="logceDark" alt="TSM")
       .p10
       v-text-field.black--text.white-field.w100(v-model.trim="loginData.email" :rules="[(v) => !!v || 'Email is required']" placeholder="Email" required type="email" color="#fff" background-color="transparent" hide-details)
       br
       v-text-field.black--text.white-field.w100(v-model="loginData.password" :rules="[(v) => !!v || 'Password is required']" placeholder="Password" required type="password" color="#fff" background-color="transparent" hide-details)
       template(v-if="action === 'signup'")
-        .p40-top.w100
+        br
+        .p15-top.w100
           v-text-field.black--text.white-field.w100(v-model="loginData.username" :rules="[(v) => !!v || 'Username is required']" placeholder="Username" required color="#fff" background-color="transparent" hide-details)
       br
+      .p10-top
       v-btn.w100(type="submit" dark) {{ action === 'signup' ? 'Sign up' : 'Log in' }}
       br
       .flex-row.space-around
@@ -32,7 +34,7 @@
 import auth from '@/services/auth'
 import api from '@/services/api'
 import eventbus from '@/services/event-bus'
-import logce from '@/assets/home/images/antares/logce.png'
+import logceDark from '@/assets/home/images/antares/logce-dark.png'
 
 export default {
   data: () => ({
@@ -42,7 +44,7 @@ export default {
       email: '',
       password: ''
     },
-    logce
+    logceDark
   }),
   methods: {
     toggleAction(e) {
@@ -76,8 +78,6 @@ export default {
 
 <style lang="scss">
 .login-box {
-  line-height: 2rem;
-
   .white-field input,
   .white-field .v-label,
   .white-field input::placeholder {

@@ -155,16 +155,16 @@
   }
 }
 // .w5, .w10...
-@for $i from 1 through 100 {
-  .w#{$i * 1} {
-    width: $i * 1%
+@for $i from 1 through 10 {
+  .w#{$i * 10} {
+    width: $i * 10%
   }
 }
-// .section10
-@for $i from 1 through 40 {
-  .section#{$i * 5} {
-    height: $i * 5vh
-  }
+.third {
+  width: 33%;
+}
+.two-thirds {
+  width: 66%;
 }
 // .fs1, fs7
 @for $i from 1 through 100 {
@@ -232,6 +232,9 @@
 .pointer {
   cursor: pointer;
 }
+.line-normal {
+  line-height: normal;
+}
 
 // vuetify fixes
 
@@ -277,9 +280,6 @@
   height: 100vh;
 }
 
-.logout {
-  background: #dd4b39 !important;
-}
 .profile-img {
   width: 50px;
   min-width: 50px;
