@@ -6,7 +6,7 @@
       .flex-row.justify-end.align-center(v-show="!loginModalVisible")
         span.white--text.fs17.pointer(@click="loginModalVisible=true") Log in
     .auth-menu.flex-row.justify-end.align-center.relative.nav-deps(v-else)
-      v-menu(attach=".auth-menu" content-class="nav-deps-children")
+      v-menu(attach=".auth-menu" content-class="black nav-deps-children")
         template(v-slot:activator="{ on }")
           .flex-row.align-center
             .fs18.p15-right(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
