@@ -1,12 +1,9 @@
 <script>
-import home01 from '@/assets/home/images/antares/home_01.jpg'
-import home02 from '@/assets/home/images/antares/home_02.jpg'
-import home03 from '@/assets/home/images/antares/home_03.jpg'
-import logce from '@/assets/home/images/antares/logce.png'
-
 import AuthPanel from '@/components/AuthPanel'
 import ContactForm from '@/components/ContactForm'
 import Map from '@/components/map/Map'
+
+import logce from '@/assets/home/images/antares/logce.png'
 
 const scripts = [
   // batch
@@ -23,14 +20,9 @@ export default {
   created() {
     this.loadScripts()
   },
-  data() {
-    return {
-      home01,
-      home02,
-      home03,
-      logce
-    }
-  },
+  data: () => ({
+    logce
+  }),
   methods: {
     loadScripts() {
       scripts.forEach((key) => {
@@ -83,15 +75,14 @@ export default {
       </div>
     </nav>
 
-    <section id="home" class="rev_slider_wrapper fullscreen-container" >
+    <section id="home" class="rev_slider_wrapper fullscreen-container black" style="overflow:hidden!important;">
       <!-- Start Slider -->
       <div id="home_slider" class="rev_slider fullscreenbanner lightbox_gallery">
         <!-- Slider Container -->
         <ul>
           <!-- Slide -->
-          <li data-masterspeed="1000" data-transition="fade" :data-thumb="home01" data-saveperformance="off"  data-title="Intro" data-description="Home Slider">
+          <li data-masterspeed="1000" data-transition="fade" data-saveperformance="off"  data-title="Intro" data-description="Home Slider">
             <!-- Background Image -->
-            <img :src="home01" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="9" class="rev-slidebg" data-no-retina>
             <!-- Layer -->
             <div class="tp-caption gray1 badscript nowrap rs-parallaxlevel-0"
               data-x="['center','center','center','center']"
@@ -115,7 +106,7 @@ export default {
               data-transform_out="opacity:0;s:300;s:300;"
               data-mask_in="x:[100%];y:0;s:inherit;e:inherit;"
               data-hoffset="['0','0','0','0']"
-              data-voffset="['-25','-15','-13','-17']">
+              data-voffset="['0','0','0','0']">
               OUR POTENTIAL IS IN YOURS.
             </div>
             <!-- Layer 3 -->
@@ -130,7 +121,6 @@ export default {
               data-mask_in="x:[-100%];y:0;s:inherit;e:inherit;"
               data-hoffset="['0','0','0','0']"
               data-voffset="['55','45','37','25']">
-              WE GOD THIS.
             </div>
             <!-- Left Strip -->
             <div class="tp-caption text-strip rs-parallaxlevel-0"
@@ -156,21 +146,6 @@ export default {
               data-hoffset="['150','130','80','40']"
               data-voffset="['16','12','8','5']">
             </div>
-            <!-- Layer -->
-            <div class="tp-caption white--text nowrap uppercase rs-parallaxlevel-0 hidden-sm"
-              data-x="['center','center','center','center']"
-              data-y="['middle','middle','middle','middle']"
-              data-start="2200"
-              data-lineheight="80"
-              data-fontsize="['60','50','40','30']"
-              data-transform_in="y:50px;opacity:0;s:1000;e:Power2.easeOut;"
-              data-transform_out="opacity:0;s:300;s:300;"
-              data-hoffset="['0','0','0','0']"
-              data-voffset="['120','103','86','74']">
-              <a href="#map" class="slow no-lightbox quadra-btn theme-primary-text bg-colored1-hover border-colored2-hover white-hover">
-                EXPLORE THE MAP
-              </a>
-            </div>
           </li>
           <!-- End Slides -->
         </ul>
@@ -181,12 +156,12 @@ export default {
       <div class="page-note fullwidth c-default clearfix">
         <!-- Left Note -->
         <div class="left-note primary-border uppercase white--text">
-          <p>
+          <p class="p20-left" style="border-left: 2px solid">
             <i class="fas fa-globe"></i> Made for <span class="theme-primary-text"> travelers.</span><br> <i class="fas fa-gift"></i> Watch videos and earn rewards. <br><i class="fab fa-rebel"></i>  Be rebel, be smart.
           </p>
         </div>
         <!-- Socials -->
-        <div class="home-socials slow white--text">
+        <div class="home-socials slow white--text" style="padding-top: 15px !important;">
           <!-- Social -->
           <a href="https://twitter.com/delamrmach" target="_blank">
           <i class="fab fa-twitter"></i>
@@ -468,13 +443,14 @@ export default {
     </section>
     <!-- END QUADRA FIXED MODAL -->
 
+    <div class="w100 flex-col section-wrapper order-sm-1">
     <section id="map" class="mapa hidden-sm">
       <Map/>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="t-center py-5" style="background-color: #000;">
-      <div class="container">
+    <section id="about" class="t-center py-md-5 order-2 order-sm-2 pb-4 pb-sm-0" style="background-color: #000;">
+      <div class="container" style="margin-top:30px!important;">
         <!-- Title -->
         <h1 class="antitle light-title white--text">
           WE ARE LOOKING FOR YOU. LET'S EXPOSE YOUR BUSINESS TO A NEW LEVEL.
@@ -562,10 +538,10 @@ export default {
     </section>
     <!-- END ABOUT SECTION -->
 
-    <section class="special-area" id="apps">
+    <section class="special-area order-1 order-sm-3 p20-side py-sm-4" id="apps">
       <div class="container">
         <div class="row align-center">
-          <div class="col-sm-6 col-xs-12 t-center order-2 order-sm-first pt-5 py-sm-0">
+          <div class="col-sm-6 col-xs-12 t-center pt-5 py-sm-0">
             <img width="100%" src="https://i.ibb.co/r2xbYj5/apps.png">
           </div>
           <div class="col-sm-6 col-xs-12 t-left">
@@ -600,7 +576,7 @@ export default {
       </div>
     </section>
     <!-- CONTACT SECTION -->
-    <section id="contact" class="contact-type-1 py-5 normal font-16">
+    <section id="contact" class="contact-type-1 py-4 normal font-16 order-3 order-sm-4">
       <!-- Contact Container -->
       <div class="container">
         <div class="row">
@@ -657,6 +633,7 @@ export default {
       <!-- End Contact Container -->
     </section>
     <!-- END CONTACT SECTION -->
+    </div>
 
     <!-- FOOTER -->
     <footer id="footer" class="classic_footer font-15 normal">

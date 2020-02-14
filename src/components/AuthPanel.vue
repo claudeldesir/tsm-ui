@@ -9,8 +9,8 @@
       v-menu(attach=".auth-menu" content-class="nav-deps-children")
         template(v-slot:activator="{ on }")
           .flex-row.align-center
-            .fs18(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
-            ProfileImage(:user="getCurrentUser" v-on="on" @onClick="on.click")
+            .fs18.p15-right(:style="{color: dark ? 'white' : 'black', 'line-height': 'normal'}") {{ getCurrentUser.displayName }}
+            ProfileImage.pointer(:user="getCurrentUser" v-on="on" @onClick="on.click")
         v-list.transparent.line-normal.pointer
           .flex-row.space-between.align-center.p15-left.p10-right.p5-ver.white--text.fs18
             span Your gifts
