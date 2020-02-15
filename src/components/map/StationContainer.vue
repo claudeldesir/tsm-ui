@@ -2,13 +2,14 @@
   .flex-col.align-center
     .p5
       h3 {{ station.title }}
+    .p5
+      DotPagination(:pages="media.length" :activePage="getSelectedMediaIndex")
     .p5(v-if="station.desc") {{ station.desc }}
     .p5-ver.w100(v-if="media && media.length")
       carousel(:perPage="1"
         @page-change="onPageChange"
         :navigateTo="getSelectedMediaIndex"
-        paginationActiveColor="#fff"
-        paginationColor="#555")
+        :paginationEnabled="false")
         slide(v-for="mediaItem in media" :key="mediaItem.id")
           MediaContainer(:mediaItem="mediaItem" :transitionCount="transitionCount")
     .p20(v-if="media && media.length")
@@ -23,6 +24,7 @@
 
 <script>
 import MediaContainer from '@/components/map/MediaContainer'
+import DotPagination from '@/components/common/DotPagination'
 
 export default {
   props: {
@@ -70,7 +72,8 @@ export default {
     }
   },
   components: {
-    MediaContainer
+    MediaContainer,
+    DotPagination
   }
 }
 </script>

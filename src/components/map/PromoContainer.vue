@@ -5,12 +5,13 @@
         .p5
           h3 {{ media.title }}
         .p5
+          DotPagination(:pages="promos.length" :activePage="selectedPromoIndex")
+        .p5
           span {{ media.desc }}
         .p5-ver.w100
           carousel(:perPage="1"
             @page-change="onPageChange"
-            paginationActiveColor="#fff"
-            paginationColor="#555")
+            :paginationEnabled="false")
             slide(v-for="promo in promos" :key="promo.id")
               .flex-col.h100
                 .relative
@@ -36,6 +37,7 @@
 <script>
 import Api from '@/services/api'
 import ImageItem from '@/components/ImageItem'
+import DotPagination from '@/components/common/DotPagination'
 
 export default {
   props: {
@@ -55,12 +57,11 @@ export default {
         }, 100)
       })
   },
-  data() {
-    return {
-      media: {},
-      loaded: false
-    }
-  },
+  data: () => ({
+    media: {},
+    selectedPromoIndex: 0,
+    loaded: false
+  }),
   computed: {
     promos() {
       return this.media.promos || []
@@ -77,12 +78,14 @@ export default {
       return null
     },
     onPageChange(index) {
-      const promoItem = this.promos[index || 0]
+      this.selectedPromoIndex = index || 0
+      const promoItem = this.promos[this.selectedPromoIndex]
       this.$emit('map:promoChanged', promoItem)
     }
   },
   components: {
-    ImageItem
+    ImageItem,
+    DotPagination
   }
 }
 </script>

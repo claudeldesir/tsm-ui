@@ -3,18 +3,19 @@
     .p5
       h3 {{ promo.title }}
     .p5
+      DotPagination(:pages="promoImages.length" :activePage="selectedImageIndex")
+    .p5
       span {{ promo.desc }}
     .p5-ver.w100
       carousel(:perPage="1"
-        :navigateTo="selectedImage"
-        paginationActiveColor="#fff"
-        paginationColor="#555")
+        :navigateTo="selectedImageIndex"
+        :paginationEnabled="false")
         slide(v-for="promoImage in promoImages" :key="promoImage.id")
           .relative
             ImageItem(:image="promoImage" original)
             .w100.h100.overlayz
     .p5-ver.w100(v-if="promoImages.length > 1")
-      ImageItem.p5.pointer(v-for="(promoImage, idx) in promoImages" :image="promoImage" :full="false" :key="promoImage.id" @selected="selectedImage = idx")
+      ImageItem.p5.pointer(v-for="(promoImage, idx) in promoImages" :image="promoImage" :full="false" :key="promoImage.id" @selected="selectedImageIndex = idx")
     .w100.p20.flex-row.space-around
       button.btn.btn-outline-light.promoBtn(@click="$emit('map:goToPromos')")
         i.fas.fa-arrow-left
@@ -34,6 +35,7 @@
 
 <script>
 import ImageItem from '@/components/ImageItem'
+import DotPagination from '@/components/common/DotPagination'
 
 export default {
   props: {
@@ -43,11 +45,11 @@ export default {
     }
   },
   created() {
-    if (this.promoImages.length) this.selectedImage = 0
+    if (this.promoImages.length) this.selectedImageIndex = 0
   },
   data() {
     return {
-      selectedImage: null
+      selectedImageIndex: null
     }
   },
   computed: {
@@ -57,7 +59,8 @@ export default {
     }
   },
   components: {
-    ImageItem
+    ImageItem,
+    DotPagination
   }
 }
 </script>
