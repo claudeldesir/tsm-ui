@@ -33,8 +33,7 @@
 <script>
 import auth from '@/services/auth'
 import api from '@/services/api'
-import eventbus from '@/services/event-bus'
-import logceDark from '@/assets/home/images/antares/logce-dark.png'
+import logceDark from '@/assets/home/images/antares/logce_dark.png'
 
 export default {
   data: () => ({
@@ -70,7 +69,7 @@ export default {
     },
     onLoggedIn() {
       api.getUser()
-      eventbus.$emit('loggedIn')
+      this.$emit('loggedIn')
     }
   }
 }
