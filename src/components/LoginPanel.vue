@@ -1,8 +1,8 @@
 <template lang="pug">
   .login-box.line-normal
     v-form.p40.flex-col.align-center(@submit="onLoginSubmit" ref="loginForm" lazy-validation)
-      .logo.p10
-        img(:src="logceDark" alt="TSM")
+      .logo.p10.black
+        img(:src="logce" alt="TSM")
       .p10
       v-text-field.black--text.white-field.w100(v-model.trim="loginData.email" :rules="[(v) => !!v || 'Email is required']" placeholder="Email" required type="email" color="#fff" background-color="transparent" hide-details)
       br
@@ -33,7 +33,7 @@
 <script>
 import auth from '@/services/auth'
 import api from '@/services/api'
-import logceDark from '@/assets/home/images/antares/logce_dark.png'
+import logce from '@/assets/home/images/antares/logce.png'
 
 export default {
   data: () => ({
@@ -43,7 +43,7 @@ export default {
       email: '',
       password: ''
     },
-    logceDark
+    logce
   }),
   methods: {
     toggleAction(e) {
