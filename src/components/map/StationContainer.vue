@@ -3,7 +3,7 @@
     .p5
       h3 {{ station.title }}
     .p5
-      DotPagination(:pages="media.length" :activePage="getSelectedMediaIndex")
+      DotPagination(:pages="media.length" :activePage="getSelectedMediaIndex" @selected="onPageChange($event)")
     .p5(v-if="station.desc") {{ station.desc }}
     .p5-ver.w100(v-if="media && media.length")
       carousel(:perPage="1"

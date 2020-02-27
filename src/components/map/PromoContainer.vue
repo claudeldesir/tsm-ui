@@ -5,7 +5,7 @@
         .p5
           h3 {{ media.title }}
         .p5
-          DotPagination(:pages="promos.length" :activePage="selectedPromoIndex")
+          DotPagination(:pages="promos.length" :activePage="selectedPromoIndex" @selected="selectedPromoIndex = $event")
         .p5
           span {{ media.desc }}
         .p5-ver.w100

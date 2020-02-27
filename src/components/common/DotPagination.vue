@@ -1,6 +1,6 @@
 <template lang="pug">
   .flex-row.align-center.dot-pagination(v-show="pages > 1")
-    .p10(v-for="(dot, ind) in dots" :key="ind")
+    .p10.pointer(v-for="(dot, idx) in dots" :key="idx" @click="$emit('selected', idx)")
       .dot-pagination-item(:class="{'selected': dot === 'selected'}")
 </template>
 

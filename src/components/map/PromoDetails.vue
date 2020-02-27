@@ -3,7 +3,7 @@
     .p5
       h3 {{ promo.title }}
     .p5
-      DotPagination(:pages="promoImages.length" :activePage="selectedImageIndex")
+      DotPagination(:pages="promoImages.length" :activePage="selectedImageIndex" @selected="selectedImageIndex = $event")
     .p5
       span {{ promo.desc }}
     .p5-ver.w100
