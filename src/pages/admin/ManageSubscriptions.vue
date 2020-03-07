@@ -86,9 +86,11 @@ export default {
       return Promise.all([
         this.getUsers(),
         this.getSubscribers(),
-        this.getSubscriptions(),
         this.getPackages()
       ])
+        .then(() => {
+          this.getSubscriptions()
+        })
         .then(() => {
           this.loaded = true
         })
@@ -102,7 +104,7 @@ export default {
     getSubscribers() {
       return Api.getSubscribers()
         .then((res) => {
-          this.subscribers = res.data
+          this.subscribers = res.data.filter(subscriber => !!subscriber.user)
         })
     },
     getSubscriberFromList(subId) {
@@ -127,7 +129,10 @@ export default {
     getSubscriptions() {
       return Api.getSubscriptions()
         .then((res) => {
-          this.subscriptions = res.data
+          this.subscriptions = res.data.filter((item) => {
+            const user = this.getSubscriberFromList(item.subscriber.id)
+            return !!user
+          })
         })
     },
     submitSubscription() {
