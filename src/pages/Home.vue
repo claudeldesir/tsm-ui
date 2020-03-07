@@ -4,6 +4,7 @@ import ContactForm from '@/components/ContactForm'
 import Map from '@/components/map/Map'
 
 import logce from '@/assets/home/images/antares/logce.png'
+import apps from '@/assets/home/images/antares/apps.png'
 
 const scripts = [
   // batch
@@ -542,7 +543,7 @@ export default {
       <div class="container">
         <div class="row align-center">
           <div class="col-sm-6 col-xs-12 t-center pt-5 py-sm-0">
-            <img width="100%" src="https://i.ibb.co/r2xbYj5/apps.png">
+            <img :src="apps" width="100%" alt="apps"/>
           </div>
           <div class="col-sm-6 col-xs-12 t-left">
             <div class="t-center-sm">
