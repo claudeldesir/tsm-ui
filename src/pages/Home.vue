@@ -22,6 +22,7 @@ export default {
     this.loadScripts()
   },
   data: () => ({
+    apps,
     logce
   }),
   methods: {
