@@ -135,7 +135,7 @@ const mapPointsObj = [{ // here is orange
   size: 1,
   top: 70.7,
   left: 37.9,
-  name: 'Vendume'
+  name: 'Vendôme'
 }, {
   id: 24,
   size: 1,
@@ -153,7 +153,7 @@ const mapPointsObj = [{ // here is orange
   size: 1,
   top: 61.0,
   left: 29.2,
-  name: 'Cote-Sainte-Catherine'
+  name: 'Côte-Sainte-Catherine'
 }, {
   id: 27,
   size: 1,
@@ -183,7 +183,7 @@ const mapPointsObj = [{ // here is orange
   size: 1,
   top: 44.65,
   left: 14.7,
-  name: 'Core-Vertu'
+  name: 'Côte-Vertu'
 }, { // here is blue
   id: 32,
   size: 1,
@@ -243,7 +243,7 @@ const mapPointsObj = [{ // here is orange
   size: 1,
   top: 60.9,
   left: 35.1,
-  name: 'Cote-Des-Neiges'
+  name: 'Côte-Des-Neiges'
 }, { // here is green
   id: 42,
   size: 1,
